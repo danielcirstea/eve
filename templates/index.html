@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+    <div class="container-fluid">
+        <h1>Hey there!</h1>
+        <img style="width:40%;" src="{% static "images/otter.jpg" %}"><br/>
+        <a href="{% url "courses:index" %}">Courses</a><br/>
+        <a href="{% url "student_signup" %}">Student Sign Up</a><br/>
+
+        <a href="{% url "login" %}">Log In</a><br/>
+        <a href="{% url "logout" %}">Log Out</a><br/>
+        <small>
+            <a href="#" class="text-muted">Forgot your password?</a>
+        </small>
+    </div>
+{% endblock %}
+</body>
+</html>

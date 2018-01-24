@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ course.name }}{% endblock %}</title>
+</head>
+<body>
+{% block body %}
+    <ul>
+        {% for c in courses %}
+            <li>{{ c.study_programme }}</li>
+            <li>{{ c.name }}</li>
+            <li>{{ c.ects }}</li>
+            <li>{{ c.description }}</li>
+            <li>{{ c.year }}</li>
+            <li>{{ c.semester }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <ul>
+        {% regroup lectures by get_lecture_category_display as category_list %}
+        <h3>Lectures</h3>
+        <ul>
+            {% for category in category_list %}
+                <strong>
+                    <li>{{ category.grouper }}</li>
+                </strong>
+                <ul>
+                    {% for c in category.list %}
+                        .............
+                        <li>{{ c.lecture_title }}</li>
+                        <li>{{ c.content }}</li>
+                        {% for file in c.files.all %}
+                            <li><a href='{{ MEDIA_URL }}{{ file.files.url }}'>download</a></li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </ul>
+    </ul>
+{% endblock %}
+</body>
+</html>
