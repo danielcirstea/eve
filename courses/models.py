@@ -107,45 +107,30 @@ class User(AbstractUser):
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    name = models.CharField(max_length=30, null=True, blank=True, default=None)
+    surname = models.CharField(max_length=50, null=True, blank=True, default=None)
+    email = models.EmailField(unique=True, null=True, blank=True, default=None)
     student_ID = models.CharField(unique=True, max_length=14,
                                   validators=[RegexValidator(regex='^.{14}$',
-                                                             message='The ID needs to be 14 characters long.')])
-    photo = models.ImageField(upload_to='students_images')
-    phone = models.CharField(max_length=15, )
+                                                             message='The ID needs to be 14 characters long.')],
+                                  null=True, blank=True, default=None)
+    photo = models.ImageField(upload_to='students_images', null=True, blank=True, default=None)
+    phone = models.CharField(max_length=15, null=True, blank=True, default=None)
 
     def __str__(self):
-        return self.user.username
-
-
-@receiver(post_save, sender=User)
-def create_user_student(sender, instance, created, **kwargs):
-    if created:
-        Student.objects.create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_user_student(sender, instance, **kwargs):
-    instance.profile.save()
+        return self.surname
 
 
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    academic_title = models.CharField(max_length=30)
-    bio = models.TextField()
-    website = models.URLField(help_text="E.g.: https://www.example.com", blank=True)
-    photo = models.ImageField(upload_to='students_images')
-    phone = models.CharField(max_length=15, )
+    name = models.CharField(max_length=30, null=True, blank=True, default=None)
+    surname = models.CharField(max_length=50, null=True, blank=True, default=None)
+    email = models.EmailField(unique=True, null=True, blank=True, default=None)
+    academic_title = models.CharField(max_length=30, null=True, blank=True, default=None)
+    bio = models.TextField(null=True, blank=True, default=None)
+    website = models.URLField(help_text="E.g.: https://www.example.com", null=True, blank=True, default=None)
+    photo = models.ImageField(upload_to='students_images', null=True, blank=True, default=None)
+    phone = models.CharField(max_length=15, null=True, blank=True, default=None)
 
     def __str__(self):
-        return self.user.username
-
-
-@receiver(post_save, sender=User)
-def create_user_teacher(sender, instance, created, **kwargs):
-    if created:
-        Teacher.objects.create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_user_teacher(sender, instance, **kwargs):
-    instance.profile.save()
+        return self.surname

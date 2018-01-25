@@ -14,11 +14,16 @@ class CourseAdmin(admin.ModelAdmin):
 
 admin.site.register(Course, CourseAdmin)
 
-admin.site.register(Student)
+
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ('surname', 'name', 'student_ID', 'email', 'phone')
+
+
+admin.site.register(Student, StudentAdmin)
 
 
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('academic_title', 'phone', 'website')
+    list_display = ('surname', 'name', 'email', 'phone')
 
 
 admin.site.register(Teacher, TeacherAdmin)

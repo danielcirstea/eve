@@ -1,30 +1,67 @@
-from django.contrib.auth import login
-from django.shortcuts import redirect, render_to_response, render
-from django.views.generic import CreateView, View
-from courses.models import User
+from django.shortcuts import redirect, render
+from courses.models import User, Student, Teacher
 from courses.forms import StudentForm, TeacherForm, UserForm
-from django.contrib import messages
 
 
 def index(request):
     return render(request, 'index.html', )
 
 
-def update_profile(request):
+def student_register(request):
+    data = dict()
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        student_form = StudentForm(request.POST, instance=request.user.student)
-        if user_form.is_valid() and student_form.is_valid():
-            user_form.save()
-            student_form.save()
-            messages.success(request, _('Your profile was successfully updated!'))
-            return redirect('settings:profile')
-        else:
-            messages.error(request, _('Please correct the error below.'))
+        form1 = UserForm(request.POST)
+        form2 = StudentForm(request.POST, request.FILES)
+        if form1.is_valid() and form2.is_valid():
+            cd1 = form1.cleaned_data
+            username = cd1["username"]
+            password = cd1["password"]
+            new_user = User.objects.create_user(username, password=password)
+            new_user.save()
+            cd2 = form2.cleaned_data
+            name = cd2['name']
+            surname = cd2['surname']
+            email = cd2['email']
+            phone = cd2['phone']
+            student_id = cd2['student_ID']
+            photo = cd2['photo']
+            Student.objects.create(user=new_user, name=name, surname=surname,
+                                   student_ID=student_id, email=email, phone=phone, photo=photo)
+            return redirect('index')
     else:
-        user_form = UserForm(instance=request.user)
-        student_form = StudentForm(instance=request.user.student)
-    return render(request, 'index.html', {
-        'user_form': user_form,
-        'student_form': student_form
-    })
+        form1 = UserForm()
+        form2 = StudentForm()
+    data['form1'] = form1
+    data['form2'] = form2
+    return render(request, "student_signup_form.html", data)
+
+
+def teacher_register(request):
+    data = dict()
+    if request.method == 'POST':
+        form1 = UserForm(request.POST)
+        form2 = TeacherForm(request.POST, request.FILES)
+        if form1.is_valid() and form2.is_valid():
+            cd1 = form1.cleaned_data
+            username = cd1["username"]
+            password = cd1["password"]
+            new_user = User.objects.create_user(username, password=password)
+            new_user.save()
+            cd2 = form2.cleaned_data
+            name = cd2['name']
+            surname = cd2['surname']
+            email = cd2['email']
+            academic_title = cd2['academic_title']
+            phone = cd2['phone']
+            bio = cd2['bio']
+            website = cd2['website']
+            photo = cd2['photo']
+            Teacher.objects.create(user=new_user, name=name, surname=surname, academic_title=academic_title,
+                                   email=email, phone=phone, bio=bio, website=website, photo=photo)
+            return redirect('index')
+    else:
+        form1 = UserForm()
+        form2 = TeacherForm()
+    data['form1'] = form1
+    data['form2'] = form2
+    return render(request, "teacher_signup_form.html", data)

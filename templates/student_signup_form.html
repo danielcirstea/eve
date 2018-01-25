@@ -6,17 +6,21 @@
     <title>EVE</title>
 </head>
 <body>
+
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-10 col-12">
                 <div class="jumbotron">
-                    <h2>Sign up as a {{ user_type }}</h2>
-                    <form method="post" novalidate>
+                    <h2>Sign up as a student!</h2>
+                    <form class="form-group" action='' method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ next }}">
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-success">Sign up</button>
+                        <p style="color:red"> {{ form.username.errors }}</p>
+                        <div class="form-group">
+                            {{ form1.as_p }}
+                            {{ form2.as_p }}
+                        </div>
+                        <input type="submit" value="Create the account">
                     </form>
                 </div>
             </div>
