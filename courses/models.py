@@ -102,7 +102,8 @@ class FileUpload(models.Model):
 
 
 class User(AbstractUser):
-    pass
+    is_student = models.BooleanField(default=False)
+    is_teacher = models.BooleanField(default=False)
 
 
 class Student(models.Model):
@@ -134,3 +135,20 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.surname
+
+
+class StudentData(models.Model):
+    name = models.CharField(max_length=30)
+    surname = models.CharField(max_length=50)
+    student_ID = models.CharField(unique=True, max_length=14)
+
+    class Meta:
+        verbose_name = "Student Data"
+        verbose_name_plural = "Students Data"
+
+    def __str__(self):
+        return self.surname
+
+
+User.student = property(lambda p: Student.objects.get_or_create(user=p)[0])
+User.teacher = property(lambda p: Teacher.objects.get_or_create(user=p)[0])

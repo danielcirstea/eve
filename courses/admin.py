@@ -51,3 +51,11 @@ class LectureAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Lecture, LectureAdmin)
+
+
+class StudentDataAdmin(admin.ModelAdmin):
+    model = StudentData
+    list_display = ('surname', 'name', 'student_ID')
+
+
+admin.site.register(StudentData, StudentDataAdmin)

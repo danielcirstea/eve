@@ -3,7 +3,6 @@ from courses.models import *
 
 
 class UserForm(forms.ModelForm):
-    email = forms.EmailField(required=True)
     password = forms.CharField(label='Password', max_length=32, required=True, widget=forms.PasswordInput)
     confirm_password = forms.CharField(label='Confirm', max_length=32, required=True, widget=forms.PasswordInput,
                                        help_text="Passwords must match!")
@@ -20,11 +19,12 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password', 'confirm_password')
+        fields = ('username', 'password', 'confirm_password')
 
 
 class StudentForm(forms.ModelForm):
-    name = forms.CharField(max_length=30, required=True)
+    email = forms.EmailField(required=True)
+    name = forms.CharField(max_length=50, required=True)
     surname = forms.CharField(max_length=50, required=True)
     student_ID = forms.CharField(required=True, max_length=14, min_length=14)
     photo = forms.ImageField(required=True)
@@ -32,10 +32,11 @@ class StudentForm(forms.ModelForm):
 
     class Meta:
         model = Student
-        fields = ('name', 'surname', 'phone', 'student_ID', 'photo')
+        fields = ('email', 'name', 'surname', 'phone', 'student_ID', 'photo')
 
 
 class TeacherForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
     name = forms.CharField(max_length=30, required=True)
     surname = forms.CharField(max_length=50, required=True)
     academic_title = forms.CharField(max_length=30, required=True)
@@ -46,4 +47,6 @@ class TeacherForm(forms.ModelForm):
 
     class Meta:
         model = Teacher
-        fields = ('name', 'surname', 'academic_title', 'phone', 'bio', 'photo', 'website')
+        fields = ('email', 'name', 'surname', 'academic_title', 'phone', 'bio', 'photo', 'website')
+
+
