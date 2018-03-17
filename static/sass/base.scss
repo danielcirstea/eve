@@ -1,0 +1,614 @@
+@import "header";
+
+html {
+  min-height: 100%;
+  background-size: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  url("/static/images/background.png") no-repeat fixed center center;
+}
+
+main {
+  .container-fluid {
+    .row {
+      @include center;
+      h1 {
+
+        margin-top: 3%;
+        color: $color2;
+        font-size: 3em;
+        font-family: $font1;
+        font-weight: bold;
+        line-height: 1.6;
+        span {
+          color: #fff;
+          font-weight: bold;
+        }
+      }
+      a {
+        margin: 4% auto !important;
+        .login {
+          &:hover {
+            cursor: pointer;
+            border: 1.5px solid $color1 !important;
+            color: $color1;
+            background-color: $color2 !important;
+          }
+          background-color: $color1 !important;
+          border-color: $color2 !important;
+          box-shadow: none;
+          padding: 10px;
+          width: 250px;
+          border: 1.3px solid;
+          color: $color2;
+          font-family: $font2;
+          font-size: 20px;
+          margin: 4% auto;
+        }
+      }
+
+    }
+  }
+}
+
+//The login page.
+#login {
+  @include center;
+  background-color: rgba(255, 255, 255, 1) !important;
+  border-radius: 5px;
+  width: 26em;
+  height: 30em;
+  .login {
+    @include center;
+    text-align: center;
+    margin-top: 10%;
+    .user, .pass {
+      border-radius: 5px;
+      box-shadow: none;
+      width: 250px;
+      height: 35px;
+      border: 1.5px solid $color1;
+      padding-left: 10px;
+      background-color: white;
+      &:active {
+        background-color: white !important;
+      }
+    }
+    h3 {
+      @include center;
+      width: 360px;
+      margin-top: -85%;
+      color: $color1;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .alert {
+      @include center;
+      width: 330px;
+      font-size: 0.8em;
+      margin-top: 60%;
+      background-color: transparent !important;
+      border: none;
+      color: #d01116;
+    }
+    #std-reg {
+      text-decoration: none;
+      color: $color1;
+      margin-left: 72%;
+      top: -53%;
+      position: fixed;
+      font-family: $font2;
+      &:hover {
+        color: $color2;
+      }
+      .fa-times {
+        font-size: 20px !important;
+      }
+    }
+    .btn-default {
+      @include button;
+      width: 100px;
+    }
+    a {
+      color: $color2;
+      .forgot {
+        text-align: left;
+        margin-top: 15%;
+        width: 200px;
+      }
+    }
+  }
+}
+
+#recover {
+  @extend #login;
+  width: 25em;
+  height: 22em;
+  #email-recover {
+    text-align: center;
+    margin-top: 15%;
+  }
+  .email {
+    @include center;
+    border-radius: 5px;
+    box-shadow: none;
+    width: 270px;
+    height: 35px;
+    border: 1.5px solid $color1;
+    padding-left: 10px;
+    background-color: white;
+  }
+  .submit {
+    @include button;
+    @include center;
+    width: 100px;
+    margin-top: 22%;
+
+  }
+  #std-reg2 {
+    font-family: $font2;
+    text-decoration: none;
+    color: $color1;
+    margin-left: 92%;
+    top: 3%;
+    position: fixed;
+    &:hover {
+      color: $color2;
+    }
+    .fa-times {
+      font-size: 20px !important;
+    }
+  }
+  .alert {
+    @include center;
+    width: 330px;
+    font-size: 0.8em;
+    margin-top: 35%;
+    background-color: transparent !important;
+    border: none;
+    color: #d01116;
+    text-align: center;
+  }
+}
+
+#done {
+  @include center;
+  @extend #login;
+  width: 35em;
+  height: 15em;
+  #email-done {
+    text-align: center;
+    margin-top: 5%;
+  }
+  #std-reg3 {
+    text-decoration: none;
+    color: $color1;
+    margin-left: 94%;
+    top: 5%;
+    font-family: $font2;
+    position: fixed;
+    &:hover {
+      color: $color2;
+    }
+    .fa-times {
+      font-size: 20px !important;
+    }
+  }
+  #done-text {
+    @include center;
+    width: 70%;
+    text-align: justify;
+    margin-top: 3%;
+    font-family: $font2;
+  }
+}
+
+#confirm {
+  @include center;
+  @extend #login;
+  width: 30em;
+  min-height: 25em;
+  overflow: hidden;
+  #pass-confirm {
+    text-align: center;
+    margin-top: -10%;
+    margin-bottom: 10%;
+  }
+  #std-reg4 {
+    text-decoration: none;
+    color: $color1;
+    margin-left: 43%;
+    margin-top: -8%;
+    font-family: $font2;
+    position: fixed;
+    &:hover {
+      color: $color2;
+    }
+    .fa-times {
+      font-size: 20px !important;
+    }
+  }
+  .password1, .password2 {
+    border-radius: 5px;
+    box-shadow: none;
+    width: 250px;
+    height: 35px;
+    border: 1.5px solid $color1;
+    padding-left: 10px;
+    background-color: white;
+  }
+  .confirm {
+    text-align: center;
+    margin-top: 20%;
+  }
+  .btn-default {
+    @include button;
+    margin-top: 0;
+  }
+  .alert-div {
+    position: absolute;
+    margin-top: 15%;
+    left: 50%;
+    .alert {
+      width: 340px;
+      font-size: 0.8em;
+      background-color: transparent !important;
+      border: none;
+      color: #d01116;
+      transform: translate(-50%, -50%);
+      padding: 0;
+    }
+  }
+}
+
+#confirm2 {
+  @extend #done;
+  width: 25em;
+  height: 10em;
+  #invalid {
+    @include center;
+    width: 300px;
+    font-family: $font2;
+    text-align: justify;
+    a {
+      color: $color2;
+    }
+  }
+  #std-reg5 {
+    @extend #std-reg3;
+    margin-left: 94%;
+  }
+}
+
+#student-signup {
+  @extend #login;
+  width: 35em;
+  min-height: 35em;
+  overflow: hidden;
+  .row {
+    .col-md-6 {
+      width: 450px !important;
+      margin-top: -10%;
+      .field {
+        margin-bottom: 0;
+      }
+      #file2 {
+        display: none;
+      }
+    }
+  }
+  #sign-title {
+    margin-top: -65%;
+  }
+  .teacher {
+    margin-top: -5%;
+    text-align: right;
+    width: 200px;
+  }
+  .btn-default {
+    margin-top: 5%;
+  }
+  .user2, .pass2, .pass3, .name, .surname, .phone,
+  .email, .std_id, .tdr_id, .name2, .surname2, .photo2,
+  .phone2, .acad, .email2, .site {
+    @extend .user;
+    width: 200px !important;
+    font-family: $font2;
+  }
+  #profile {
+    width: 200px;
+    text-align: left;
+    font-family: $font2;
+    font-size: 18px;
+    border-bottom: 1px solid $color1;
+  }
+  .alert {
+    position: relative !important;
+    margin-top: 5% !important;
+  }
+  .all-errors {
+    @include center;
+    top: 150% !important;
+  }
+  .other-errors {
+    margin-top: -40% !important;
+  }
+  .custom-file-upload {
+    border: 1.5px solid $color1;
+    border-radius: 5px;
+    display: inline-block;
+    height: 35px;
+    padding-top: 4px;
+    cursor: pointer;
+    width: 200px;
+    &:hover {
+      color: $color2;
+      border-color: $color2;
+    }
+    .fa-cloud-upload-alt {
+      text-align: left !important;
+      margin-right: 10%;
+      margin-left: -20%;
+    }
+    font-family: $font2;
+  }
+}
+
+#std-sign {
+  @include center;
+  text-decoration: none;
+  color: $color1;
+  font-family: $font2;
+  margin-left: 46%;
+  margin-top: -46%;
+  &:hover {
+    color: $color2;
+  }
+  .fa-times {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #student-signup {
+    width: 22em;
+    height: 50em;
+    margin: 150px 0 50px;
+    .alert {
+      @include center;
+      position: relative !important;
+      margin-top: 0 !important;
+    }
+    .other-errors {
+      @include center;
+      margin-top: -15% !important;
+    }
+    .all-errors {
+      @include center;
+      top: 106% !important;
+    }
+  }
+  .row {
+    margin-top: 10%;
+    .col-md-6 {
+      margin-bottom: 46px;
+    }
+    #file1 {
+      display: none;
+    }
+    #file2 {
+      border: 1.5px solid $color1;
+      border-radius: 5px;
+      display: inline-block !important;
+      height: 35px;
+      padding-top: 4px;
+      cursor: pointer;
+      width: 200px;
+      &:hover {
+        color: $color2;
+        border-color: $color2;
+      }
+      .fa-cloud-upload-alt {
+        text-align: left !important;
+        margin-right: 10%;
+        margin-left: -20%;
+      }
+      font-family: $font2;
+    }
+  }
+  #std-sign {
+    margin-top: -108%;
+    margin-left: 45%;
+  }
+  #sign-title {
+    margin-top: -90% !important;
+  }
+  .btn-default {
+    margin-top: -15% !important;
+  }
+  .teacher {
+    margin-top: 5% !important;
+  }
+}
+
+.bio textarea {
+  border-radius: 5px;
+  border: 1.2px solid $color1;
+  width: 426px !important;
+  font-family: $font2;
+  @include center;
+  height: 80px;
+  margin-top: 90px;
+  margin-left: 2px;
+  resize: none;
+}
+
+#teacher-signup {
+  @extend #student-signup;
+  margin: 50px 0 50px;
+  min-height: 40em;
+  #std-sign {
+    margin-top: -53%;
+  }
+  #sign-title {
+    margin-top: -75%;
+  }
+  .row {
+    margin-top: -5%;
+  }
+  .btn-default {
+    margin-top: 18%;
+  }
+  .alert {
+    @include center;
+    position: relative !important;
+    margin-top: 0 !important;
+  }
+  .all-errors {
+    @include center;
+    top: 115% !important;
+  }
+  .other-errors {
+    @include center;
+    margin-top: -10% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #teacher-signup {
+    margin-top: 220px;
+    height: 60em;
+    #std-sign {
+      margin-top: -130%;
+    }
+    .row {
+      margin-top: 15%;
+    }
+    .bio textarea {
+      margin-top: 250px;
+      width: 260px !important;
+    }
+    #file2 {
+      margin-top: -70px !important;
+    }
+    #sign-title {
+      margin-top: -108% !important;
+    }
+    .btn-default {
+      margin-top: 25% !important;
+      margin-bottom: 5%;
+    }
+    .all-errors {
+      @include center;
+      margin-top: -12% !important;
+    }
+    .other-errors {
+      @include center;
+      top: 40% !important;
+    }
+  }
+}
+
+//Profile edit.
+
+#profile-edit {
+  @include center;
+  overflow: hidden;
+  background-color: #fff;
+  width: 20em;
+  height: 32em;
+  border-radius: 5px;
+  .main-form {
+    @include center;
+    margin-top:-5%;
+  }
+  #sign-title {
+    text-align: center;
+    margin-top:0 !important;
+  }
+  #close {
+    margin-left: 92%;
+    color: $color1;
+    font-size: 20px;
+    &:hover {
+      color: $color2;
+    }
+  }
+  .field {
+    margin: 0;
+  }
+  .email, .name, .surname, .phone, .acad2, .email2, .name2, .surname2, .phone2 {
+    border: 1.2px solid $color1;
+    border-radius: 5px;
+    width: 200px;
+    height: 35px;
+    padding-left: 10px;
+  }
+  .custom-file-upload {
+    border: 1.5px solid $color1;
+    border-radius: 5px;
+    height: 35px;
+    cursor: pointer;
+    padding-top: 4px;
+    width: 200px;
+    font-family: $font2;
+    &:hover {
+      color: $color2;
+      border-color: $color2;
+    }
+    .fa-cloud-upload-alt {
+      text-align: left !important;
+      margin-left: 10px;
+      margin-right: 10%;
+    }
+  }
+  .btn {
+    @include center;
+    @include button;
+    margin-top:200px !important;
+    width: 100px;
+  }
+  .alert-danger {
+    @include center;
+    font-size: 0.8em;
+    text-align: center;
+    width: 200px;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+    border: none;
+    top:380px;
+  }
+}
+
+.bio_edit {
+  border-radius: 5px;
+  border: 1.2px solid $color1;
+  width: 250px !important;
+  font-family: $font2;
+  @include center;
+  height: 80px;
+  margin-top: 220px;
+  margin-left: 2px;
+  resize: none;
+  text-align: center;
+}
+
+#profile-edit2 {
+  @extend #profile-edit;
+  height: 40em;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  #sign-title {
+    margin-top: 0;
+  }
+  .main-form{
+    margin-top:-15%;
+  }
+  .btn-default {
+    margin-top: 150% !important;
+    margin-bottom: 10%;
+  }
+  .alert-danger {
+    top:520px;
+  }
+}

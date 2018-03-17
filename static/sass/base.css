@@ -1,0 +1,953 @@
+@media (max-width: 992px) {
+  header .navbar-brand {
+    top: 30px !important; }
+  header .show-detail {
+    display: inline-block !important;
+    margin-top: 40px !important;
+    margin-left: 20px; }
+  header .fa-bell {
+    margin-left: 5px !important;
+    margin-right: 8px; }
+  header .dropdown-menu {
+    border-color: transparent; }
+  header i .fa-caret-down {
+    display: inline-block; } }
+header .navbar {
+  background: #212D3D !important;
+  margin-bottom: 1px !important; }
+  header .navbar .navbar-brand {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    margin-top: 0; }
+    header .navbar .navbar-brand img {
+      max-width: 100px; }
+header .dropdown-toggle:after {
+  display: none; }
+header .navbar-collapse ul {
+  left: -100px !important; }
+  header .navbar-collapse ul li {
+    padding: 8px 12px 0;
+    font-size: 15px; }
+    header .navbar-collapse ul li:nth-last-child(2), header .navbar-collapse ul li:last-child {
+      padding: 0 8px; }
+    header .navbar-collapse ul li:last-child {
+      padding-right: 0; }
+    header .navbar-collapse ul li a {
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+      padding: 0;
+      margin: 0;
+      color: #06AD7F !important; }
+      header .navbar-collapse ul li a:hover {
+        color: #fff !important; }
+      header .navbar-collapse ul li a .fa-bell {
+        font-size: 30px !important;
+        padding-top: 8px !important; }
+      header .navbar-collapse ul li a .badge {
+        background: #e70000;
+        font-size: 11px;
+        border-radius: 20px;
+        position: absolute;
+        min-width: 10px;
+        padding: 4px 7px 0;
+        min-height: 18px;
+        top: 2px;
+        right: 8px;
+        color: #fff; }
+        @media (max-width: 991px) {
+          header .navbar-collapse ul li a .badge {
+            display: none; } }
+header .dropdown .dropdown-menu {
+  background-color: #212D3D !important; }
+  header .dropdown .dropdown-menu li {
+    text-align: left;
+    margin-bottom: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-user {
+      margin-right: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-sign-out-alt {
+      margin-left: 5px !important;
+      margin-right: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-book {
+      margin-right: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-list-alt {
+      margin-right: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-graduation-cap {
+      margin-right: 16px !important; }
+header .dropdown2 .fa-exclamation-circle {
+  margin-right: 5px; }
+header .dropdown-menu {
+  left: 0 !important; }
+header .dropdown-item:hover {
+  background-color: #212D3D !important; }
+header .nav-item img {
+  border-radius: 100%;
+  width: 40px;
+  height: 40px; }
+header .navbar-toggler {
+  border-color: #06AD7F !important; }
+  header .navbar-toggler:hover {
+    color: #ffffff !important; }
+header .fa-angle-double-down {
+  color: #06AD7F !important; }
+  header .fa-angle-double-down:hover {
+    color: #fff !important; }
+header .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: -20px;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  border-right: 1.5px solid #06AD7F; }
+header .sidenav a {
+  padding: 8px 8px 8px 42px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #06AD7F;
+  display: block;
+  transition: 0.3s;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  margin-left: 20px; }
+header .sidenav a:hover {
+  color: #f1f1f1; }
+header .sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px; }
+header .fa-bars:hover {
+  color: #fff; }
+@media screen and (max-height: 450px) {
+  header .sidenav {
+    padding-top: 15px; }
+  header .sidenav a {
+    font-size: 18px; }
+  header .navbar-brand {
+    top: 0; } }
+header .fa-bars {
+  color: #06AD7F;
+  font-size: 25px; }
+  header .fa-bars:hover {
+    color: #fff; }
+
+html {
+  min-height: 100%;
+  background-size: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/images/background.png") no-repeat fixed center center; }
+
+main .container-fluid .row {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 0;
+  margin-left: 0;
+  transform: translate(-50%, -50%); }
+  main .container-fluid .row h1 {
+    margin-top: 3%;
+    color: #06AD7F;
+    font-size: 3em;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    line-height: 1.6; }
+    main .container-fluid .row h1 span {
+      color: #fff;
+      font-weight: bold; }
+  main .container-fluid .row a {
+    margin: 4% auto !important; }
+    main .container-fluid .row a .login {
+      background-color: #212D3D !important;
+      border-color: #06AD7F !important;
+      box-shadow: none;
+      padding: 10px;
+      width: 250px;
+      border: 1.3px solid;
+      color: #06AD7F;
+      font-family: "Lato", sans-serif;
+      font-size: 20px;
+      margin: 4% auto; }
+      main .container-fluid .row a .login:hover {
+        cursor: pointer;
+        border: 1.5px solid #212D3D !important;
+        color: #212D3D;
+        background-color: #06AD7F !important; }
+
+#login, #recover, #done, #confirm2, #confirm, #student-signup, #teacher-signup {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 0;
+  margin-left: 0;
+  transform: translate(-50%, -50%);
+  background-color: white !important;
+  border-radius: 5px;
+  width: 26em;
+  height: 30em; }
+  #login .login, #recover .login, #done .login, #confirm2 .login, #confirm .login, #student-signup .login, #teacher-signup .login {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 10%; }
+    #login .login .user, #recover .login .user, #done .login .user, #confirm2 .login .user, #confirm .login .user, #student-signup .login .user, #teacher-signup .login .user, #login .login #student-signup .user2, #student-signup #login .login .user2, #recover .login #student-signup .user2, #student-signup #recover .login .user2, #done .login #student-signup .user2, #student-signup #done .login .user2, #confirm2 .login #student-signup .user2, #student-signup #confirm2 .login .user2, #confirm .login #student-signup .user2, #student-signup #confirm .login .user2, #student-signup .login .user2, #teacher-signup .login #student-signup .user2, #student-signup #teacher-signup .login .user2, #login .login #teacher-signup .user2, #teacher-signup #login .login .user2, #recover .login #teacher-signup .user2, #teacher-signup #recover .login .user2, #done .login #teacher-signup .user2, #teacher-signup #done .login .user2, #confirm2 .login #teacher-signup .user2, #teacher-signup #confirm2 .login .user2, #confirm .login #teacher-signup .user2, #teacher-signup #confirm .login .user2, #student-signup .login #teacher-signup .user2, #teacher-signup #student-signup .login .user2, #teacher-signup .login .user2, #login .login #student-signup .pass2, #student-signup #login .login .pass2, #recover .login #student-signup .pass2, #student-signup #recover .login .pass2, #done .login #student-signup .pass2, #student-signup #done .login .pass2, #confirm2 .login #student-signup .pass2, #student-signup #confirm2 .login .pass2, #confirm .login #student-signup .pass2, #student-signup #confirm .login .pass2, #student-signup .login .pass2, #teacher-signup .login #student-signup .pass2, #student-signup #teacher-signup .login .pass2, #login .login #teacher-signup .pass2, #teacher-signup #login .login .pass2, #recover .login #teacher-signup .pass2, #teacher-signup #recover .login .pass2, #done .login #teacher-signup .pass2, #teacher-signup #done .login .pass2, #confirm2 .login #teacher-signup .pass2, #teacher-signup #confirm2 .login .pass2, #confirm .login #teacher-signup .pass2, #teacher-signup #confirm .login .pass2, #student-signup .login #teacher-signup .pass2, #teacher-signup #student-signup .login .pass2, #teacher-signup .login .pass2, #login .login #student-signup .pass3, #student-signup #login .login .pass3, #recover .login #student-signup .pass3, #student-signup #recover .login .pass3, #done .login #student-signup .pass3, #student-signup #done .login .pass3, #confirm2 .login #student-signup .pass3, #student-signup #confirm2 .login .pass3, #confirm .login #student-signup .pass3, #student-signup #confirm .login .pass3, #student-signup .login .pass3, #teacher-signup .login #student-signup .pass3, #student-signup #teacher-signup .login .pass3, #login .login #teacher-signup .pass3, #teacher-signup #login .login .pass3, #recover .login #teacher-signup .pass3, #teacher-signup #recover .login .pass3, #done .login #teacher-signup .pass3, #teacher-signup #done .login .pass3, #confirm2 .login #teacher-signup .pass3, #teacher-signup #confirm2 .login .pass3, #confirm .login #teacher-signup .pass3, #teacher-signup #confirm .login .pass3, #student-signup .login #teacher-signup .pass3, #teacher-signup #student-signup .login .pass3, #teacher-signup .login .pass3, #login .login #student-signup .name, #student-signup #login .login .name, #recover .login #student-signup .name, #student-signup #recover .login .name, #done .login #student-signup .name, #student-signup #done .login .name, #confirm2 .login #student-signup .name, #student-signup #confirm2 .login .name, #confirm .login #student-signup .name, #student-signup #confirm .login .name, #student-signup .login .name, #teacher-signup .login #student-signup .name, #student-signup #teacher-signup .login .name, #login .login #teacher-signup .name, #teacher-signup #login .login .name, #recover .login #teacher-signup .name, #teacher-signup #recover .login .name, #done .login #teacher-signup .name, #teacher-signup #done .login .name, #confirm2 .login #teacher-signup .name, #teacher-signup #confirm2 .login .name, #confirm .login #teacher-signup .name, #teacher-signup #confirm .login .name, #student-signup .login #teacher-signup .name, #teacher-signup #student-signup .login .name, #teacher-signup .login .name, #login .login #student-signup .surname, #student-signup #login .login .surname, #recover .login #student-signup .surname, #student-signup #recover .login .surname, #done .login #student-signup .surname, #student-signup #done .login .surname, #confirm2 .login #student-signup .surname, #student-signup #confirm2 .login .surname, #confirm .login #student-signup .surname, #student-signup #confirm .login .surname, #student-signup .login .surname, #teacher-signup .login #student-signup .surname, #student-signup #teacher-signup .login .surname, #login .login #teacher-signup .surname, #teacher-signup #login .login .surname, #recover .login #teacher-signup .surname, #teacher-signup #recover .login .surname, #done .login #teacher-signup .surname, #teacher-signup #done .login .surname, #confirm2 .login #teacher-signup .surname, #teacher-signup #confirm2 .login .surname, #confirm .login #teacher-signup .surname, #teacher-signup #confirm .login .surname, #student-signup .login #teacher-signup .surname, #teacher-signup #student-signup .login .surname, #teacher-signup .login .surname, #login .login #student-signup .phone, #student-signup #login .login .phone, #recover .login #student-signup .phone, #student-signup #recover .login .phone, #done .login #student-signup .phone, #student-signup #done .login .phone, #confirm2 .login #student-signup .phone, #student-signup #confirm2 .login .phone, #confirm .login #student-signup .phone, #student-signup #confirm .login .phone, #student-signup .login .phone, #teacher-signup .login #student-signup .phone, #student-signup #teacher-signup .login .phone, #login .login #teacher-signup .phone, #teacher-signup #login .login .phone, #recover .login #teacher-signup .phone, #teacher-signup #recover .login .phone, #done .login #teacher-signup .phone, #teacher-signup #done .login .phone, #confirm2 .login #teacher-signup .phone, #teacher-signup #confirm2 .login .phone, #confirm .login #teacher-signup .phone, #teacher-signup #confirm .login .phone, #student-signup .login #teacher-signup .phone, #teacher-signup #student-signup .login .phone, #teacher-signup .login .phone,
+    #login .login #student-signup .email,
+    #student-signup #login .login .email,
+    #recover .login #student-signup .email,
+    #student-signup #recover .login .email,
+    #done .login #student-signup .email,
+    #student-signup #done .login .email,
+    #confirm2 .login #student-signup .email,
+    #student-signup #confirm2 .login .email,
+    #confirm .login #student-signup .email,
+    #student-signup #confirm .login .email,
+    #student-signup .login .email,
+    #teacher-signup .login #student-signup .email,
+    #student-signup #teacher-signup .login .email,
+    #login .login #teacher-signup .email,
+    #teacher-signup #login .login .email,
+    #recover .login #teacher-signup .email,
+    #teacher-signup #recover .login .email,
+    #done .login #teacher-signup .email,
+    #teacher-signup #done .login .email,
+    #confirm2 .login #teacher-signup .email,
+    #teacher-signup #confirm2 .login .email,
+    #confirm .login #teacher-signup .email,
+    #teacher-signup #confirm .login .email,
+    #student-signup .login #teacher-signup .email,
+    #teacher-signup #student-signup .login .email,
+    #teacher-signup .login .email, #login .login #student-signup .std_id, #student-signup #login .login .std_id, #recover .login #student-signup .std_id, #student-signup #recover .login .std_id, #done .login #student-signup .std_id, #student-signup #done .login .std_id, #confirm2 .login #student-signup .std_id, #student-signup #confirm2 .login .std_id, #confirm .login #student-signup .std_id, #student-signup #confirm .login .std_id, #student-signup .login .std_id, #teacher-signup .login #student-signup .std_id, #student-signup #teacher-signup .login .std_id, #login .login #teacher-signup .std_id, #teacher-signup #login .login .std_id, #recover .login #teacher-signup .std_id, #teacher-signup #recover .login .std_id, #done .login #teacher-signup .std_id, #teacher-signup #done .login .std_id, #confirm2 .login #teacher-signup .std_id, #teacher-signup #confirm2 .login .std_id, #confirm .login #teacher-signup .std_id, #teacher-signup #confirm .login .std_id, #student-signup .login #teacher-signup .std_id, #teacher-signup #student-signup .login .std_id, #teacher-signup .login .std_id, #login .login #student-signup .tdr_id, #student-signup #login .login .tdr_id, #recover .login #student-signup .tdr_id, #student-signup #recover .login .tdr_id, #done .login #student-signup .tdr_id, #student-signup #done .login .tdr_id, #confirm2 .login #student-signup .tdr_id, #student-signup #confirm2 .login .tdr_id, #confirm .login #student-signup .tdr_id, #student-signup #confirm .login .tdr_id, #student-signup .login .tdr_id, #teacher-signup .login #student-signup .tdr_id, #student-signup #teacher-signup .login .tdr_id, #login .login #teacher-signup .tdr_id, #teacher-signup #login .login .tdr_id, #recover .login #teacher-signup .tdr_id, #teacher-signup #recover .login .tdr_id, #done .login #teacher-signup .tdr_id, #teacher-signup #done .login .tdr_id, #confirm2 .login #teacher-signup .tdr_id, #teacher-signup #confirm2 .login .tdr_id, #confirm .login #teacher-signup .tdr_id, #teacher-signup #confirm .login .tdr_id, #student-signup .login #teacher-signup .tdr_id, #teacher-signup #student-signup .login .tdr_id, #teacher-signup .login .tdr_id, #login .login #student-signup .name2, #student-signup #login .login .name2, #recover .login #student-signup .name2, #student-signup #recover .login .name2, #done .login #student-signup .name2, #student-signup #done .login .name2, #confirm2 .login #student-signup .name2, #student-signup #confirm2 .login .name2, #confirm .login #student-signup .name2, #student-signup #confirm .login .name2, #student-signup .login .name2, #teacher-signup .login #student-signup .name2, #student-signup #teacher-signup .login .name2, #login .login #teacher-signup .name2, #teacher-signup #login .login .name2, #recover .login #teacher-signup .name2, #teacher-signup #recover .login .name2, #done .login #teacher-signup .name2, #teacher-signup #done .login .name2, #confirm2 .login #teacher-signup .name2, #teacher-signup #confirm2 .login .name2, #confirm .login #teacher-signup .name2, #teacher-signup #confirm .login .name2, #student-signup .login #teacher-signup .name2, #teacher-signup #student-signup .login .name2, #teacher-signup .login .name2, #login .login #student-signup .surname2, #student-signup #login .login .surname2, #recover .login #student-signup .surname2, #student-signup #recover .login .surname2, #done .login #student-signup .surname2, #student-signup #done .login .surname2, #confirm2 .login #student-signup .surname2, #student-signup #confirm2 .login .surname2, #confirm .login #student-signup .surname2, #student-signup #confirm .login .surname2, #student-signup .login .surname2, #teacher-signup .login #student-signup .surname2, #student-signup #teacher-signup .login .surname2, #login .login #teacher-signup .surname2, #teacher-signup #login .login .surname2, #recover .login #teacher-signup .surname2, #teacher-signup #recover .login .surname2, #done .login #teacher-signup .surname2, #teacher-signup #done .login .surname2, #confirm2 .login #teacher-signup .surname2, #teacher-signup #confirm2 .login .surname2, #confirm .login #teacher-signup .surname2, #teacher-signup #confirm .login .surname2, #student-signup .login #teacher-signup .surname2, #teacher-signup #student-signup .login .surname2, #teacher-signup .login .surname2, #login .login #student-signup .photo2, #student-signup #login .login .photo2, #recover .login #student-signup .photo2, #student-signup #recover .login .photo2, #done .login #student-signup .photo2, #student-signup #done .login .photo2, #confirm2 .login #student-signup .photo2, #student-signup #confirm2 .login .photo2, #confirm .login #student-signup .photo2, #student-signup #confirm .login .photo2, #student-signup .login .photo2, #teacher-signup .login #student-signup .photo2, #student-signup #teacher-signup .login .photo2, #login .login #teacher-signup .photo2, #teacher-signup #login .login .photo2, #recover .login #teacher-signup .photo2, #teacher-signup #recover .login .photo2, #done .login #teacher-signup .photo2, #teacher-signup #done .login .photo2, #confirm2 .login #teacher-signup .photo2, #teacher-signup #confirm2 .login .photo2, #confirm .login #teacher-signup .photo2, #teacher-signup #confirm .login .photo2, #student-signup .login #teacher-signup .photo2, #teacher-signup #student-signup .login .photo2, #teacher-signup .login .photo2,
+    #login .login #student-signup .phone2,
+    #student-signup #login .login .phone2,
+    #recover .login #student-signup .phone2,
+    #student-signup #recover .login .phone2,
+    #done .login #student-signup .phone2,
+    #student-signup #done .login .phone2,
+    #confirm2 .login #student-signup .phone2,
+    #student-signup #confirm2 .login .phone2,
+    #confirm .login #student-signup .phone2,
+    #student-signup #confirm .login .phone2,
+    #student-signup .login .phone2,
+    #teacher-signup .login #student-signup .phone2,
+    #student-signup #teacher-signup .login .phone2,
+    #login .login #teacher-signup .phone2,
+    #teacher-signup #login .login .phone2,
+    #recover .login #teacher-signup .phone2,
+    #teacher-signup #recover .login .phone2,
+    #done .login #teacher-signup .phone2,
+    #teacher-signup #done .login .phone2,
+    #confirm2 .login #teacher-signup .phone2,
+    #teacher-signup #confirm2 .login .phone2,
+    #confirm .login #teacher-signup .phone2,
+    #teacher-signup #confirm .login .phone2,
+    #student-signup .login #teacher-signup .phone2,
+    #teacher-signup #student-signup .login .phone2,
+    #teacher-signup .login .phone2, #login .login #student-signup .acad, #student-signup #login .login .acad, #recover .login #student-signup .acad, #student-signup #recover .login .acad, #done .login #student-signup .acad, #student-signup #done .login .acad, #confirm2 .login #student-signup .acad, #student-signup #confirm2 .login .acad, #confirm .login #student-signup .acad, #student-signup #confirm .login .acad, #student-signup .login .acad, #teacher-signup .login #student-signup .acad, #student-signup #teacher-signup .login .acad, #login .login #teacher-signup .acad, #teacher-signup #login .login .acad, #recover .login #teacher-signup .acad, #teacher-signup #recover .login .acad, #done .login #teacher-signup .acad, #teacher-signup #done .login .acad, #confirm2 .login #teacher-signup .acad, #teacher-signup #confirm2 .login .acad, #confirm .login #teacher-signup .acad, #teacher-signup #confirm .login .acad, #student-signup .login #teacher-signup .acad, #teacher-signup #student-signup .login .acad, #teacher-signup .login .acad, #login .login #student-signup .email2, #student-signup #login .login .email2, #recover .login #student-signup .email2, #student-signup #recover .login .email2, #done .login #student-signup .email2, #student-signup #done .login .email2, #confirm2 .login #student-signup .email2, #student-signup #confirm2 .login .email2, #confirm .login #student-signup .email2, #student-signup #confirm .login .email2, #student-signup .login .email2, #teacher-signup .login #student-signup .email2, #student-signup #teacher-signup .login .email2, #login .login #teacher-signup .email2, #teacher-signup #login .login .email2, #recover .login #teacher-signup .email2, #teacher-signup #recover .login .email2, #done .login #teacher-signup .email2, #teacher-signup #done .login .email2, #confirm2 .login #teacher-signup .email2, #teacher-signup #confirm2 .login .email2, #confirm .login #teacher-signup .email2, #teacher-signup #confirm .login .email2, #student-signup .login #teacher-signup .email2, #teacher-signup #student-signup .login .email2, #teacher-signup .login .email2, #login .login #student-signup .site, #student-signup #login .login .site, #recover .login #student-signup .site, #student-signup #recover .login .site, #done .login #student-signup .site, #student-signup #done .login .site, #confirm2 .login #student-signup .site, #student-signup #confirm2 .login .site, #confirm .login #student-signup .site, #student-signup #confirm .login .site, #student-signup .login .site, #teacher-signup .login #student-signup .site, #student-signup #teacher-signup .login .site, #login .login #teacher-signup .site, #teacher-signup #login .login .site, #recover .login #teacher-signup .site, #teacher-signup #recover .login .site, #done .login #teacher-signup .site, #teacher-signup #done .login .site, #confirm2 .login #teacher-signup .site, #teacher-signup #confirm2 .login .site, #confirm .login #teacher-signup .site, #teacher-signup #confirm .login .site, #student-signup .login #teacher-signup .site, #teacher-signup #student-signup .login .site, #teacher-signup .login .site, #login .login .pass, #recover .login .pass, #done .login .pass, #confirm2 .login .pass, #confirm .login .pass, #student-signup .login .pass, #teacher-signup .login .pass {
+      border-radius: 5px;
+      box-shadow: none;
+      width: 250px;
+      height: 35px;
+      border: 1.5px solid #212D3D;
+      padding-left: 10px;
+      background-color: white; }
+      #login .login .user:active, #recover .login .user:active, #done .login .user:active, #confirm2 .login .user:active, #confirm .login .user:active, #student-signup .login .user:active, #teacher-signup .login .user:active, #login .login #student-signup .user2:active, #student-signup #login .login .user2:active, #recover .login #student-signup .user2:active, #student-signup #recover .login .user2:active, #done .login #student-signup .user2:active, #student-signup #done .login .user2:active, #confirm2 .login #student-signup .user2:active, #student-signup #confirm2 .login .user2:active, #confirm .login #student-signup .user2:active, #student-signup #confirm .login .user2:active, #student-signup .login .user2:active, #teacher-signup .login #student-signup .user2:active, #student-signup #teacher-signup .login .user2:active, #login .login #teacher-signup .user2:active, #teacher-signup #login .login .user2:active, #recover .login #teacher-signup .user2:active, #teacher-signup #recover .login .user2:active, #done .login #teacher-signup .user2:active, #teacher-signup #done .login .user2:active, #confirm2 .login #teacher-signup .user2:active, #teacher-signup #confirm2 .login .user2:active, #confirm .login #teacher-signup .user2:active, #teacher-signup #confirm .login .user2:active, #student-signup .login #teacher-signup .user2:active, #teacher-signup #student-signup .login .user2:active, #teacher-signup .login .user2:active, #login .login #student-signup .pass2:active, #student-signup #login .login .pass2:active, #recover .login #student-signup .pass2:active, #student-signup #recover .login .pass2:active, #done .login #student-signup .pass2:active, #student-signup #done .login .pass2:active, #confirm2 .login #student-signup .pass2:active, #student-signup #confirm2 .login .pass2:active, #confirm .login #student-signup .pass2:active, #student-signup #confirm .login .pass2:active, #student-signup .login .pass2:active, #teacher-signup .login #student-signup .pass2:active, #student-signup #teacher-signup .login .pass2:active, #login .login #teacher-signup .pass2:active, #teacher-signup #login .login .pass2:active, #recover .login #teacher-signup .pass2:active, #teacher-signup #recover .login .pass2:active, #done .login #teacher-signup .pass2:active, #teacher-signup #done .login .pass2:active, #confirm2 .login #teacher-signup .pass2:active, #teacher-signup #confirm2 .login .pass2:active, #confirm .login #teacher-signup .pass2:active, #teacher-signup #confirm .login .pass2:active, #student-signup .login #teacher-signup .pass2:active, #teacher-signup #student-signup .login .pass2:active, #teacher-signup .login .pass2:active, #login .login #student-signup .pass3:active, #student-signup #login .login .pass3:active, #recover .login #student-signup .pass3:active, #student-signup #recover .login .pass3:active, #done .login #student-signup .pass3:active, #student-signup #done .login .pass3:active, #confirm2 .login #student-signup .pass3:active, #student-signup #confirm2 .login .pass3:active, #confirm .login #student-signup .pass3:active, #student-signup #confirm .login .pass3:active, #student-signup .login .pass3:active, #teacher-signup .login #student-signup .pass3:active, #student-signup #teacher-signup .login .pass3:active, #login .login #teacher-signup .pass3:active, #teacher-signup #login .login .pass3:active, #recover .login #teacher-signup .pass3:active, #teacher-signup #recover .login .pass3:active, #done .login #teacher-signup .pass3:active, #teacher-signup #done .login .pass3:active, #confirm2 .login #teacher-signup .pass3:active, #teacher-signup #confirm2 .login .pass3:active, #confirm .login #teacher-signup .pass3:active, #teacher-signup #confirm .login .pass3:active, #student-signup .login #teacher-signup .pass3:active, #teacher-signup #student-signup .login .pass3:active, #teacher-signup .login .pass3:active, #login .login #student-signup .name:active, #student-signup #login .login .name:active, #recover .login #student-signup .name:active, #student-signup #recover .login .name:active, #done .login #student-signup .name:active, #student-signup #done .login .name:active, #confirm2 .login #student-signup .name:active, #student-signup #confirm2 .login .name:active, #confirm .login #student-signup .name:active, #student-signup #confirm .login .name:active, #student-signup .login .name:active, #teacher-signup .login #student-signup .name:active, #student-signup #teacher-signup .login .name:active, #login .login #teacher-signup .name:active, #teacher-signup #login .login .name:active, #recover .login #teacher-signup .name:active, #teacher-signup #recover .login .name:active, #done .login #teacher-signup .name:active, #teacher-signup #done .login .name:active, #confirm2 .login #teacher-signup .name:active, #teacher-signup #confirm2 .login .name:active, #confirm .login #teacher-signup .name:active, #teacher-signup #confirm .login .name:active, #student-signup .login #teacher-signup .name:active, #teacher-signup #student-signup .login .name:active, #teacher-signup .login .name:active, #login .login #student-signup .surname:active, #student-signup #login .login .surname:active, #recover .login #student-signup .surname:active, #student-signup #recover .login .surname:active, #done .login #student-signup .surname:active, #student-signup #done .login .surname:active, #confirm2 .login #student-signup .surname:active, #student-signup #confirm2 .login .surname:active, #confirm .login #student-signup .surname:active, #student-signup #confirm .login .surname:active, #student-signup .login .surname:active, #teacher-signup .login #student-signup .surname:active, #student-signup #teacher-signup .login .surname:active, #login .login #teacher-signup .surname:active, #teacher-signup #login .login .surname:active, #recover .login #teacher-signup .surname:active, #teacher-signup #recover .login .surname:active, #done .login #teacher-signup .surname:active, #teacher-signup #done .login .surname:active, #confirm2 .login #teacher-signup .surname:active, #teacher-signup #confirm2 .login .surname:active, #confirm .login #teacher-signup .surname:active, #teacher-signup #confirm .login .surname:active, #student-signup .login #teacher-signup .surname:active, #teacher-signup #student-signup .login .surname:active, #teacher-signup .login .surname:active, #login .login #student-signup .phone:active, #student-signup #login .login .phone:active, #recover .login #student-signup .phone:active, #student-signup #recover .login .phone:active, #done .login #student-signup .phone:active, #student-signup #done .login .phone:active, #confirm2 .login #student-signup .phone:active, #student-signup #confirm2 .login .phone:active, #confirm .login #student-signup .phone:active, #student-signup #confirm .login .phone:active, #student-signup .login .phone:active, #teacher-signup .login #student-signup .phone:active, #student-signup #teacher-signup .login .phone:active, #login .login #teacher-signup .phone:active, #teacher-signup #login .login .phone:active, #recover .login #teacher-signup .phone:active, #teacher-signup #recover .login .phone:active, #done .login #teacher-signup .phone:active, #teacher-signup #done .login .phone:active, #confirm2 .login #teacher-signup .phone:active, #teacher-signup #confirm2 .login .phone:active, #confirm .login #teacher-signup .phone:active, #teacher-signup #confirm .login .phone:active, #student-signup .login #teacher-signup .phone:active, #teacher-signup #student-signup .login .phone:active, #teacher-signup .login .phone:active,
+      #login .login #student-signup .email:active,
+      #student-signup #login .login .email:active,
+      #recover .login #student-signup .email:active,
+      #student-signup #recover .login .email:active,
+      #done .login #student-signup .email:active,
+      #student-signup #done .login .email:active,
+      #confirm2 .login #student-signup .email:active,
+      #student-signup #confirm2 .login .email:active,
+      #confirm .login #student-signup .email:active,
+      #student-signup #confirm .login .email:active,
+      #student-signup .login .email:active,
+      #teacher-signup .login #student-signup .email:active,
+      #student-signup #teacher-signup .login .email:active,
+      #login .login #teacher-signup .email:active,
+      #teacher-signup #login .login .email:active,
+      #recover .login #teacher-signup .email:active,
+      #teacher-signup #recover .login .email:active,
+      #done .login #teacher-signup .email:active,
+      #teacher-signup #done .login .email:active,
+      #confirm2 .login #teacher-signup .email:active,
+      #teacher-signup #confirm2 .login .email:active,
+      #confirm .login #teacher-signup .email:active,
+      #teacher-signup #confirm .login .email:active,
+      #student-signup .login #teacher-signup .email:active,
+      #teacher-signup #student-signup .login .email:active,
+      #teacher-signup .login .email:active, #login .login #student-signup .std_id:active, #student-signup #login .login .std_id:active, #recover .login #student-signup .std_id:active, #student-signup #recover .login .std_id:active, #done .login #student-signup .std_id:active, #student-signup #done .login .std_id:active, #confirm2 .login #student-signup .std_id:active, #student-signup #confirm2 .login .std_id:active, #confirm .login #student-signup .std_id:active, #student-signup #confirm .login .std_id:active, #student-signup .login .std_id:active, #teacher-signup .login #student-signup .std_id:active, #student-signup #teacher-signup .login .std_id:active, #login .login #teacher-signup .std_id:active, #teacher-signup #login .login .std_id:active, #recover .login #teacher-signup .std_id:active, #teacher-signup #recover .login .std_id:active, #done .login #teacher-signup .std_id:active, #teacher-signup #done .login .std_id:active, #confirm2 .login #teacher-signup .std_id:active, #teacher-signup #confirm2 .login .std_id:active, #confirm .login #teacher-signup .std_id:active, #teacher-signup #confirm .login .std_id:active, #student-signup .login #teacher-signup .std_id:active, #teacher-signup #student-signup .login .std_id:active, #teacher-signup .login .std_id:active, #login .login #student-signup .tdr_id:active, #student-signup #login .login .tdr_id:active, #recover .login #student-signup .tdr_id:active, #student-signup #recover .login .tdr_id:active, #done .login #student-signup .tdr_id:active, #student-signup #done .login .tdr_id:active, #confirm2 .login #student-signup .tdr_id:active, #student-signup #confirm2 .login .tdr_id:active, #confirm .login #student-signup .tdr_id:active, #student-signup #confirm .login .tdr_id:active, #student-signup .login .tdr_id:active, #teacher-signup .login #student-signup .tdr_id:active, #student-signup #teacher-signup .login .tdr_id:active, #login .login #teacher-signup .tdr_id:active, #teacher-signup #login .login .tdr_id:active, #recover .login #teacher-signup .tdr_id:active, #teacher-signup #recover .login .tdr_id:active, #done .login #teacher-signup .tdr_id:active, #teacher-signup #done .login .tdr_id:active, #confirm2 .login #teacher-signup .tdr_id:active, #teacher-signup #confirm2 .login .tdr_id:active, #confirm .login #teacher-signup .tdr_id:active, #teacher-signup #confirm .login .tdr_id:active, #student-signup .login #teacher-signup .tdr_id:active, #teacher-signup #student-signup .login .tdr_id:active, #teacher-signup .login .tdr_id:active, #login .login #student-signup .name2:active, #student-signup #login .login .name2:active, #recover .login #student-signup .name2:active, #student-signup #recover .login .name2:active, #done .login #student-signup .name2:active, #student-signup #done .login .name2:active, #confirm2 .login #student-signup .name2:active, #student-signup #confirm2 .login .name2:active, #confirm .login #student-signup .name2:active, #student-signup #confirm .login .name2:active, #student-signup .login .name2:active, #teacher-signup .login #student-signup .name2:active, #student-signup #teacher-signup .login .name2:active, #login .login #teacher-signup .name2:active, #teacher-signup #login .login .name2:active, #recover .login #teacher-signup .name2:active, #teacher-signup #recover .login .name2:active, #done .login #teacher-signup .name2:active, #teacher-signup #done .login .name2:active, #confirm2 .login #teacher-signup .name2:active, #teacher-signup #confirm2 .login .name2:active, #confirm .login #teacher-signup .name2:active, #teacher-signup #confirm .login .name2:active, #student-signup .login #teacher-signup .name2:active, #teacher-signup #student-signup .login .name2:active, #teacher-signup .login .name2:active, #login .login #student-signup .surname2:active, #student-signup #login .login .surname2:active, #recover .login #student-signup .surname2:active, #student-signup #recover .login .surname2:active, #done .login #student-signup .surname2:active, #student-signup #done .login .surname2:active, #confirm2 .login #student-signup .surname2:active, #student-signup #confirm2 .login .surname2:active, #confirm .login #student-signup .surname2:active, #student-signup #confirm .login .surname2:active, #student-signup .login .surname2:active, #teacher-signup .login #student-signup .surname2:active, #student-signup #teacher-signup .login .surname2:active, #login .login #teacher-signup .surname2:active, #teacher-signup #login .login .surname2:active, #recover .login #teacher-signup .surname2:active, #teacher-signup #recover .login .surname2:active, #done .login #teacher-signup .surname2:active, #teacher-signup #done .login .surname2:active, #confirm2 .login #teacher-signup .surname2:active, #teacher-signup #confirm2 .login .surname2:active, #confirm .login #teacher-signup .surname2:active, #teacher-signup #confirm .login .surname2:active, #student-signup .login #teacher-signup .surname2:active, #teacher-signup #student-signup .login .surname2:active, #teacher-signup .login .surname2:active, #login .login #student-signup .photo2:active, #student-signup #login .login .photo2:active, #recover .login #student-signup .photo2:active, #student-signup #recover .login .photo2:active, #done .login #student-signup .photo2:active, #student-signup #done .login .photo2:active, #confirm2 .login #student-signup .photo2:active, #student-signup #confirm2 .login .photo2:active, #confirm .login #student-signup .photo2:active, #student-signup #confirm .login .photo2:active, #student-signup .login .photo2:active, #teacher-signup .login #student-signup .photo2:active, #student-signup #teacher-signup .login .photo2:active, #login .login #teacher-signup .photo2:active, #teacher-signup #login .login .photo2:active, #recover .login #teacher-signup .photo2:active, #teacher-signup #recover .login .photo2:active, #done .login #teacher-signup .photo2:active, #teacher-signup #done .login .photo2:active, #confirm2 .login #teacher-signup .photo2:active, #teacher-signup #confirm2 .login .photo2:active, #confirm .login #teacher-signup .photo2:active, #teacher-signup #confirm .login .photo2:active, #student-signup .login #teacher-signup .photo2:active, #teacher-signup #student-signup .login .photo2:active, #teacher-signup .login .photo2:active,
+      #login .login #student-signup .phone2:active,
+      #student-signup #login .login .phone2:active,
+      #recover .login #student-signup .phone2:active,
+      #student-signup #recover .login .phone2:active,
+      #done .login #student-signup .phone2:active,
+      #student-signup #done .login .phone2:active,
+      #confirm2 .login #student-signup .phone2:active,
+      #student-signup #confirm2 .login .phone2:active,
+      #confirm .login #student-signup .phone2:active,
+      #student-signup #confirm .login .phone2:active,
+      #student-signup .login .phone2:active,
+      #teacher-signup .login #student-signup .phone2:active,
+      #student-signup #teacher-signup .login .phone2:active,
+      #login .login #teacher-signup .phone2:active,
+      #teacher-signup #login .login .phone2:active,
+      #recover .login #teacher-signup .phone2:active,
+      #teacher-signup #recover .login .phone2:active,
+      #done .login #teacher-signup .phone2:active,
+      #teacher-signup #done .login .phone2:active,
+      #confirm2 .login #teacher-signup .phone2:active,
+      #teacher-signup #confirm2 .login .phone2:active,
+      #confirm .login #teacher-signup .phone2:active,
+      #teacher-signup #confirm .login .phone2:active,
+      #student-signup .login #teacher-signup .phone2:active,
+      #teacher-signup #student-signup .login .phone2:active,
+      #teacher-signup .login .phone2:active, #login .login #student-signup .acad:active, #student-signup #login .login .acad:active, #recover .login #student-signup .acad:active, #student-signup #recover .login .acad:active, #done .login #student-signup .acad:active, #student-signup #done .login .acad:active, #confirm2 .login #student-signup .acad:active, #student-signup #confirm2 .login .acad:active, #confirm .login #student-signup .acad:active, #student-signup #confirm .login .acad:active, #student-signup .login .acad:active, #teacher-signup .login #student-signup .acad:active, #student-signup #teacher-signup .login .acad:active, #login .login #teacher-signup .acad:active, #teacher-signup #login .login .acad:active, #recover .login #teacher-signup .acad:active, #teacher-signup #recover .login .acad:active, #done .login #teacher-signup .acad:active, #teacher-signup #done .login .acad:active, #confirm2 .login #teacher-signup .acad:active, #teacher-signup #confirm2 .login .acad:active, #confirm .login #teacher-signup .acad:active, #teacher-signup #confirm .login .acad:active, #student-signup .login #teacher-signup .acad:active, #teacher-signup #student-signup .login .acad:active, #teacher-signup .login .acad:active, #login .login #student-signup .email2:active, #student-signup #login .login .email2:active, #recover .login #student-signup .email2:active, #student-signup #recover .login .email2:active, #done .login #student-signup .email2:active, #student-signup #done .login .email2:active, #confirm2 .login #student-signup .email2:active, #student-signup #confirm2 .login .email2:active, #confirm .login #student-signup .email2:active, #student-signup #confirm .login .email2:active, #student-signup .login .email2:active, #teacher-signup .login #student-signup .email2:active, #student-signup #teacher-signup .login .email2:active, #login .login #teacher-signup .email2:active, #teacher-signup #login .login .email2:active, #recover .login #teacher-signup .email2:active, #teacher-signup #recover .login .email2:active, #done .login #teacher-signup .email2:active, #teacher-signup #done .login .email2:active, #confirm2 .login #teacher-signup .email2:active, #teacher-signup #confirm2 .login .email2:active, #confirm .login #teacher-signup .email2:active, #teacher-signup #confirm .login .email2:active, #student-signup .login #teacher-signup .email2:active, #teacher-signup #student-signup .login .email2:active, #teacher-signup .login .email2:active, #login .login #student-signup .site:active, #student-signup #login .login .site:active, #recover .login #student-signup .site:active, #student-signup #recover .login .site:active, #done .login #student-signup .site:active, #student-signup #done .login .site:active, #confirm2 .login #student-signup .site:active, #student-signup #confirm2 .login .site:active, #confirm .login #student-signup .site:active, #student-signup #confirm .login .site:active, #student-signup .login .site:active, #teacher-signup .login #student-signup .site:active, #student-signup #teacher-signup .login .site:active, #login .login #teacher-signup .site:active, #teacher-signup #login .login .site:active, #recover .login #teacher-signup .site:active, #teacher-signup #recover .login .site:active, #done .login #teacher-signup .site:active, #teacher-signup #done .login .site:active, #confirm2 .login #teacher-signup .site:active, #teacher-signup #confirm2 .login .site:active, #confirm .login #teacher-signup .site:active, #teacher-signup #confirm .login .site:active, #student-signup .login #teacher-signup .site:active, #teacher-signup #student-signup .login .site:active, #teacher-signup .login .site:active, #login .login .pass:active, #recover .login .pass:active, #done .login .pass:active, #confirm2 .login .pass:active, #confirm .login .pass:active, #student-signup .login .pass:active, #teacher-signup .login .pass:active {
+        background-color: white !important; }
+    #login .login h3, #recover .login h3, #done .login h3, #confirm2 .login h3, #confirm .login h3, #student-signup .login h3, #teacher-signup .login h3 {
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: 0;
+      margin-left: 0;
+      transform: translate(-50%, -50%);
+      width: 360px;
+      margin-top: -85%;
+      color: #212D3D;
+      text-transform: uppercase;
+      text-align: center; }
+    #login .login .alert, #recover .login .alert, #done .login .alert, #confirm2 .login .alert, #confirm .login .alert, #student-signup .login .alert, #teacher-signup .login .alert {
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: 0;
+      margin-left: 0;
+      transform: translate(-50%, -50%);
+      width: 330px;
+      font-size: 0.8em;
+      margin-top: 60%;
+      background-color: transparent !important;
+      border: none;
+      color: #d01116; }
+    #login .login #std-reg, #recover .login #std-reg, #done .login #std-reg, #confirm2 .login #std-reg, #confirm .login #std-reg, #student-signup .login #std-reg, #teacher-signup .login #std-reg {
+      text-decoration: none;
+      color: #212D3D;
+      margin-left: 72%;
+      top: -53%;
+      position: fixed;
+      font-family: "Lato", sans-serif; }
+      #login .login #std-reg:hover, #recover .login #std-reg:hover, #done .login #std-reg:hover, #confirm2 .login #std-reg:hover, #confirm .login #std-reg:hover, #student-signup .login #std-reg:hover, #teacher-signup .login #std-reg:hover {
+        color: #06AD7F; }
+      #login .login #std-reg .fa-times, #recover .login #std-reg .fa-times, #done .login #std-reg .fa-times, #confirm2 .login #std-reg .fa-times, #confirm .login #std-reg .fa-times, #student-signup .login #std-reg .fa-times, #teacher-signup .login #std-reg .fa-times {
+        font-size: 20px !important; }
+    #login .login .btn-default, #recover .login .btn-default, #done .login .btn-default, #confirm2 .login .btn-default, #confirm .login .btn-default, #student-signup .login .btn-default, #teacher-signup .login .btn-default {
+      border: 1.5px solid #06AD7F;
+      color: #06AD7F;
+      background-color: #212D3D;
+      font-size: 16px;
+      width: 100px; }
+      #login .login .btn-default:hover, #recover .login .btn-default:hover, #done .login .btn-default:hover, #confirm2 .login .btn-default:hover, #confirm .login .btn-default:hover, #student-signup .login .btn-default:hover, #teacher-signup .login .btn-default:hover {
+        border: 1.5px solid #212D3D;
+        color: #212D3D;
+        background-color: #06AD7F; }
+    #login .login a, #recover .login a, #done .login a, #confirm2 .login a, #confirm .login a, #student-signup .login a, #teacher-signup .login a {
+      color: #06AD7F; }
+      #login .login a .forgot, #recover .login a .forgot, #done .login a .forgot, #confirm2 .login a .forgot, #confirm .login a .forgot, #student-signup .login a .forgot, #teacher-signup .login a .forgot {
+        text-align: left;
+        margin-top: 15%;
+        width: 200px; }
+
+#recover {
+  width: 25em;
+  height: 22em; }
+  #recover #email-recover {
+    text-align: center;
+    margin-top: 15%; }
+  #recover .email {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow: none;
+    width: 270px;
+    height: 35px;
+    border: 1.5px solid #212D3D;
+    padding-left: 10px;
+    background-color: white; }
+  #recover .submit {
+    border: 1.5px solid #06AD7F;
+    color: #06AD7F;
+    background-color: #212D3D;
+    font-size: 16px;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    margin-top: 22%; }
+    #recover .submit:hover {
+      border: 1.5px solid #212D3D;
+      color: #212D3D;
+      background-color: #06AD7F; }
+  #recover #std-reg2 {
+    font-family: "Lato", sans-serif;
+    text-decoration: none;
+    color: #212D3D;
+    margin-left: 92%;
+    top: 3%;
+    position: fixed; }
+    #recover #std-reg2:hover {
+      color: #06AD7F; }
+    #recover #std-reg2 .fa-times {
+      font-size: 20px !important; }
+  #recover .alert {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    width: 330px;
+    font-size: 0.8em;
+    margin-top: 35%;
+    background-color: transparent !important;
+    border: none;
+    color: #d01116;
+    text-align: center; }
+
+#done, #confirm2 {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 0;
+  margin-left: 0;
+  transform: translate(-50%, -50%);
+  width: 35em;
+  height: 15em; }
+  #done #email-done, #confirm2 #email-done {
+    text-align: center;
+    margin-top: 5%; }
+  #done #std-reg3, #confirm2 #std-reg3, #confirm2 #std-reg5 {
+    text-decoration: none;
+    color: #212D3D;
+    margin-left: 94%;
+    top: 5%;
+    font-family: "Lato", sans-serif;
+    position: fixed; }
+    #done #std-reg3:hover, #confirm2 #std-reg3:hover, #confirm2 #std-reg5:hover {
+      color: #06AD7F; }
+    #done #std-reg3 .fa-times, #confirm2 #std-reg3 .fa-times, #confirm2 #std-reg5 .fa-times {
+      font-size: 20px !important; }
+  #done #done-text, #confirm2 #done-text {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    text-align: justify;
+    margin-top: 3%;
+    font-family: "Lato", sans-serif; }
+
+#confirm {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 0;
+  margin-left: 0;
+  transform: translate(-50%, -50%);
+  width: 30em;
+  min-height: 25em;
+  overflow: hidden; }
+  #confirm #pass-confirm {
+    text-align: center;
+    margin-top: -10%;
+    margin-bottom: 10%; }
+  #confirm #std-reg4 {
+    text-decoration: none;
+    color: #212D3D;
+    margin-left: 43%;
+    margin-top: -8%;
+    font-family: "Lato", sans-serif;
+    position: fixed; }
+    #confirm #std-reg4:hover {
+      color: #06AD7F; }
+    #confirm #std-reg4 .fa-times {
+      font-size: 20px !important; }
+  #confirm .password1, #confirm .password2 {
+    border-radius: 5px;
+    box-shadow: none;
+    width: 250px;
+    height: 35px;
+    border: 1.5px solid #212D3D;
+    padding-left: 10px;
+    background-color: white; }
+  #confirm .confirm {
+    text-align: center;
+    margin-top: 20%; }
+  #confirm .btn-default {
+    border: 1.5px solid #06AD7F;
+    color: #06AD7F;
+    background-color: #212D3D;
+    font-size: 16px;
+    margin-top: 0; }
+    #confirm .btn-default:hover {
+      border: 1.5px solid #212D3D;
+      color: #212D3D;
+      background-color: #06AD7F; }
+  #confirm .alert-div {
+    position: absolute;
+    margin-top: 15%;
+    left: 50%; }
+    #confirm .alert-div .alert {
+      width: 340px;
+      font-size: 0.8em;
+      background-color: transparent !important;
+      border: none;
+      color: #d01116;
+      transform: translate(-50%, -50%);
+      padding: 0; }
+
+#confirm2 {
+  width: 25em;
+  height: 10em; }
+  #confirm2 #invalid {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    font-family: "Lato", sans-serif;
+    text-align: justify; }
+    #confirm2 #invalid a {
+      color: #06AD7F; }
+  #confirm2 #std-reg5 {
+    margin-left: 94%; }
+
+#student-signup, #teacher-signup {
+  width: 35em;
+  min-height: 35em;
+  overflow: hidden; }
+  #student-signup .row .col-md-6, #teacher-signup .row .col-md-6 {
+    width: 450px !important;
+    margin-top: -10%; }
+    #student-signup .row .col-md-6 .field, #teacher-signup .row .col-md-6 .field {
+      margin-bottom: 0; }
+    #student-signup .row .col-md-6 #file2, #teacher-signup .row .col-md-6 #file2 {
+      display: none; }
+  #student-signup #sign-title, #teacher-signup #sign-title {
+    margin-top: -65%; }
+  #student-signup .teacher, #teacher-signup .teacher {
+    margin-top: -5%;
+    text-align: right;
+    width: 200px; }
+  #student-signup .btn-default, #teacher-signup .btn-default {
+    margin-top: 5%; }
+  #student-signup .user2, #teacher-signup .user2, #student-signup .pass2, #teacher-signup .pass2, #student-signup .pass3, #teacher-signup .pass3, #student-signup .name, #teacher-signup .name, #student-signup .surname, #teacher-signup .surname, #student-signup .phone, #teacher-signup .phone,
+  #student-signup .email,
+  #teacher-signup .email, #student-signup .std_id, #teacher-signup .std_id, #student-signup .tdr_id, #teacher-signup .tdr_id, #student-signup .name2, #teacher-signup .name2, #student-signup .surname2, #teacher-signup .surname2, #student-signup .photo2, #teacher-signup .photo2,
+  #student-signup .phone2,
+  #teacher-signup .phone2, #student-signup .acad, #teacher-signup .acad, #student-signup .email2, #teacher-signup .email2, #student-signup .site, #teacher-signup .site {
+    width: 200px !important;
+    font-family: "Lato", sans-serif; }
+  #student-signup #profile, #teacher-signup #profile {
+    width: 200px;
+    text-align: left;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    border-bottom: 1px solid #212D3D; }
+  #student-signup .alert, #teacher-signup .alert {
+    position: relative !important;
+    margin-top: 5% !important; }
+  #student-signup .all-errors, #teacher-signup .all-errors {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    top: 150% !important; }
+  #student-signup .other-errors, #teacher-signup .other-errors {
+    margin-top: -40% !important; }
+  #student-signup .custom-file-upload, #teacher-signup .custom-file-upload {
+    border: 1.5px solid #212D3D;
+    border-radius: 5px;
+    display: inline-block;
+    height: 35px;
+    padding-top: 4px;
+    cursor: pointer;
+    width: 200px;
+    font-family: "Lato", sans-serif; }
+    #student-signup .custom-file-upload:hover, #teacher-signup .custom-file-upload:hover {
+      color: #06AD7F;
+      border-color: #06AD7F; }
+    #student-signup .custom-file-upload .fa-cloud-upload-alt, #teacher-signup .custom-file-upload .fa-cloud-upload-alt {
+      text-align: left !important;
+      margin-right: 10%;
+      margin-left: -20%; }
+
+#std-sign {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 0;
+  margin-left: 0;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: #212D3D;
+  font-family: "Lato", sans-serif;
+  margin-left: 46%;
+  margin-top: -46%; }
+  #std-sign:hover {
+    color: #06AD7F; }
+  #std-sign .fa-times {
+    font-size: 20px !important; }
+
+@media (max-width: 767px) {
+  #student-signup, #teacher-signup {
+    width: 22em;
+    height: 50em;
+    margin: 150px 0 50px; }
+    #student-signup .alert, #teacher-signup .alert {
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: 0;
+      margin-left: 0;
+      transform: translate(-50%, -50%);
+      position: relative !important;
+      margin-top: 0 !important; }
+    #student-signup .other-errors, #teacher-signup .other-errors {
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: 0;
+      margin-left: 0;
+      transform: translate(-50%, -50%);
+      margin-top: -15% !important; }
+    #student-signup .all-errors, #teacher-signup .all-errors {
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: 0;
+      margin-left: 0;
+      transform: translate(-50%, -50%);
+      top: 106% !important; }
+
+  .row {
+    margin-top: 10%; }
+    .row .col-md-6 {
+      margin-bottom: 46px; }
+    .row #file1 {
+      display: none; }
+    .row #file2 {
+      border: 1.5px solid #212D3D;
+      border-radius: 5px;
+      display: inline-block !important;
+      height: 35px;
+      padding-top: 4px;
+      cursor: pointer;
+      width: 200px;
+      font-family: "Lato", sans-serif; }
+      .row #file2:hover {
+        color: #06AD7F;
+        border-color: #06AD7F; }
+      .row #file2 .fa-cloud-upload-alt {
+        text-align: left !important;
+        margin-right: 10%;
+        margin-left: -20%; }
+
+  #std-sign {
+    margin-top: -108%;
+    margin-left: 45%; }
+
+  #sign-title {
+    margin-top: -90% !important; }
+
+  .btn-default {
+    margin-top: -15% !important; }
+
+  .teacher {
+    margin-top: 5% !important; } }
+.bio textarea {
+  border-radius: 5px;
+  border: 1.2px solid #212D3D;
+  width: 426px !important;
+  font-family: "Lato", sans-serif;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 0;
+  margin-left: 0;
+  transform: translate(-50%, -50%);
+  height: 80px;
+  margin-top: 90px;
+  margin-left: 2px;
+  resize: none; }
+
+#teacher-signup {
+  margin: 50px 0 50px;
+  min-height: 40em; }
+  #teacher-signup #std-sign {
+    margin-top: -53%; }
+  #teacher-signup #sign-title {
+    margin-top: -75%; }
+  #teacher-signup .row {
+    margin-top: -5%; }
+  #teacher-signup .btn-default {
+    margin-top: 18%; }
+  #teacher-signup .alert {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    position: relative !important;
+    margin-top: 0 !important; }
+  #teacher-signup .all-errors {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    top: 115% !important; }
+  #teacher-signup .other-errors {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    margin-top: -10% !important; }
+
+@media (max-width: 767px) {
+  #teacher-signup {
+    margin-top: 220px;
+    height: 60em; }
+    #teacher-signup #std-sign {
+      margin-top: -130%; }
+    #teacher-signup .row {
+      margin-top: 15%; }
+    #teacher-signup .bio textarea {
+      margin-top: 250px;
+      width: 260px !important; }
+    #teacher-signup #file2 {
+      margin-top: -70px !important; }
+    #teacher-signup #sign-title {
+      margin-top: -108% !important; }
+    #teacher-signup .btn-default {
+      margin-top: 25% !important;
+      margin-bottom: 5%; }
+    #teacher-signup .all-errors {
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: 0;
+      margin-left: 0;
+      transform: translate(-50%, -50%);
+      margin-top: -12% !important; }
+    #teacher-signup .other-errors {
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: 0;
+      margin-left: 0;
+      transform: translate(-50%, -50%);
+      top: 40% !important; } }
+#profile-edit, #profile-edit2 {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 0;
+  margin-left: 0;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  background-color: #fff;
+  width: 20em;
+  height: 32em;
+  border-radius: 5px; }
+  #profile-edit .main-form, #profile-edit2 .main-form {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    margin-top: -5%; }
+  #profile-edit #sign-title, #profile-edit2 #sign-title {
+    text-align: center;
+    margin-top: 0 !important; }
+  #profile-edit #close, #profile-edit2 #close {
+    margin-left: 92%;
+    color: #212D3D;
+    font-size: 20px; }
+    #profile-edit #close:hover, #profile-edit2 #close:hover {
+      color: #06AD7F; }
+  #profile-edit .field, #profile-edit2 .field {
+    margin: 0; }
+  #profile-edit .email, #profile-edit2 .email, #profile-edit .name, #profile-edit2 .name, #profile-edit .surname, #profile-edit2 .surname, #profile-edit .phone, #profile-edit2 .phone, #profile-edit .acad2, #profile-edit2 .acad2, #profile-edit .email2, #profile-edit2 .email2, #profile-edit .name2, #profile-edit2 .name2, #profile-edit .surname2, #profile-edit2 .surname2, #profile-edit .phone2, #profile-edit2 .phone2 {
+    border: 1.2px solid #212D3D;
+    border-radius: 5px;
+    width: 200px;
+    height: 35px;
+    padding-left: 10px; }
+  #profile-edit .custom-file-upload, #profile-edit2 .custom-file-upload {
+    border: 1.5px solid #212D3D;
+    border-radius: 5px;
+    height: 35px;
+    cursor: pointer;
+    padding-top: 4px;
+    width: 200px;
+    font-family: "Lato", sans-serif; }
+    #profile-edit .custom-file-upload:hover, #profile-edit2 .custom-file-upload:hover {
+      color: #06AD7F;
+      border-color: #06AD7F; }
+    #profile-edit .custom-file-upload .fa-cloud-upload-alt, #profile-edit2 .custom-file-upload .fa-cloud-upload-alt {
+      text-align: left !important;
+      margin-left: 10px;
+      margin-right: 10%; }
+  #profile-edit .btn, #profile-edit2 .btn {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    border: 1.5px solid #06AD7F;
+    color: #06AD7F;
+    background-color: #212D3D;
+    font-size: 16px;
+    margin-top: 200px !important;
+    width: 100px; }
+    #profile-edit .btn:hover, #profile-edit2 .btn:hover {
+      border: 1.5px solid #212D3D;
+      color: #212D3D;
+      background-color: #06AD7F; }
+  #profile-edit .alert-danger, #profile-edit2 .alert-danger {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    font-size: 0.8em;
+    text-align: center;
+    width: 200px;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+    border: none;
+    top: 380px; }
+
+.bio_edit {
+  border-radius: 5px;
+  border: 1.2px solid #212D3D;
+  width: 250px !important;
+  font-family: "Lato", sans-serif;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: 0;
+  margin-left: 0;
+  transform: translate(-50%, -50%);
+  height: 80px;
+  margin-top: 220px;
+  margin-left: 2px;
+  resize: none;
+  text-align: center; }
+
+#profile-edit2 {
+  height: 40em;
+  margin-top: 50px;
+  margin-bottom: 50px; }
+  #profile-edit2 #sign-title {
+    margin-top: 0; }
+  #profile-edit2 .main-form {
+    margin-top: -15%; }
+  #profile-edit2 .btn-default {
+    margin-top: 150% !important;
+    margin-bottom: 10%; }
+  #profile-edit2 .alert-danger {
+    top: 520px; }
+
+/*# sourceMappingURL=base.css.map */

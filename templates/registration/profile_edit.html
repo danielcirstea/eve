@@ -6,16 +6,88 @@
     <title>Title</title>
 </head>
 <body>
-{% block body %}
-
-<h1>Student Edit Profile</h1>
-
-
-<form method="POST" action="{% url 'profile_edit' %}" class="" >
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+{% block content %}
+    {% if user.is_student %}
+        <div id="profile-edit">
+            <a id="close" href="{% url "index" %}"><i class="fas fa-times"></i></a>
+            <h3 id="sign-title">Edit Profile</h3>
+            <form class="main-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="field"> {{ form.email }}</p><br>
+                <p class="field"> {{ form.name }}</p><br>
+                <p class="field"> {{ form.surname }}</p><br>
+                <p class="field"> {{ form.phone }}</p><br>
+                <label id="file1" for="file-upload" class="custom-file-upload">
+                    <i class="fas fa-cloud-upload-alt"></i> Profile Photo
+                </label>
+                <span id="file-selected"></span>
+                <input id="file-upload" name='student-photo' type="file" style="display:none"/>
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong id="errors">{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <button type="submit" class="btn btn-default">Save</button>
+            </form>
+        </div>
+        <script>
+            $('#file-upload').bind('change', function () {
+                var fileName = '';
+                fileName = $(this).val();
+                $('#file-selected').html(fileName.split(/(\\|\/)/g).pop());
+            });
+        </script>
+    {% elif user.is_teacher %}
+        <div id="profile-edit2">
+            <a id="close" href="{% url "index" %}"><i class="fas fa-times"></i></a>
+            <h3 id="sign-title">Edit Profile</h3>
+            <form class="main-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="field"> {{ form.email }}</p><br>
+                <p class="field"> {{ form.name }}</p><br>
+                <p class="field"> {{ form.surname }}</p><br>
+                <p class="field"> {{ form.academic_title }}</p><br>
+                <p class="field"> {{ form.phone }}</p><br>
+                <label id="file1" for="file-upload" class="custom-file-upload">
+                    <i class="fas fa-cloud-upload-alt"></i> Profile Photo
+                </label>
+                <span id="file-selected"></span>
+                <input id="file-upload" name='photo' type="file" style="display:none"/>
+                <p class="field"> {{ form.biography }}</p><br>
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong id="errors">{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <button type="submit" class="btn btn-default">Save</button>
+            </form>
+        </div>
+        <script>
+            $('#file-upload').bind('change', function () {
+                var fileName = '';
+                fileName = $(this).val();
+                $('#file-selected').html(fileName.split(/(\\|\/)/g).pop());
+            });
+        </script>
+    {% endif %}
 
 {% endblock %}
 </body>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block style %}
+        <link href="{% static "sass/enroll.css" %}" rel="stylesheet">
+    {% endblock %}
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h4>{{ course.name }} students</h4>
+                    <hr>
+                    <a id="classroom" href="{% url "classroom" %}"><h5><< Back to Classroom</h5></a>
+                    <form method="GET" id="student-form" action="">
+                        <input name="q" value="{{ request.GET.q }}" placeholder="Search student...">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    {% with crs_stud=course.student.all %}
+                        {% for student in students %}
+                            {% if student in crs_stud %}
+                                <form class="enroll" action="" method="POST">
+                                    {% csrf_token %}
+                                    <label for="id_{{ student.id }}">
+                                        <p class="enrolled">{{ student.name }} {{ student.surname }} is already enrolled
+                                            to {{ course.name }}.</p></label>
+                                    <input type="checkbox" id="id_{{ student_id }}"
+                                           value="{{ student.id }}"
+                                           name="student_ids2">
+                                    <input type="submit" value="Disenroll">
+                                </form>
+                            {% else %}
+                                <form action="" class="enroll2" method="POST">
+                                    {% csrf_token %}
+                                    <label for="id_{{ student.id }}">{{ student.name }} {{ student.surname }}</label>
+                                    <input type="checkbox" id="id_{{ student_id }}"
+                                           value="{{ student.id }}"
+                                           name="student_ids">
+                                    <input type="submit" value="Enroll">
+                                </form>
+                            {% endif %}
+                        {% endfor %}
+                    {% endwith %}
+                    <div class="pagination">
+                            <span class="step-links">
+                             {% if students.has_previous %}
+                                 <a href="?page=1"><< FIRST</a>
+                                 <a href="?page={{ students.previous_page_number }}">PREVIOUS</a>
+                             {% endif %}
+                                <span class="current">
+                              {{ students.number }}
+                               </span>
+                                {% if students.has_next %}
+                                    <a href="?page={{ students.next_page_number }}">NEXT</a>
+                                    <a href="?page={{ students.paginator.num_pages }}">LAST >></a>
+                                {% endif %}
+                          </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

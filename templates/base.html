@@ -2,15 +2,171 @@
 {% load static %}
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    {% block style %}
+        <link href="{% static 'sass/base.css' %}" rel="stylesheet">
+    {% endblock %}
+    <link rel="icon" href="{% static "images/favicon.png" %}" type="image">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
     <meta charset="UTF-8">
-    <title>{% block title %} EVE {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %} E-learning Virtual Environment{% endblock %}</title>
 </head>
 <body>
-{% block body %}
+{% block navigation %}
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            {% if user.is_authenticated %}
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    <a href="#">My Courses</a>
+                    <a href="{% url "classroom" %}">Classroom</a>
+                    <a href="#">Clients</a>
+                    <a href="#">Contact</a>
+                </div>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()"><i class="fas fa-bars"></i> </span>
+            {% else %}
+                <span style="font-size:30px;" onclick="openNav()"><i class="fas fa-bars"></i> </span>
+            {% endif %}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fas fa-angle-double-down"></span>
+            </button>
+            <a class="navbar-brand text-center center-block" href="{% url "index" %}"><img
+                    src="{% static "images/logo.png" %}"></a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle user-action" data-toggle="dropdown" href="#"><i
+                                    class="fas fa-bell"></i><span
+                                    class="badge">
+                                {% for note in notifications %}
+                                    {% if forloop.first %}{{ forloop.revcounter }} {% endif %}
+                                {% endfor %}</span>
+                                <p id="bell" style="display: none;" class="show-detail">Notifications
+                                    {% for note in notifications %}
+                                        {% if forloop.first %}
+                                            <span style="color:red"> &nbsp;{{ forloop.revcounter }} </span>
+                                            <i class="fas fa-caret-down"></i> {% endif %}
+                                    {% endfor %}</p></a>
+                            <ul class="dropdown-menu dropdown2">
+                                {% for note in notifications %}
+                                    <li>
+                                        <a href="{% url "courses:index" %}" class="dropdown-item">
+                                            <span style="color:#d00000;"><i
+                                                    class="fas fa-exclamation-circle"></i> {{ note.notification }}</span>
+                                            <br>
+                                            <span style="color:white;">{{ note.course.teacher1.name }}
+                                                {{ note.course.teacher1.surname }}</span>
+                                        </a>
+                                    </li>
+                                    {% if not forloop.last %}
+                                        <li class="divider dropdown-divider"></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link disabled"><i class="fas fa-bell"></i></a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item dropdown">
+                        {% if user.is_student %}
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img
+                                    src="{{ user.student.photo.url }}" class="avatar"
+                                    alt="Avatar">
+                                <p class="show-detail"
+                                   style="display: none;">{{ user.student.name }} {{ user.student.surname }}
+                                    <i class="fas fa-caret-down"></i>
+                                </p>
+                            </a>
+                        {% elif user.is_teacher %}
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img
+                                    src="{{ user.teacher.photo.url }}" class="avatar"
+                                    alt="Avatar">
+                                <p class="show-detail"
+                                   style="display: none;">{{ user.teacher.name }} {{ user.teacher.surname }}
+                                    <i class="fas fa-caret-down"></i>
+                                </p>
+                            </a>
+                        {% else %}
+                            <a data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img
+                                    src="{% static "images/profile.png" %}" class="avatar"
+                                    alt="Avatar">
+                                <p class="show-detail"
+                                   style="display: none;">You need to log in.
+                                </p>
+                            </a>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url "courses:index" %}" class="dropdown-item"><i
+                                        class="fas fa-graduation-cap"></i>Courses</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item"><i class="fas fa-book"></i>Gradebook</a></li>
+                                <li><a href="#" class="dropdown-item"><i class="far fa-list-alt"></i>Timetable</a></li>
+                                <li><a href="{% url "profile_edit" %}" class="dropdown-item"><i class="fas fa-user"></i>Edit
+                                    Profile</a>
+                                </li>
+                                <li class="divider dropdown-divider"></li>
+                                <li><a href="{% url "logout" %}" class="dropdown-item"><i
+                                        class="fas fa-sign-out-alt"></i>Log
+                                    Out</a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <p style="bottom:0 !important; right:1% !important; position:fixed; color:rgba(200,200,200, 0.8); font-size:12px;">
+        &#169; Daniel C&#238;rstea
+    </p>
+{% endblock %}
+{% block content %}
+    <main>
+        {% if user.is_authenticated %}
+            <div class="container-fluid">
+                <div class="row centered-div">
+                    {% if user.is_student %}
+                        <h1 class="text-center"><span>WELCOME, {{ user.student.name }}!</span> <br>
+                            "A student of life considers the world a classroom."
+                        </h1>
+                    {% elif user.is_teacher %}
+                        <h1 class="text-center"><span>WELCOME, {{ user.teacher.name }}!</span> <br>
+                            “Teaching is the greatest act of optimism.”
+
+                        </h1>
+                    {% else %}
+                        <h1 class="text-center"><span>WELCOME,</span> ADMIN !</h1>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="container-fluid">
+                <div class="row centered-div">
+                    <h1 class="text-center"><span>WELCOME TO EVE</span><br>
+                        E-learning Virtual Environment</h1><br>
+                    <a href="{% url "login" %}">
+                        <button class="btn-default login">Log In</button>
+                    </a>
+                    <a class="cd-signup" href="{% url "student_signup" %}">
+                        <button class="btn-default login">Sign Up</button>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+
+    </main>
 {% endblock %}
 </body>
 </html>

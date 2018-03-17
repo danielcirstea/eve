@@ -1,0 +1,127 @@
+@media (max-width: 992px) {
+  header .navbar-brand {
+    top: 30px !important; }
+  header .show-detail {
+    display: inline-block !important;
+    margin-top: 40px !important;
+    margin-left: 20px; }
+  header .fa-bell {
+    margin-left: 5px !important;
+    margin-right: 8px; }
+  header .dropdown-menu {
+    border-color: transparent; }
+  header i .fa-caret-down {
+    display: inline-block; } }
+header .navbar {
+  background: #212D3D !important;
+  margin-bottom: 1px !important; }
+  header .navbar .navbar-brand {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: 0;
+    margin-left: 0;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    margin-top: 0; }
+    header .navbar .navbar-brand img {
+      max-width: 100px; }
+header .dropdown-toggle:after {
+  display: none; }
+header .navbar-collapse ul {
+  left: -90px !important; }
+  header .navbar-collapse ul li {
+    padding: 8px 12px 0;
+    font-size: 15px; }
+    header .navbar-collapse ul li:nth-last-child(2), header .navbar-collapse ul li:last-child {
+      padding: 0 8px; }
+    header .navbar-collapse ul li:last-child {
+      padding-right: 0; }
+    header .navbar-collapse ul li a {
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+      padding: 0;
+      margin: 0;
+      color: #06AD7F !important; }
+      header .navbar-collapse ul li a:hover {
+        color: #fff !important; }
+      header .navbar-collapse ul li a .fa-bell {
+        font-size: 30px !important;
+        padding-top: 8px !important; }
+header .dropdown .dropdown-menu {
+  background-color: #212D3D !important; }
+  header .dropdown .dropdown-menu li {
+    text-align: left;
+    margin-bottom: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-user {
+      margin-right: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-sign-out-alt {
+      margin-left: 5px !important;
+      margin-right: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-book {
+      margin-right: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-list-alt {
+      margin-right: 20px !important; }
+    header .dropdown .dropdown-menu li .fa-graduation-cap {
+      margin-right: 16px !important; }
+header .dropdown-menu {
+  left: 0 !important; }
+header .dropdown-item:hover {
+  background-color: #212D3D !important; }
+header .nav-item img {
+  border-radius: 100%;
+  width: 40px;
+  height: 40px; }
+header .navbar-toggler {
+  border-color: #06AD7F !important; }
+  header .navbar-toggler:hover {
+    color: #ffffff !important; }
+header .fa-angle-double-down {
+  color: #06AD7F !important; }
+  header .fa-angle-double-down:hover {
+    color: #fff !important; }
+header .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px; }
+header .sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #06AD7F;
+  display: block;
+  transition: 0.3s;
+  font-family: "Montserrat", sans-serif; }
+header .sidenav a:hover {
+  color: #f1f1f1; }
+header .sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px; }
+header .fa-bars:hover {
+  color: #fff; }
+@media screen and (max-height: 450px) {
+  header .sidenav {
+    padding-top: 15px; }
+  header .sidenav a {
+    font-size: 18px; }
+  header .navbar-brand {
+    top: 0; } }
+header .fa-bars {
+  color: #06AD7F;
+  font-size: 25px; }
+  header .fa-bars:hover {
+    color: #fff; }
+
+/*# sourceMappingURL=header.css.map */

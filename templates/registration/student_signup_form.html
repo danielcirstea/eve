@@ -7,25 +7,84 @@
 </head>
 <body>
 
-{% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-10 col-12">
-                <div class="jumbotron">
-                    <h2>Sign up as a student!</h2>
-                    <form class="form-group" action='' method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <p style="color:red"> {{ form.username.errors }}</p>
-                        <div class="form-group">
-                            {{ form1.as_p }}
-                            {{ form2.as_p }}
-                        </div>
-                        <input type="submit" value="Create the account">
-                    </form>
+{% block content %}
+    <div id="student-signup">
+        <a id="std-sign" href="{% url "index" %}"><i class="fas fa-times"></i></a>
+        <form class="login" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3 id="sign-title">Sign Up As A Student</h3>
+            <div class="row  row-no-padding">
+                <div class="col-md-6 col2">
+                    <p class="field"> {{ form1.username }}</p><br>
+                    <p class="field"> {{ form1.password }}</p><br>
+                    <p class="field"> {{ form1.confirm_password }}</p><br>
+                    <p class="field"> {{ form2.email }}</p><br>
+                    <label id="file1" for="file-upload" class="custom-file-upload">
+                        <i class="fas fa-cloud-upload-alt"></i> Profile Photo
+                    </label>
+                    <span id="file-selected"></span>
+                    <input id="file-upload" name='student-photo' type="file" style="display:none"/>
+                </div>
+                <div class="col-md-6">
+                    <p class="field"> {{ form2.student_ID }}</p><br>
+                    <p class="field"> {{ form2.name }}</p><br>
+                    <p class="field"> {{ form2.surname }}</p><br>
+                    <p class="field">{{ form2.phone }}</p><br>
+                    <label id="file2" for="file-upload2" class="custom-file-upload2">
+                        <i class="fas fa-cloud-upload-alt"></i> Profile Photo
+                    </label><br>
+                    <span class="selected1" id="file-selected2"></span>
+                    <input id="file-upload2" name='student-photo' type="file" style="display:none"/>
+                    <a href="{% url 'teacher_signup' %}"><p class="teacher">Are you a teacher ?</p></a>
                 </div>
             </div>
-        </div>
+            <div class="all-errors">
+                {% if form1.errors %}
+                    {% for field in form1 %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong id="errors">{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form1.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="other-errors">
+                    {% if form2.errors %}
+                        {% for field in form2 %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form2.non_field_errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">Sign Up</button>
+        </form>
     </div>
+    <script>
+        $('#file-upload').bind('change', function () {
+            var fileName = '';
+            fileName = $(this).val();
+            $('#file-selected').html(fileName.split(/(\\|\/)/g).pop());
+        });
+        $('#file-upload2').bind('change', function () {
+            var fileName = '';
+            fileName = $(this).val();
+            $('#file-selected2').html(fileName.split(/(\\|\/)/g).pop());
+        });
+    </script>
 {% endblock %}
 </body>
 </html>

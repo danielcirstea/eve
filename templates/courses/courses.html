@@ -4,42 +4,116 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% block style %}
+        <link href="{% static "sass/lectures.css" %}" rel="stylesheet">
+    {% endblock %}
     <title>{% block title %}{{ course.name }}{% endblock %}</title>
 </head>
 <body>
-{% block body %}
-    <ul>
-        {% for c in courses %}
-            <li>{{ c.study_programme }}</li>
-            <li>{{ c.name }}</li>
-            <li>{{ c.ects }}</li>
-            <li>{{ c.description }}</li>
-            <li>{{ c.year }}</li>
-            <li>{{ c.semester }}</li>
-        {% endfor %}
-    </ul>
-    <br>
-    <ul>
-        {% regroup lectures by get_lecture_category_display as category_list %}
-        <h3>Lectures</h3>
-        <ul>
-            {% for category in category_list %}
-                <strong>
-                    <li>{{ category.grouper }}</li>
-                </strong>
-                <ul>
-                    {% for c in category.list %}
-                        .............
-                        <li>{{ c.lecture_title }}</li>
-                        <li>{{ c.content }}</li>
-                        {% for file in c.files.all %}
-                            <li><a href='{{ MEDIA_URL }}{{ file.files.url }}'>download</a></li>
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="jumbotron">
+                    <h4>About this course</h4>
+                    <hr>
+                    <ul class="left-menu">
+                        <li><span>Name:</span> {{ course.name }}</li>
+                        <li><span>Study Programme:</span> {{ course.study_programme }}</li>
+                        <li><span>ECTS:</span> {{ course.ects }}</li>
+                        <li><span>Year:</span> {{ course.year }}</li>
+                        <li><span>Semester:</span> {{ course.semester }}</li>
+                        {% for teacher in teachers %}
+                            {% if course.teacher1 == teacher %}
+                                <li><span>Course Teacher:</span> {{ teacher.name }} {{ teacher.surname }}</li>
+                            {% endif %}
+                            {% if course.teacher2 == teacher %}
+                                <li><span>Seminar Teacher:</span> {{ teacher.name }} {{ teacher.surname }}</li>
+                            {% endif %}
                         {% endfor %}
-                    {% endfor %}
-                </ul>
-            {% endfor %}
-        </ul>
-    </ul>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="jumbotron">
+                    {% regroup lectures by get_lecture_category_display as category_list %}
+                    <h4>Lectures</h4>
+                    <hr>
+                    {% if is_enrolled or user.teacher %}
+                        {% if show_form %}
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <h3>Attend the file submission.</h3>
+                                <label id="file" for="file-upload" class="custom-file-upload">
+                                    <i class="fas fa-cloud-upload-alt"></i> File Upload
+                                </label><br>
+                                <span class="selected" id="file-selected"></span>
+                                <input id="file-upload" name='files' type="file" style="display:none"/>
+                                <p class="field"> {{ form.comment }} </p>
+                                {% if form.errors %}
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                            </div>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {% for error in form.non_field_errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <button class="btn btn-default" type="submit">Submit</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                    <ul>
+                        {% for category in category_list %}
+                            <strong id="grouper">
+                                <i class="fas fa-angle-right"></i> {{ category.grouper }}
+                            </strong>
+                            <ul>
+                                {% for c in category.list %}
+                                    <div class="title">
+                                        <p>Lecture {{ forloop.counter }}: <span>{{ c.lecture_title }}</span>
+                                        </p>
+                                        <br>
+                                    </div>
+                                    <div id="lecture-hide" style="display: none;">
+                                        <br>
+                                        <li><h5>{{ c.lecture_title }}</h5></li>
+                                        <li><p>{{ c.content }}</p></li>
+                                        {% for file in c.files.all %}
+                                            {% if file.files %}
+                                                {% if forloop.first %}
+                                                    <p id="files">Lecture files:</p>
+                                                {% endif %}
+                                                <li><a class="media"
+                                                       href='{{ MEDIA_URL }}{{ file.files.url }}'><i
+                                                        class="fas fa-download"></i>{{ file.files.name }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <br>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('div.title').click(function () {
+            $(this).next().toggle();
+        });
+        $('#file-upload').bind('change', function () {
+            var fileName = '';
+            fileName = $(this).val();
+            $('#file-selected').html(fileName.split(/(\\|\/)/g).pop());
+        });
+    </script>
 {% endblock %}
 </body>
 </html>

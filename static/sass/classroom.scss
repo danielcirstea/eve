@@ -1,0 +1,244 @@
+@import 'header';
+
+body {
+  min-height: 100%;
+  background-size: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  url("/static/images/background.png") no-repeat fixed center center;
+}
+
+.container-fluid {
+  margin-top: 100px;
+  .jumbotron {
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    .btn-default {
+      @include button;
+      width: 150px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    h4 {
+      color: $color1;
+      font-family: $font1;
+      font-weight: bold;
+      margin-top: -20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    hr {
+      border-color: $color1;
+      margin-bottom: 3%;
+    }
+    .title {
+      height: 40px;
+      border-radius: 10px;
+      width: 90%;
+      text-align: left;
+      background-color: $color2;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      &:hover {
+        cursor: pointer;
+        background-color: $color1;
+      }
+      p {
+        font-family: $font2;
+        font-weight: bold;
+        font-size: 16px;
+        text-align: left;
+        margin-left: 10px;
+        padding-top: 7px;
+        text-transform: none;
+        a {
+          color: #fff;
+          span {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+    h5 {
+      text-align: left;
+      .fa-angle-right {
+        font-size: 25px;
+        margin-right: 5px;
+        vertical-align: middle;
+        padding-bottom: 3px;
+      }
+    }
+    .lectures {
+      list-style-type: none;
+      text-align: left;
+      li {
+        color: $color2;
+        font-size: 18px;
+        width: 30vmax;
+        margin-left: 2%;
+        height: 40px;
+        padding-top: 5px;
+        margin-bottom: 20px;
+        background-color: $color2;
+        border-radius: 5px;
+        @media(max-width: 767px) {
+          width: 40vmax;
+          margin-left: 0;
+        }
+        p {
+          margin-left: 10px;
+          font-family: $font2;
+          color: #fff;
+        }
+        form {
+          .btn-danger {
+            vertical-align: middle;
+            background-color: transparent;
+            border: none;
+            font-weight: bold;
+            &:hover {
+              color: red;
+            }
+            font-size: 15px;
+            border-radius: 10px;
+            padding: 3px 0 0;
+            color: #850000;
+            margin-top: -90px;
+            margin-left: 80%;
+          }
+        }
+      }
+    }
+    .form2 {
+      margin: auto auto;
+      border-radius: 5px;
+      border: 1.5px solid $color1;
+      width: 30vmax;
+      padding: 20px;
+      @media(max-width: 767px) {
+        width: 40vmax;
+      }
+      .lec_title, .lec_course, .lec_cat {
+        border: 1.5px solid $color1;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        padding: 5px;
+      }
+      .lec_cont {
+        resize: none;
+        border: 1.5px solid $color1;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: 20vmax;
+      }
+      .btn2 {
+        width: 100px;
+        margin-top: -10px;
+      }
+      .custom-file-upload {
+        border: 1.5px solid $color1;
+        border-radius: 5px;
+        height: 35px;
+        cursor: pointer;
+        padding-top: 4px;
+        width: 200px;
+        font-family: $font2;
+        &:hover {
+          color: $color2;
+          border-color: $color2;
+        }
+        .fa-cloud-upload-alt {
+          text-align: left !important;
+          margin-left: 0;
+          margin-right: 5%;
+        }
+        #file-selected {
+          width: 100px !important;
+        }
+      }
+    }
+    .uploads {
+      border: 1.5px solid $color1;
+      padding: 20px;
+      height: 10vmax;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      @media (max-width: 1199px) {
+        height: 20vmax;
+      }
+      @media (max-width: 767px) {
+        height: 30vmax;
+      }
+      .form3 {
+        .btn-danger, .btn-warning {
+          font-size: 12px;
+          font-family: $font2;
+          font-weight: bold;
+          padding: 5px;
+          border-radius: 10px;
+          margin-top: -130px;
+          @media (max-width: 767px) {
+            margin-top: -20px;
+          }
+        }
+      }
+      .message {
+        text-align: left;
+        margin-top: -10px;
+        .fa-download {
+          font-size: 20px;
+          margin-right: 10px;
+        }
+        a {
+          color: $color2;
+          font-size: 18px;
+        }
+      }
+    }
+    .notifications {
+      border: 1.5px solid $color1;
+      padding: 20px;
+      border-radius: 5px;
+      width: 30vmax;
+      margin: auto;
+      @media (max-width: 767px) {
+        width: 40vmax;
+      }
+      h5 {
+        margin-bottom: 30px;
+      }
+      .btn-default {
+        width: 100px;
+      }
+      .not_not, .not_crs {
+        height: 35px;
+        border: 1.5px solid $color1;
+        border-radius: 5px;
+        color: $color1;
+      }
+    }
+    .delete-notes {
+      h5 {
+        margin-bottom: 20px;
+        margin-top:20px;
+      }
+      form {
+        text-align: left;
+        margin-left: 3%;
+        .btn-danger {
+          font-size: 15px;
+          font-family: $font2;
+          font-weight: bold;
+          background-color: transparent;
+          border:none;
+          color: red;
+          padding-bottom: 10px;
+          &:hover{
+            color: #850000;
+          }
+        }
+      }
+    }
+  }
+}
