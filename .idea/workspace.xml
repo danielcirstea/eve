@@ -2,46 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5cc1d699-04d9-4a55-8321-e2d755180a20" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/sass/base.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/courses/classroom.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/courses/enroll.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/courses/filters/faculty_filter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/courses/filters/study_programme_filter.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/courses/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/courses/migrations/0002_student_attended_courses.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/courses/migrations/0003_remove_student_attended_courses.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/courses/migrations/0004_auto_20180123_1149.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/courses/migrations/0005_auto_20180123_2325.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/19244246_638976032965508_1373711612_n.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/media/19489599_644279422435169_1899990789_n.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/images/otter.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/eve.iml" afterPath="$PROJECT_DIR$/.idea/eve.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/courses/admin.py" afterPath="$PROJECT_DIR$/courses/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/courses/forms.py" afterPath="$PROJECT_DIR$/courses/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/courses/models.py" afterPath="$PROJECT_DIR$/courses/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/courses/urls.py" afterPath="$PROJECT_DIR$/courses/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/courses/views.py" afterPath="$PROJECT_DIR$/courses/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eve/settings.py" afterPath="$PROJECT_DIR$/eve/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eve/urls.py" afterPath="$PROJECT_DIR$/eve/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eve/views.py" afterPath="$PROJECT_DIR$/eve/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eve/wsgi.py" afterPath="$PROJECT_DIR$/eve/wsgi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/courses/courses.html" afterPath="$PROJECT_DIR$/templates/courses/courses.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/courses/index.html" afterPath="$PROJECT_DIR$/templates/courses/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/login.html" afterPath="$PROJECT_DIR$/templates/registration/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/password_reset_complete.html" afterPath="$PROJECT_DIR$/templates/registration/password_reset_complete.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/password_reset_confirm.html" afterPath="$PROJECT_DIR$/templates/registration/password_reset_confirm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/password_reset_done.html" afterPath="$PROJECT_DIR$/templates/registration/password_reset_done.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/password_reset_email.html" afterPath="$PROJECT_DIR$/templates/registration/password_reset_email.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/password_reset_form.html" afterPath="$PROJECT_DIR$/templates/registration/password_reset_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/password_reset_subject.txt" afterPath="$PROJECT_DIR$/templates/registration/password_reset_subject.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/profile_edit.html" afterPath="$PROJECT_DIR$/templates/registration/profile_edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/student_signup_form.html" afterPath="$PROJECT_DIR$/templates/registration/student_signup_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/teacher_signup_form.html" afterPath="$PROJECT_DIR$/templates/registration/teacher_signup_form.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -119,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/eve/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="465">
-              <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+              <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -129,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/eve/wsgi.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="432">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -865,7 +826,7 @@
     <entry file="file://$PROJECT_DIR$/eve/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -873,7 +834,7 @@
     <entry file="file://$PROJECT_DIR$/eve/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
-          <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
           <folding />
         </state>
       </provider>
