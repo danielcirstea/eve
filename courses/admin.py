@@ -1,9 +1,58 @@
-from courses.models import *
+from courses.models import (
+    User, Department, Notification, Student, Teacher, TeacherData, StudentData,
+    Course, Faculty, Lecture, StudentFileUpload, FileUpload, StudyProgramme
+)
+
 from django.contrib import admin
 
-admin.site.register(User)
 admin.site.register(Department)
 admin.site.register(Notification)
+
+
+class StudentInline(admin.StackedInline):
+    model = Student
+
+
+class TeacherInline(admin.StackedInline):
+    model = Teacher
+
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    inlines = [
+        StudentInline,
+        TeacherInline
+    ]
+
+
+class StudentUser(User):
+    class Meta:
+        proxy = True
+
+
+class TeacherUser(User):
+    class Meta:
+        proxy = True
+
+
+@admin.register(StudentUser)
+class StudentUserAdmin(admin.ModelAdmin):
+    inlines = [
+        StudentInline
+    ]
+
+    def get_queryset(self, request):
+        return User.objects.filter(is_student=True)
+
+
+@admin.register(TeacherUser)
+class TeacherUserAdmin(admin.ModelAdmin):
+    inlines = [
+        TeacherInline
+    ]
+
+    def get_queryset(self, request):
+        return User.objects.filter(is_teacher=True)
 
 
 class StudyProgrammeAdmin(admin.ModelAdmin):
@@ -22,13 +71,11 @@ class FacultyAdmin(admin.ModelAdmin):
 admin.site.register(Faculty, FacultyAdmin)
 
 
+@admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('name', 'ects', 'year', 'semester')
     prepopulated_fields = {'slug': ('name',)}
     exclude = ('student',)
-
-
-admin.site.register(Course, CourseAdmin)
 
 
 class StudentAdmin(admin.ModelAdmin):

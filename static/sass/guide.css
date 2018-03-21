@@ -161,101 +161,33 @@ header {
 body {
   background: transparent; }
 
-/* Students enroll. */
 .container .jumbotron {
-  background-color: #fff;
   margin-top: 150px;
-  margin-bottom: 100px; }
-  .container .jumbotron h4 {
-    text-transform: uppercase;
-    color: #212D3D;
+  margin-bottom: 100px;
+  background-color: #fff; }
+  .container .jumbotron h2 {
     text-align: center;
+    color: #212D3D;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
-    margin-top: -3%;
-    margin-bottom: 3%; }
+    margin-top: -30px; }
   .container .jumbotron hr {
     border-color: #212D3D; }
-  .container .jumbotron #classroom {
-    /* Back to classroom.*/
-    text-transform: uppercase;
+  .container .jumbotron h4 {
     font-family: "Lato", sans-serif;
-    font-weight: bold;
+    color: #212D3D;
+    margin-bottom: 20px;
+    margin-top: 20px; }
+  .container .jumbotron h5 {
+    margin-top: 10px;
+    margin-bottom: 10px;
     color: #06AD7F; }
-  .container .jumbotron #student-form {
-    margin-top: 30px;
-    text-align: left;
-    margin-bottom: 30px; }
-    .container .jumbotron #student-form button {
-      /* Used to style any button this way. */
-      border: 1.5px solid #06AD7F;
-      color: #06AD7F;
-      background-color: #212D3D;
-      font-size: 16px;
-      height: 30px;
-      padding: 0;
-      width: 50px;
-      vertical-align: top;
-      border-color: #212D3D;
-      border-bottom-left-radius: 0;
-      border-top-left-radius: 0;
-      margin-right: -5px; }
-      .container .jumbotron #student-form button:hover {
-        border: 1.5px solid #212D3D;
-        color: #212D3D;
-        background-color: #06AD7F; }
-    .container .jumbotron #student-form input {
-      border: 1.2px solid #212D3D;
-      height: 30px;
-      border-radius: 5px 0 0 5px;
-      vertical-align: middle;
-      margin-right: -5px;
-      padding-left: 5px; }
-  .container .jumbotron .enroll {
-    /*  Student already enrolled.*/
-    text-align: center;
-    border: 1.5px solid #212D3D;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    padding-left: 5px;
-    height: 60px; }
-    @media (max-width: 767px) {
-      .container .jumbotron .enroll {
-        height: 140px !important; } }
-    .container .jumbotron .enroll input {
-      margin-left: 10px;
-      /* Used to style any button this way. */
-      border: 1.5px solid #06AD7F;
-      color: #06AD7F;
-      background-color: #212D3D;
-      font-size: 16px;
-      border-radius: 5px; }
-      .container .jumbotron .enroll input:hover {
-        border: 1.5px solid #212D3D;
-        color: #212D3D;
-        background-color: #06AD7F; }
-      .container .jumbotron .enroll input:hover {
-        cursor: pointer; }
-  .container .jumbotron #enroll2 {
-    /*  Student not enrolled.*/
-    padding-top: 10px;
-    padding-left: 5px;
-    height: 60px !important; }
-  .container .jumbotron .pagination {
-    justify-content: center;
-    margin-top: 5%;
-    margin-bottom: -2%;
-    font-size: 14px; }
-    .container .jumbotron .pagination a {
-      font-family: "Lato", sans-serif;
-      color: #212D3D;
-      font-weight: bold;
-      padding: 0 5px; }
-    .container .jumbotron .pagination .current {
-      font-size: 16px;
-      font-family: "Montserrat", sans-serif;
-      color: #212D3D;
-      font-weight: bold; }
+  .container .jumbotron p {
+    width: 90%;
+    text-align: justify;
+    margin: auto auto;
+    font-size: 16px;
+    font: "Lato", sans-serif;
+    padding-bottom: 10px; }
 
-/*# sourceMappingURL=enroll.css.map */
+/*# sourceMappingURL=guide.css.map */

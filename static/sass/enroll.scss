@@ -1,16 +1,16 @@
 @import 'header';
 
 body {
-  min-height: 100%;
-  background-size: cover;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-  url("/static/images/background.png") no-repeat fixed center center;
+  background: transparent;
 }
+
+/* Students enroll. */
 
 .container {
   .jumbotron {
     background-color: #fff;
-    margin-top: 100px;
+    margin-top: 150px;
+    margin-bottom: 100px;
     h4 {
       text-transform: uppercase;
       color: $color1;
@@ -24,6 +24,7 @@ body {
       border-color: $color1;
     }
     #classroom {
+      /* Back to classroom.*/
       text-transform: uppercase;
       font-family: $font2;
       font-weight: bold;
@@ -54,18 +55,16 @@ body {
       }
     }
     .enroll {
+      /*  Student already enrolled.*/
       text-align: center;
       border: 1.5px solid $color1;
       border-radius: 5px;
       margin-bottom: 15px;
-      padding-top: 8px;
+      padding-top: 10px;
       padding-left: 5px;
-      height: 50px;
-      @media(max-width: 767px){
-         height: 100px;
-      }
-       @media(max-width: 575px){
-         height: 120px;
+      height: 60px;
+      @media(max-width: 767px) {
+        height: 140px !important;
       }
       input {
         margin-left: 10px;
@@ -76,14 +75,11 @@ body {
         }
       }
     }
-    .enroll2 {
-      @extend .enroll;
-      @media(max-width: 767px){
-         height: 50px;
-      }
-       @media(max-width: 575px){
-         height: 50px;
-      }
+    #enroll2 {
+      /*  Student not enrolled.*/
+      padding-top: 10px;
+      padding-left: 5px;
+      height: 60px !important;
     }
     .pagination {
       justify-content: center;

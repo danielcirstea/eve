@@ -1,136 +1,181 @@
-@import "header";
+@import 'header';
 
 body {
-  min-height: 100%;
-  background-size: cover;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-  url("/static/images/background.png") no-repeat fixed center center;
+  background: transparent;
 }
 
+/* Courses page. */
+
 .container-fluid {
-  margin-top: 100px;
+  margin-top: 150px;
+  margin-bottom: 100px;
   .jumbotron {
-    background: #fff;
-    border: none;
+    background-color: #fff;
+    border-radius: 5px;
     h4 {
-      text-transform: uppercase;
       color: $color1;
-      text-align: center;
       font-family: $font1;
       font-weight: bold;
-      margin-top: -3%;
-      margin-bottom: 3%;
+      margin-top: -20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      text-align: center;
     }
     hr {
       border-color: $color1;
     }
+    .left-menu {
+      /* Lectures left menu. */
+      list-style-type: none;
+      li {
+        font-family: $font2;
+        padding-bottom: 10px;
+        font-size: 18px;
+        margin-left: -10px;
+        color: $color2;
+        &:last-child {
+          padding-bottom: 0;
+        }
+        span {
+          color: $color1;
+          font-weight: bold;
+          margin-right: 5px;
+        }
+      }
+    }
     ul {
       list-style-type: none;
-      text-align: left;
-      margin-left: -6px;
-      li a {
-        color: $color1;
+      #grouper {
+        text-transform: uppercase;
         font-family: $font2;
-        font-size: 18px;
-        .fa-caret-right, .fa-caret-down, .fa-circle {
-          font-size: 25px;
-          margin-right: 10px;
-          vertical-align: top;
+        color: $color1;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .fa-angle-right {
+        font-size: 25px;
+        margin-right: 5px;
+        vertical-align: middle;
+        padding-bottom: 3px;
+      }
+      .title {
+        height: 40px;
+        border-radius: 10px;
+        width: 90%;
+        text-align: center;
+        background-color: $color2;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        &:hover {
+          cursor: pointer;
+          background-color: $color1;
         }
-        .fa-arrow-circle-right {
-          font-size: 20px;
-          margin-right: 10px;
+        p {
+          @extend #grouper;
+          font-size: 16px;
+          text-align: left;
+          margin-left: 10px;
+          padding-top: 5px;
+          color: #fff;
+          text-transform: none;
+          span {
+            margin-left: 1%;
+          }
+        }
+      }
+      #lecture-hide {
+        /* Lecture content hide/show. */
+        border: 2px solid $color1;
+        border-radius: 5px;
+        margin-top: 20px;
+        width: 90%;
+        margin-bottom: 20px;
+        h5 {
+          color: $color1;
+          font-family: $font2;
+          font-weight: bold;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+          margin-left: 5%;
+          margin-top: 0;
+        }
+        p {
+          margin-left: 5%;
+          margin-top: 2%;
+          font-size: 16px;
+          font-family: $font1;
+        }
+        .media {
+          margin-left: 5%;
+          color: $color2;
+          margin-bottom: 10px;
+        }
+        #files {
+          margin-left: 5%;
+          font-weight: bold;
+        }
+        .fa-download {
+          margin-right: 2%;
           vertical-align: middle;
-          margin-top: -3px;
+          font-size: 20px;
         }
       }
     }
     form {
+      /* Form submission. */
+      border: 2px solid $color1;
+      border-radius: 5px;
+      width: 40vmax;
       text-align: center;
-      margin-top: -10px;
-      margin-bottom: 5%;
-      button {
-        @include button;
-        height: 30px;
-        padding: 0;
-        width: 50px;
-        vertical-align: top;
-        border-color: $color1;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
+      margin: 20px auto;
+      .custom-file-upload {
+        border: 1.5px solid $color1;
+        border-radius: 5px;
+        height: 35px;
+        cursor: pointer;
+        padding-top: 4px;
+        width: 200px;
+        font-family: $font2;
+        &:hover {
+          color: $color2;
+          border-color: $color2;
+        }
+        .fa-cloud-upload-alt {
+          text-align: left !important;
+          margin-left: 0;
+          margin-right: 5%;
+        }
       }
-      input {
+      h3 {
+        color: red;
+        text-align: center;
+        margin: 5px 5px 20px;
+      }
+      .comment {
+        border-radius: 5px;
         border: 1.2px solid $color1;
-        margin-right: -5px;
-        padding-left: 5px;
-        border-bottom-left-radius: 5px;
-        border-top-left-radius: 5px;
-        height: 30px;
-        width: 150px;
-        font-family: $font2;
-        font-size: 16px;
-        color: $color1;
+        height: 35px;
+        padding-left: 10px;
+        margin-top: 20px;
+        width: 200px;
+      }
+      .btn-default {
+        @include button;
+        margin-bottom: 30px;
+        margin-top: 10px;
       }
     }
-    .table {
-      justify-content: center;
-      margin-top: -30px;
-      table-layout: fixed;
-      text-align: left;
-      color: $color1;
-      thead {
-        border-top-style: hidden;
-        tr th {
-          border-bottom: 1px solid $color1;
-          bottom: 5%;
+    .row {
+      .col-md-6 {
+        div {
+          border: 1.5px solid $color2;
+          border-radius: 5px;
+          p {
+            text-align: center;
+            margin: auto auto;
+          }
         }
       }
-      tbody {
-        tr td {
-          border: none;
-        }
-      }
-      a {
-        color: $color2;
-        font-family: $font2;
-        font-size: 18px;
-        .fa-arrow-circle-right {
-          font-size: 20px;
-          margin-right: 10px;
-          vertical-align: middle;
-          margin-top: -3px;
-        }
-      }
-    }
-    .pagination {
-      justify-content: center;
-      margin-top: 2%;
-      margin-bottom: -2%;
-      font-size: 14px;
-      a {
-        font-family: $font2;
-        color: $color1;
-        font-weight: bold;
-        padding: 0 5px;
-      }
-      .current {
-        font-size: 16px;
-        font-family: $font1;
-        color: $color1;
-        font-weight: bold;
-      }
-    }
-  }
-}
-@media(max-width: 575px){
-  .table{
-    a{
-      font-size:15px !important;
-    }
-  }
-  .jumbotron{
-    ul li a{
-      font-size: 15px !important;
     }
   }
 }

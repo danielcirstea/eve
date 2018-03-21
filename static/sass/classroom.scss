@@ -1,14 +1,12 @@
 @import 'header';
 
 body {
-  min-height: 100%;
-  background-size: cover;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-  url("/static/images/background.png") no-repeat fixed center center;
+  background: transparent;
 }
 
 .container-fluid {
-  margin-top: 100px;
+  margin-top: 150px;
+  margin-bottom: 100px;
   .jumbotron {
     background-color: #fff;
     border-radius: 5px;
@@ -33,6 +31,7 @@ body {
       margin-bottom: 3%;
     }
     .title {
+      /* Courses page. */
       height: 40px;
       border-radius: 10px;
       width: 90%;
@@ -40,6 +39,9 @@ body {
       background-color: $color2;
       margin-top: 10px;
       margin-bottom: 20px;
+      @media(max-width: 575px){
+        height:60px;
+      }
       &:hover {
         cursor: pointer;
         background-color: $color1;
@@ -70,6 +72,7 @@ body {
       }
     }
     .lectures {
+      /* Lecture deleting */
       list-style-type: none;
       text-align: left;
       li {
@@ -111,6 +114,7 @@ body {
       }
     }
     .form2 {
+      /* Lecture adding. */
       margin: auto auto;
       border-radius: 5px;
       border: 1.5px solid $color1;
@@ -159,6 +163,7 @@ body {
       }
     }
     .uploads {
+      /* File upload submission. */
       border: 1.5px solid $color1;
       padding: 20px;
       height: 10vmax;
@@ -193,17 +198,19 @@ body {
         a {
           color: $color2;
           font-size: 18px;
+          width:200px;
         }
       }
     }
     .notifications {
+      /* Main website styling. */
       border: 1.5px solid $color1;
       padding: 20px;
       border-radius: 5px;
       width: 30vmax;
       margin: auto;
       @media (max-width: 767px) {
-        width: 40vmax;
+        width: 30vmax;
       }
       h5 {
         margin-bottom: 30px;
@@ -216,12 +223,13 @@ body {
         border: 1.5px solid $color1;
         border-radius: 5px;
         color: $color1;
+        width:200px;
       }
     }
     .delete-notes {
       h5 {
         margin-bottom: 20px;
-        margin-top:20px;
+        margin-top: 20px;
       }
       form {
         text-align: left;
@@ -231,10 +239,10 @@ body {
           font-family: $font2;
           font-weight: bold;
           background-color: transparent;
-          border:none;
+          border: none;
           color: red;
           padding-bottom: 10px;
-          &:hover{
+          &:hover {
             color: #850000;
           }
         }

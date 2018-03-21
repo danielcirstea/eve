@@ -1,89 +1,133 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>EVE</title>
+    <title>{% block title %}Teacher Sign Up{% endblock %}</title>
+    {% block style %}
+        <link href="{% static "sass/registration.css" %}" rel="stylesheet">
+    {% endblock %}
 </head>
 <body>
-
 {% block content %}
-    <div id="teacher-signup">
-        <a id="std-sign" href="{% url "index" %}"><i class="fas fa-times"></i></a>
-        <form class="login" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <h3 id="sign-title">Sign Up As A Teacher</h3>
-            <div class="row  row-no-padding">
-                <div class="col-md-6 col2">
-                    <p class="field"> {{ form1.username }}</p><br>
-                    <p class="field"> {{ form1.password }}</p><br>
-                    <p class="field"> {{ form1.confirm_password }}</p><br>
-                    <p class="field"> {{ form2.email }}</p><br>
-                    <label id="file1" for="file-upload" class="custom-file-upload">
-                        <i class="fas fa-cloud-upload-alt"></i> Profile Photo
-                    </label>
-                    <span id="file-selected"></span>
-                    <input id="file-upload" name='photo' type="file" style="display:none"/>
-                </div>
-                <div class="col-md-6">
-                    <p class="field"> {{ form2.teacher_ID }}</p><br>
-                    <p class="field"> {{ form2.name }}</p><br>
-                    <p class="field"> {{ form2.surname }}</p><br>
-                    <p class="field">{{ form2.phone }}</p><br>
-                     <p class="">{{ form2.academic_title }}</p><br>
-                    <label id="file2" for="file-upload2" class="custom-file-upload2">
-                        <i class="fas fa-cloud-upload-alt"></i> Profile Photo
-                    </label><br>
-                    <span class="selected1" id="file-selected2"></span>
-                    <input id="file-upload2" name='photo' type="file" style="display:none"/>
-                </div>
-            </div>
-            <p class="bio">{{ form2.biography }}</p>
-            <div class="all-errors">
-                {% if form1.errors %}
-                    {% for field in form1 %}
-                        {% for error in field.errors %}
-                            <div class="alert alert-danger">
-                                <strong id="errors">{{ error|escape }}</strong>
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-                    {% for error in form1.non_field_errors %}
-                        <div class="alert alert-danger">
-                            <strong>{{ error|escape }}</strong>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                <div class="other-errors">
-                    {% if form2.errors %}
-                        {% for field in form2 %}
-                            {% for error in field.errors %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron jumbotron5">
+                    <a id="close5" href="{% url "index" %}"><i class="fas fa-times"></i></a>
+                    <form class="student-signup" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h4>Teacher sign up</h4>
+                        {% if form1.non_field_errors %}
+                            {% for error in form1.non_field_errors %}
                                 <div class="alert alert-danger">
                                     <strong>{{ error|escape }}</strong>
                                 </div>
                             {% endfor %}
-                        {% endfor %}
-                        {% for error in form2.non_field_errors %}
-                            <div class="alert alert-danger">
-                                <strong>{{ error|escape }}</strong>
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="field">{{ form1.username }}</p>
+                                {% if form1.username.errors %}
+                                    {% for error in form1.username.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <p class="field">{{ form1.password }}</p>
+                                {% if form1.password.errors %}
+                                    {% for error in form1.password.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <p class="field">{{ form1.confirm_password }}</p>
+                                {% if form1.confirm_password.errors %}
+                                    {% for error in form1.confirm_password.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <p class="field">{{ form2.teacher_ID }}</p>
+                                {% if form2.teacher_ID.errors %}
+                                    {% for error in form2.teacher_ID.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <p class="field">
+                                    <label id="file" for="file-upload" class="custom-file-upload">
+                                        <i class="fas fa-cloud-upload-alt"></i> Profile Photo
+                                    </label><br>
+                                    <span id="file-selected"></span>
+                                    <input id="file-upload" name='photo' type="file" style="display: none"></p>
+                                {% if form2.photo.errors %}
+                                    {% for error in form2.photo.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
-                        {% endfor %}
-                    {% endif %}
+                            <div class="col-md-6">
+                                <p class="field">{{ form2.name }}</p>
+                                {% if form2.name.errors %}
+                                    {% for error in form2.name.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <p class="field">{{ form2.surname }}</p>
+                                {% if form2.surname.errors %}
+                                    {% for error in form2.surname.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <p class="field">{{ form2.email }}</p>
+                                {% if form2.email.errors %}
+                                    {% for error in form2.email.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <p class="field">{{ form2.phone }}</p>
+                                {% if form2.phone.errors %}
+                                    {% for error in form2.phone.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <p class="field">{{ form2.academic_title }}</p>
+                                {% if form2.academic_title.errors %}
+                                    {% for error in form2.academic_title.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <button class="btn btn-default" type="submit">Sign Up</button>
+                    </form>
                 </div>
             </div>
-            <button type="submit" class="btn btn-default">Sign Up</button>
-        </form>
+        </div>
     </div>
     <script>
         $('#file-upload').bind('change', function () {
             var fileName = '';
             fileName = $(this).val();
-            $('#file-selected').html(fileName.split(/(\\|\/)/g).pop());
-        });
-        $('#file-upload2').bind('change', function () {
-            var fileName = '';
-            fileName = $(this).val();
-            $('#file-selected2').html(fileName.split(/(\\|\/)/g).pop());
+            $('#file-selected').html('Profile picture selected.');
         });
     </script>
 {% endblock %}

@@ -161,101 +161,114 @@ header {
 body {
   background: transparent; }
 
-/* Students enroll. */
-.container .jumbotron {
-  background-color: #fff;
+.container-fluid {
   margin-top: 150px;
   margin-bottom: 100px; }
-  .container .jumbotron h4 {
-    text-transform: uppercase;
-    color: #212D3D;
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    margin-top: -3%;
-    margin-bottom: 3%; }
-  .container .jumbotron hr {
-    border-color: #212D3D; }
-  .container .jumbotron #classroom {
-    /* Back to classroom.*/
-    text-transform: uppercase;
-    font-family: "Lato", sans-serif;
-    font-weight: bold;
-    color: #06AD7F; }
-  .container .jumbotron #student-form {
-    margin-top: 30px;
-    text-align: left;
-    margin-bottom: 30px; }
-    .container .jumbotron #student-form button {
-      /* Used to style any button this way. */
-      border: 1.5px solid #06AD7F;
-      color: #06AD7F;
-      background-color: #212D3D;
-      font-size: 16px;
-      height: 30px;
-      padding: 0;
-      width: 50px;
-      vertical-align: top;
-      border-color: #212D3D;
-      border-bottom-left-radius: 0;
-      border-top-left-radius: 0;
-      margin-right: -5px; }
-      .container .jumbotron #student-form button:hover {
-        border: 1.5px solid #212D3D;
-        color: #212D3D;
-        background-color: #06AD7F; }
-    .container .jumbotron #student-form input {
-      border: 1.2px solid #212D3D;
-      height: 30px;
-      border-radius: 5px 0 0 5px;
-      vertical-align: middle;
-      margin-right: -5px;
-      padding-left: 5px; }
-  .container .jumbotron .enroll {
-    /*  Student already enrolled.*/
-    text-align: center;
-    border: 1.5px solid #212D3D;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    padding-top: 10px;
-    padding-left: 5px;
-    height: 60px; }
-    @media (max-width: 767px) {
-      .container .jumbotron .enroll {
-        height: 140px !important; } }
-    .container .jumbotron .enroll input {
-      margin-left: 10px;
-      /* Used to style any button this way. */
-      border: 1.5px solid #06AD7F;
-      color: #06AD7F;
-      background-color: #212D3D;
-      font-size: 16px;
-      border-radius: 5px; }
-      .container .jumbotron .enroll input:hover {
-        border: 1.5px solid #212D3D;
-        color: #212D3D;
-        background-color: #06AD7F; }
-      .container .jumbotron .enroll input:hover {
-        cursor: pointer; }
-  .container .jumbotron #enroll2 {
-    /*  Student not enrolled.*/
-    padding-top: 10px;
-    padding-left: 5px;
-    height: 60px !important; }
-  .container .jumbotron .pagination {
-    justify-content: center;
-    margin-top: 5%;
-    margin-bottom: -2%;
-    font-size: 14px; }
-    .container .jumbotron .pagination a {
-      font-family: "Lato", sans-serif;
+  .container-fluid .jumbotron {
+    background: #fff;
+    border: none; }
+    .container-fluid .jumbotron h4 {
+      text-transform: uppercase;
       color: #212D3D;
-      font-weight: bold;
-      padding: 0 5px; }
-    .container .jumbotron .pagination .current {
-      font-size: 16px;
+      text-align: center;
       font-family: "Montserrat", sans-serif;
-      color: #212D3D;
-      font-weight: bold; }
+      font-weight: bold;
+      margin-top: -3%;
+      margin-bottom: 3%; }
+    .container-fluid .jumbotron hr {
+      border-color: #212D3D; }
+    .container-fluid .jumbotron ul {
+      list-style-type: none;
+      text-align: left;
+      margin-left: -6px; }
+      .container-fluid .jumbotron ul li a {
+        color: #212D3D;
+        font-family: "Lato", sans-serif;
+        font-size: 18px; }
+        .container-fluid .jumbotron ul li a .fa-caret-right, .container-fluid .jumbotron ul li a .fa-caret-down, .container-fluid .jumbotron ul li a .fa-circle {
+          font-size: 25px;
+          margin-right: 10px;
+          vertical-align: top; }
+        .container-fluid .jumbotron ul li a .fa-arrow-circle-right {
+          font-size: 20px;
+          margin-right: 10px;
+          vertical-align: middle;
+          margin-top: -3px; }
+    .container-fluid .jumbotron form {
+      text-align: center;
+      margin-top: -10px;
+      margin-bottom: 5%; }
+      .container-fluid .jumbotron form button {
+        /* Used to style any button this way. */
+        border: 1.5px solid #06AD7F;
+        color: #06AD7F;
+        background-color: #212D3D;
+        font-size: 16px;
+        height: 30px;
+        padding: 0;
+        width: 50px;
+        vertical-align: top;
+        border-color: #212D3D;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0; }
+        .container-fluid .jumbotron form button:hover {
+          border: 1.5px solid #212D3D;
+          color: #212D3D;
+          background-color: #06AD7F; }
+      .container-fluid .jumbotron form input {
+        border: 1.2px solid #212D3D;
+        margin-right: -5px;
+        padding-left: 5px;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        height: 30px;
+        width: 150px;
+        font-family: "Lato", sans-serif;
+        font-size: 16px;
+        color: #212D3D; }
+    .container-fluid .jumbotron .table {
+      justify-content: center;
+      margin-top: -30px;
+      table-layout: fixed;
+      text-align: left;
+      color: #212D3D; }
+      .container-fluid .jumbotron .table thead {
+        border-top-style: hidden; }
+        .container-fluid .jumbotron .table thead tr th {
+          border-bottom: 1px solid #212D3D;
+          bottom: 5%; }
+      .container-fluid .jumbotron .table tbody tr td {
+        border: none; }
+      .container-fluid .jumbotron .table a {
+        color: #06AD7F;
+        font-family: "Lato", sans-serif;
+        font-size: 18px; }
+        .container-fluid .jumbotron .table a .fa-arrow-circle-right {
+          font-size: 20px;
+          margin-right: 10px;
+          vertical-align: middle;
+          margin-top: -3px; }
+    .container-fluid .jumbotron .pagination {
+      justify-content: center;
+      margin-top: 2%;
+      margin-bottom: -2%;
+      font-size: 14px; }
+      .container-fluid .jumbotron .pagination a {
+        font-family: "Lato", sans-serif;
+        color: #212D3D;
+        font-weight: bold;
+        padding: 0 5px; }
+      .container-fluid .jumbotron .pagination .current {
+        font-size: 16px;
+        font-family: "Montserrat", sans-serif;
+        color: #212D3D;
+        font-weight: bold; }
 
-/*# sourceMappingURL=enroll.css.map */
+@media (max-width: 575px) {
+  .table a {
+    font-size: 15px !important; }
+
+  .jumbotron ul li a {
+    font-size: 15px !important; } }
+
+/*# sourceMappingURL=index.css.map */

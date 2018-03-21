@@ -15,6 +15,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="jumbotron">
+                {% if user.is_teacher %}
+
+                    <!-- enroll page -->
+
                     <h4>{{ course.name }} students</h4>
                     <hr>
                     <a id="classroom" href="{% url "classroom" %}"><h5><< Back to Classroom</h5></a>
@@ -30,7 +34,12 @@
                                 <form class="enroll" action="" method="POST">
                                     {% csrf_token %}
                                     <label for="id_{{ student.id }}">
-                                        <p class="enrolled">{{ student.name }} {{ student.surname }} is already enrolled
+                                        <p class="enrolled">
+                                            {% for std in students2 %}{% if std.student_ID == student.student_ID %}
+                                            <img style="width: 40px; height:40px; margin-right:10px; border-radius:100%;"
+                                        src="{{ MEDIA_URL}}{{ std.photo.url }}" class="avatar"
+                                        alt="Avatar">{% endif %}{% endfor %}
+                                            {{ student.name }} {{ student.surname }} is already enrolled
                                             to {{ course.name }}.</p></label>
                                     <input type="checkbox" id="id_{{ student_id }}"
                                            value="{{ student.id }}"
@@ -38,9 +47,13 @@
                                     <input type="submit" value="Disenroll">
                                 </form>
                             {% else %}
-                                <form action="" class="enroll2" method="POST">
+                                <form action="" class="enroll enroll2" id="enroll2" style="height:120px;" method="POST">
                                     {% csrf_token %}
-                                    <label for="id_{{ student.id }}">{{ student.name }} {{ student.surname }}</label>
+                                    <label for="id_{{ student.id }}">
+                                          {% for std in students2 %}{% if std.student_ID == student.student_ID %}
+                                            <img style="width: 40px; height:40px; margin-right:10px; border-radius:100%;"
+                                        src="{{ MEDIA_URL}}{{ std.photo.url }}" class="avatar"
+                                        alt="Avatar">{% endif %}{% endfor %}{{ student.name }} {{ student.surname }}</label>
                                     <input type="checkbox" id="id_{{ student_id }}"
                                            value="{{ student.id }}"
                                            name="student_ids">
@@ -64,6 +77,7 @@
                                 {% endif %}
                           </span>
                     </div>
+                {% endif %}
                 </div>
             </div>
         </div>

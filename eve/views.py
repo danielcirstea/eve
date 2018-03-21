@@ -2,18 +2,21 @@ from django.shortcuts import redirect, render
 from courses.forms import StudentForm, TeacherForm, UserForm, StudentEditForm, TeacherEditForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+from django.core.exceptions import PermissionDenied
 from courses.models import *
 
 
+# the starting page of the website
 def index(request):
     context = {
         'courses': Course.objects.all(),
-        'notifications': Notification.objects.all(),
         'students_data': StudentData.objects.all(),
+        'teachers': Teacher.objects.all(),
     }
     return render(request, 'base.html', context)
 
 
+# the student registration view
 def student_register(request):
     if request.method == 'POST':
         form1 = UserForm(request.POST, prefix='user')
@@ -47,6 +50,7 @@ def student_register(request):
     return render(request, "registration/student_signup_form.html", data)
 
 
+# the teacher registration view
 def teacher_register(request):
     data = dict()
     if request.method == 'POST':
@@ -56,7 +60,6 @@ def teacher_register(request):
             cd2 = form2.cleaned_data
             academic_title = cd2['academic_title']
             phone = cd2['phone']
-            biography = cd2['biography']
             teacher_id = cd2['teacher_ID']
             photo = cd2['photo']
             cd1 = form1.cleaned_data
@@ -68,7 +71,7 @@ def teacher_register(request):
             new_user = User.objects.create_user(username, password=password, first_name=name,
                                                 last_name=surname, email=email, is_teacher=True)
             Teacher.objects.create(user=new_user, name=name, surname=surname, academic_title=academic_title,
-                                   email=email, teacher_ID=teacher_id, phone=phone, biography=biography,
+                                   email=email, teacher_ID=teacher_id, phone=phone,
                                    photo=photo)
             new_user.save()
 
@@ -83,38 +86,43 @@ def teacher_register(request):
     return render(request, "registration/teacher_signup_form.html", data)
 
 
+# the view which allows a student/teacher to edit their information
 @login_required
 def profile_edit(request):
     user = request.user
-    student = request.user.student
-    teacher = request.user.teacher
     if user.is_teacher:
-        if request.method != 'POST':
-            form = TeacherEditForm(instance=teacher)
-        else:
-            form = TeacherEditForm(request.POST, request.FILES, instance=teacher)
-            if form.is_valid():
-                user.email = form.cleaned_data['email']
-                user.first_name = form.cleaned_data['name']
-                user.last_name = form.cleaned_data['surname']
-                user.save()
-                form.save()
-                return redirect('index')
+        form_class = TeacherEditForm
+        instance = request.user.teacher
     elif user.is_student:
-        if request.method != 'POST':
-            form = StudentEditForm(instance=student)
-        else:
-            form = StudentEditForm(request.POST or None, request.FILES or None, instance=student)
-            if form.is_valid():
-                user.email = form.cleaned_data['email']
-                user.first_name = form.cleaned_data['name']
-                user.last_name = form.cleaned_data['surname']
-                student.photo = form.cleaned_data['photo']
-                student.save()
-                user.save()
-                form.save()
-                return redirect('index')
+        form_class = StudentEditForm
+        instance = request.user.student
+    else:
+        raise PermissionDenied()
+
+    if request.method != 'POST':
+        form = form_class(instance=instance)
+    else:
+        form = form_class(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            user.email = form.cleaned_data['email']
+            user.first_name = form.cleaned_data['name']
+            user.last_name = form.cleaned_data['surname']
+            user.save()
+            form.save()
+            return redirect('index')
+
     context = {
         "form": form,
+        'notifications': Notification.objects.all(),
     }
     return render(request, "registration/profile_edit.html", context)
+
+
+# the about page
+def about(request):
+    return render(request, 'about.html')
+
+
+# the guide page containing all useful information about eve
+def guide(request):
+    return render(request, 'guide.html')

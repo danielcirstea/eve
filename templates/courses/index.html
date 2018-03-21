@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     {% block style %}
-        <link href="{% static 'sass/courses.css' %}" rel="stylesheet">
+        <link href="{% static 'sass/index.css' %}" rel="stylesheet">
     {% endblock %}
     <meta charset="UTF-8">
     <title>{% block title %}Courses{% endblock %}</title>
@@ -15,6 +15,9 @@
         <div class="row">
             <div class="col-xl-3">
                 <div class="jumbotron">
+
+                    <!-- courses filters -->
+
                     <form method="GET" action="">
                         <input class="txt" type="text" name="q" value="{{ request.GET.q }}"
                                placeholder="Search course...">
@@ -34,12 +37,18 @@
                             <br>
                         {% endfor %}
                     </ul>
+
+                    <!-- courses filters end -->
+
                 </div>
             </div>
             <div class="col-xl-9">
                 <div class="jumbotron" style="">
                     <h4>All courses</h4>
                     <br>
+
+                    <!-- the courses table -->
+
                     <table class="table">
                         <thead>
                         <tr>
@@ -69,7 +78,13 @@
                                 </td>
                                 <td>
                                     <a href="{% url 'courses:courses' slug=course.slug %}">
-                                        {{ course.teacher1 }}
+                                        {% for tch in teachers %}
+                                            {% if course.teacher1.teacher_ID == tch.teacher_ID %}
+                                                {{ tch.academic_title }}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{ course.teacher1.name }}<br>
+                                        {{ course.teacher1.surname }}
                                     </a>
                                 </td>
                             </tr>
@@ -82,6 +97,9 @@
                         {% endfor %}
                         </tbody>
                     </table>
+
+                    <!-- the courses table end -->
+
                     <div class="text-xs-center">
                         <div class="pagination text-center">
                             <span class="step-links">

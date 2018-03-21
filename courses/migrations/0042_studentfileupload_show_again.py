@@ -10,6 +10,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RemoveField(
+            model_name='control',
+            name='course',
+        ),
         migrations.AddField(
             model_name='studentfileupload',
             name='show_again',

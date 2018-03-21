@@ -4,6 +4,9 @@ from django.db.models import Q
 
 
 class UserForm(forms.ModelForm):
+    """
+    It is main user form
+    """
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': "Username", 'class': 'user2'}))
     password = forms.CharField(label='Password', max_length=32, required=True,
                                widget=forms.PasswordInput(attrs={'placeholder': "Password", 'class': 'pass2'}))
@@ -26,6 +29,8 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'password', 'confirm_password')
 
 
+# student form
+
 class StudentForm(forms.ModelForm):
     email = forms.EmailField(required=True,
                              widget=forms.EmailInput(attrs={'placeholder': "E-mail Address", 'class': 'email'}))
@@ -43,18 +48,19 @@ class StudentForm(forms.ModelForm):
                             widget=forms.TextInput(attrs={'placeholder': "Phone Number", 'class': 'phone'}))
 
     def clean_student_ID(self):
-        id = self.cleaned_data['student_ID']
+        student_id = self.cleaned_data['student_ID']
         try:
-            StudentData.objects.get(student_ID=id)
+            StudentData.objects.get(student_ID=student_id)
         except:
             raise forms.ValidationError("Wrong student ID.")
-        return id
+        return student_id
 
     class Meta:
         model = Student
         fields = ('email', 'name', 'surname', 'phone', 'student_ID', 'photo')
 
 
+# form for editing the student model
 class StudentEditForm(forms.ModelForm):
     email = forms.EmailField(required=True,
                              widget=forms.EmailInput(attrs={'placeholder': "E-mail Address", 'class': 'email'}))
@@ -74,6 +80,7 @@ class StudentEditForm(forms.ModelForm):
         fields = ('email', 'name', 'surname', 'phone', 'photo')
 
 
+# the teacher form
 class TeacherForm(forms.ModelForm):
     email = forms.EmailField(required=True,
                              widget=forms.EmailInput(attrs={'placeholder': "E-mail Address", 'class': 'email2'}))
@@ -86,16 +93,11 @@ class TeacherForm(forms.ModelForm):
     academic_title = forms.CharField(max_length=30, required=True,
                                      error_messages={'required': 'An academic title is required.'},
                                      widget=forms.TextInput(attrs={'placeholder': "Academic Title", 'class': 'acad'}))
-    biography = forms.Textarea(attrs={'class': 'bio'})
     photo = forms.ImageField(required=True, error_messages={'required': 'A profile picture is required.'},
                              widget=forms.FileInput(attrs={'class': 'profile_pic2', 'name': 'teacher-photo'}))
     phone = forms.CharField(required=True, validators=[RegexValidator(regex='^[0-9+]+$',
                                                                       message='Not a valid phone number.')],
                             widget=forms.TextInput(attrs={'placeholder': "Phone Number", 'class': 'phone2'}))
-
-    def __init__(self, *args, **kwargs):
-        super(TeacherForm, self).__init__(*args, **kwargs)
-        self.fields['biography'].widget.attrs['placeholder'] = "Write few things about yourself."
 
     def clean_teacher_ID(self):
         id = self.cleaned_data['teacher_ID']
@@ -107,9 +109,10 @@ class TeacherForm(forms.ModelForm):
 
     class Meta:
         model = Teacher
-        fields = ('email', 'name', 'surname', 'teacher_ID', 'academic_title', 'phone', 'biography', 'photo')
+        fields = ('email', 'name', 'surname', 'teacher_ID', 'academic_title', 'phone', 'photo')
 
 
+# the form for editing the teacher model
 class TeacherEditForm(forms.ModelForm):
     email = forms.EmailField(required=True,
                              widget=forms.EmailInput(attrs={'placeholder': "E-mail Address", 'class': 'email2'}))
@@ -119,23 +122,18 @@ class TeacherEditForm(forms.ModelForm):
                               widget=forms.TextInput(attrs={'placeholder': "Surname", 'class': 'surname2'}))
     academic_title = forms.CharField(max_length=30, required=True,
                                      widget=forms.TextInput(attrs={'placeholder': "Academic Title", 'class': 'acad2'}))
-    biography = forms.Textarea(attrs={'class': 'bio_edit'})
     photo = forms.ImageField(required=True, error_messages={'required': 'A profile picture is required.'},
                              widget=forms.FileInput(attrs={'class': 'profile_pic2', 'name': 'teacher-photo'}))
     phone = forms.CharField(required=True, validators=[RegexValidator(regex='^[0-9+]+$',
                                                                       message='Not a valid phone number.')],
                             widget=forms.TextInput(attrs={'placeholder': "Phone Number", 'class': 'phone2'}))
 
-    def __init__(self, *args, **kwargs):
-        super(TeacherEditForm, self).__init__(*args, **kwargs)
-        self.fields['biography'].widget.attrs['placeholder'] = "Write few things about yourself."
-        self.fields['biography'].widget.attrs['class'] = "bio_edit"
-
     class Meta:
         model = Teacher
-        fields = ('email', 'name', 'surname', 'academic_title', 'phone', 'biography', 'photo')
+        fields = ('email', 'name', 'surname', 'academic_title', 'phone', 'photo')
 
 
+# form for adding a lecture as a teacher
 class LectureForm(forms.ModelForm):
     lecture_title = forms.CharField(max_length=100, required=True,
                                     widget=forms.TextInput(
@@ -166,12 +164,7 @@ class LectureForm(forms.ModelForm):
         fields = ('course', 'lecture_category', 'lecture_title', 'content')
 
 
-class FileForm(forms.ModelForm):
-    class Meta:
-        model = FileUpload
-        fields = ('files',)
-
-
+# the form allowing a student to upload files on a course
 class StudentFileForm(forms.ModelForm):
     comment = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Add a message...', 'class': 'comment'}))
 
@@ -180,6 +173,7 @@ class StudentFileForm(forms.ModelForm):
         fields = ('files', 'comment')
 
 
+# the form allowing teacher to add notifications
 class NotificationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')

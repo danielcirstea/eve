@@ -1,0 +1,442 @@
+@import 'header';
+
+/* All registration forms. */
+
+body {
+  background: transparent;
+  .container {
+    .jumbotron {
+      position: relative;
+      left: 50%;
+      transform: translate(-50%);
+      margin-top: 150px;
+      margin-bottom: 100px;
+      background-color: #fff;
+      text-align: center;
+      width: 25em;
+      #close {
+        position: relative;
+        left: 20px;
+        margin-top: -60px;
+        color: $color1;
+        font-size: 20px;
+        float: right;
+        &:hover {
+          color: $color2;
+        }
+      }
+      .login {
+        /* The login form. */
+        margin: 0;
+        padding: 0;
+        .alert-danger {
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          color: #d01116;
+          font-size: 15px;
+        }
+        h4 {
+          margin-top: -20px;
+          margin-bottom: 30px;
+          color: $color1;
+          text-transform: uppercase;
+          font-family: $font2;
+          font-weight: bold;
+        }
+        .user, .pass {
+          border: 1.5px solid $color1;
+          border-radius: 5px;
+          height: 35px;
+          padding-left: 5px;
+          color: $color1;
+          font-family: $font2;
+        }
+        .btn-default {
+          @include button;
+          margin-bottom: 30px;
+        }
+        .field {
+          margin-bottom: 25px !important;
+        }
+        #forgot {
+          color: $color2;
+          font-family: $font2;
+          font-size: 14px;
+        }
+      }
+      @media(max-width: 575px) {
+        width: 20em;
+        #close {
+          left: 5px;
+          margin-top: -30px;
+        }
+        .login {
+          h4 {
+            margin-top: 5px !important;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+    .jumbotron2 {
+      /* The password reset form. */
+      width: 25em;
+      #close2 {
+        position: relative;
+        left: 20px;
+        margin-top: -60px;
+        color: $color1;
+        font-size: 20px;
+        float: right;
+        &:hover {
+          color: $color2;
+        }
+      }
+      .reset {
+        .alert-danger {
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          color: #d01116;
+          font-size: 15px;
+        }
+        h4 {
+          margin-top: -20px;
+          margin-bottom: 30px;
+          color: $color1;
+          text-transform: uppercase;
+          font-family: $font2;
+          font-weight: bold;
+        }
+        .email {
+          border: 1.5px solid $color1;
+          border-radius: 5px;
+          height: 35px;
+          padding-left: 5px;
+          width: 250px;
+          color: $color1;
+          font-family: $font2;
+        }
+        .btn-default {
+          @include button;
+        }
+        .field {
+          margin-bottom: 25px !important;
+        }
+        #forgot {
+          color: $color2;
+          font-family: $font2;
+          font-size: 14px;
+        }
+      }
+      @media(max-width: 575px) {
+        width: 20em;
+        #close2 {
+          left: 5px;
+          margin-top: -30px;
+        }
+        .reset {
+          h4 {
+            margin-top: 5px !important;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+    .jumbotron3 {
+      /* The password confirmation form. */
+      width: 30em;
+      #close3 {
+        position: relative;
+        left: 20px;
+        margin-top: -60px;
+        color: $color1;
+        font-size: 20px;
+        float: right;
+        &:hover {
+          color: $color2;
+        }
+      }
+      h4 {
+        margin-top: -20px;
+        margin-bottom: 30px;
+        color: $color1;
+        text-transform: uppercase;
+        font-family: $font2;
+        font-weight: bold;
+        text-align: center;
+      }
+      #done-text {
+        text-align: justify;
+      }
+
+      @media(max-width: 575px) {
+        width: 20em;
+        #close3 {
+          left: 5px;
+          margin-top: -30px;
+        }
+        h4 {
+          margin-top: 5px !important;
+          font-size: 22px;
+        }
+      }
+    }
+    .jumbotron4 {
+      /* The password change form. */
+      #close4 {
+        position: relative;
+        left: 20px;
+        margin-top: -60px;
+        color: $color1;
+        font-size: 20px;
+        float: right;
+        &:hover {
+          color: $color2;
+        }
+      }
+      .confirm {
+        .alert-danger {
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          color: #d01116;
+          font-size: 15px;
+        }
+        h4 {
+          margin-top: -20px;
+          margin-bottom: 30px;
+          color: $color1;
+          text-transform: uppercase;
+          font-family: $font2;
+          font-weight: bold;
+        }
+        .password1, .password2 {
+          border: 1.5px solid $color1;
+          border-radius: 5px;
+          height: 35px;
+          padding-left: 5px;
+          width: 200px;
+          color: $color1;
+          font-family: $font2;
+        }
+        .btn-default {
+          @include button;
+        }
+        .field {
+          margin-bottom: 25px !important;
+        }
+      }
+      @media(max-width: 575px) {
+        width: 20em;
+        #close4 {
+          left: 5px;
+          margin-top: -30px;
+        }
+        h4 {
+          margin-top: 5px !important;
+          text-align: center;
+          font-size: 22px;
+        }
+      }
+      #invalid {
+        color: $color1;
+        font-family: $font2;
+        #new-link {
+          color: $color2;
+        }
+      }
+    }
+    .jumbotron5 {
+      /* Student and teacher signup. */
+      width: 30em;
+      #close5 {
+        position: relative;
+        left: 20px;
+        margin-top: -60px;
+        color: $color1;
+        font-size: 20px;
+        float: right;
+        &:hover {
+          color: $color2;
+        }
+      }
+      .student-signup {
+        .alert-danger {
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          color: #d01116;
+          font-size: 15px;
+        }
+        h4 {
+          margin-top: -20px;
+          margin-bottom: 30px;
+          color: $color1;
+          text-transform: uppercase;
+          font-family: $font2;
+          font-weight: bold;
+        }
+        .user2, .pass2, .pass3, .name, .surname, .phone,
+        .email, .std_id, .tdr_id, .name2, .surname2, .photo2,
+        .phone2, .acad, .email2 {
+          border: 1.5px solid $color1;
+          border-radius: 5px;
+          height: 35px;
+          padding-left: 5px;
+          color: $color1;
+          font-family: $font2;
+        }
+        .custom-file-upload {
+          border: 1.5px solid $color1;
+          border-radius: 5px;
+          display: inline-block;
+          height: 35px;
+          padding-top: 4px;
+          cursor: pointer;
+          width: 180px;
+          margin-bottom: 0;
+          &:hover {
+            color: $color2;
+            border-color: $color2;
+          }
+          .fa-cloud-upload-alt {
+            text-align: left !important;
+            margin-right: 10px;
+            margin-left: -20px;
+          }
+          font-family: $font2;
+        }
+        .btn-default {
+          @include button;
+        }
+        .field {
+          margin-bottom: 25px !important;
+          a {
+            color: $color2;
+          }
+        }
+      }
+      @media(max-width: 575px) {
+        width: 20em;
+        #close4 {
+          left: 5px;
+          margin-top: -30px;
+        }
+        h4 {
+          margin-top: 5px !important;
+          text-align: center;
+          font-size: 22px;
+        }
+        .student-signup {
+          .bio {
+            width: 250px;
+          }
+        }
+      }
+      #invalid {
+        color: $color1;
+        font-family: $font2;
+        #new-link {
+          color: $color2;
+        }
+      }
+      @media(max-width: 575px) {
+        width: 20em;
+        #close5 {
+          left: 5px;
+          margin-top: -30px;
+        }
+        h4 {
+          margin-top: 5px !important;
+          text-align: center;
+          font-size: 22px;
+        }
+      }
+    }
+    .jumbotron6 {
+      /* The profile edit form. */
+      width: 20em;
+      #close6 {
+        position: relative;
+        left: 20px;
+        margin-top: -60px;
+        color: $color1;
+        font-size: 20px;
+        float: right;
+        &:hover {
+          color: $color2;
+        }
+      }
+      .profile-edit {
+        .alert-danger {
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          color: #d01116;
+          font-size: 15px;
+        }
+        h4 {
+          margin-top: -20px;
+          margin-bottom: 30px;
+          color: $color1;
+          text-transform: uppercase;
+          font-family: $font2;
+          font-weight: bold;
+        }
+        .name, .surname, .phone,
+        .email, .std_id, .tdr_id, .name2, .surname2, .photo2,
+        .phone2, .acad, .acad2, .email2 {
+          border: 1.5px solid $color1;
+          border-radius: 5px;
+          height: 35px;
+          padding-left: 5px;
+          color: $color1;
+          font-family: $font2;
+        }
+        .custom-file-upload {
+          border: 1.5px solid $color1;
+          border-radius: 5px;
+          display: inline-block;
+          height: 35px;
+          padding-top: 4px;
+          cursor: pointer;
+          width: 180px;
+          margin-bottom: 0;
+          &:hover {
+            color: $color2;
+            border-color: $color2;
+          }
+          .fa-cloud-upload-alt {
+            text-align: left !important;
+            margin-right: 10px;
+            margin-left: -20px;
+          }
+          font-family: $font2;
+        }
+        .btn-default {
+          @include button;
+        }
+        .field {
+          margin-bottom: 25px !important;
+          a {
+            color: $color2;
+          }
+        }
+      }
+      @media(max-width: 575px) {
+        width: 20em;
+        #close6 {
+          left: 5px;
+          margin-top: -30px;
+        }
+        h4 {
+          margin-top: 5px !important;
+          text-align: center;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
