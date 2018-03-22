@@ -2,6 +2,7 @@ from django.core.validators import MaxValueValidator
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import AbstractUser
 
 
@@ -114,9 +115,49 @@ class StudentFileUpload(models.Model):
 
 
 class User(AbstractUser):
-    is_student = models.BooleanField(default=False)
-    is_teacher = models.BooleanField(default=False)
+    USER_TYPE_STUDENT = 0
+    USER_TYPE_TEACHER = 1
+    USER_TYPE_ADMIN = 2
+    USER_TYPE_CHOICES = (
+        (USER_TYPE_STUDENT, 'student'),
+        (USER_TYPE_TEACHER, 'teacher'),
+        (USER_TYPE_ADMIN, 'admin'),
+    )
+    user_type = models.IntegerField(choices=USER_TYPE_CHOICES, default=USER_TYPE_STUDENT)
 
+    @property
+    def is_admin(self):
+        return self.user_type == self.USER_TYPE_ADMIN
+
+    @property
+    def is_student(self):
+        return self.user_type == self.USER_TYPE_STUDENT
+
+    @property
+    def is_teacher(self):
+        return self.user_type == self.USER_TYPE_TEACHER
+
+    def get_student_data(self):
+        try:
+            return StudentData.objects.get(student_ID=self.student.student_ID)
+        except StudentData.DoesNotExist:
+            return None
+
+    def get_teacher_data(self):
+        try:
+            return TeacherData.objects.get(teacher_ID=self.teacher.teacher_ID)
+        except TeacherData.DoesNotExist:
+            return None
+
+    def get_courses(self):
+        if self.is_admin:
+            return Course.objects.none()
+        if self.is_student:
+            qs = Course.objects.filter(student=self.get_student_data())
+        if self.is_teacher:
+            teacher = self.get_teacher_data()
+            qs = Course.objects.filter(Q(teacher1=teacher)|Q(teacher2=teacher))
+        return qs.order_by('name')
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
@@ -153,32 +194,32 @@ class Teacher(models.Model):
         return self.surname
 
 
-class StudentData(models.Model):
+class UserData(models.Model):
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=50)
-    student_ID = models.CharField(unique=True, max_length=14)
     notes = models.CharField(max_length=255, blank=True)
 
     class Meta:
-        verbose_name = "Student Data"
-        verbose_name_plural = "Students Data"
+        abstract = True
 
     def __str__(self):
         return self.surname
 
 
-class TeacherData(models.Model):
-    name = models.CharField(max_length=30)
-    surname = models.CharField(max_length=50)
+class StudentData(UserData):
+    student_ID = models.CharField(unique=True, max_length=14)
+
+    class Meta:
+        verbose_name = "Student Data"
+        verbose_name_plural = "Students Data"
+
+
+class TeacherData(UserData):
     teacher_ID = models.CharField(unique=True, max_length=14)
-    notes = models.CharField(max_length=255, blank=True)
 
     class Meta:
         verbose_name = "Teacher Data"
         verbose_name_plural = "Teachers Data"
-
-    def __str__(self):
-        return str(self.surname)
 
 
 class Notification(models.Model):

@@ -1,10 +1,6 @@
-from courses.models import (
-    User, Department, Notification, Student, Teacher, TeacherData, StudentData,
-    Course, Faculty, Lecture, StudentFileUpload, FileUpload, StudyProgramme
-)
-
+from courses.models import *
 from django.contrib import admin
-
+from django.contrib.auth.admin import UserAdmin
 admin.site.register(Department)
 admin.site.register(Notification)
 
@@ -24,6 +20,9 @@ class UserAdmin(admin.ModelAdmin):
         TeacherInline
     ]
 
+    def get_fieldsets(self, request, obj=None):
+        return super(UserAdmin, self).get_fieldsets(request, obj)
+
 
 class StudentUser(User):
     class Meta:
@@ -42,7 +41,7 @@ class StudentUserAdmin(admin.ModelAdmin):
     ]
 
     def get_queryset(self, request):
-        return User.objects.filter(is_student=True)
+        return User.objects.filter(user_type=User.USER_TYPE_STUDENT)
 
 
 @admin.register(TeacherUser)
@@ -52,7 +51,7 @@ class TeacherUserAdmin(admin.ModelAdmin):
     ]
 
     def get_queryset(self, request):
-        return User.objects.filter(is_teacher=True)
+        return User.objects.filter(user_type=User.USER_TYPE_TEACHER)
 
 
 class StudyProgrammeAdmin(admin.ModelAdmin):
@@ -127,3 +126,4 @@ class TeacherDataAdmin(admin.ModelAdmin):
 
 
 admin.site.register(TeacherData, TeacherDataAdmin)
+admin.site.site_header = 'EVE Administration'

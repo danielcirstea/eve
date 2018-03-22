@@ -8,12 +8,12 @@ from django.shortcuts import get_object_or_404
 from django.forms.models import inlineformset_factory
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.views.generic.edit import FormView
 from django.contrib import messages
 from .forms import LectureForm, NotificationForm, StudentFileForm
 from .models import *
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # main courses page view
@@ -22,8 +22,8 @@ def index(request):
     query_list = Course.objects.all().order_by('name')
     query = request.GET.get('q')
     if query:
-        query_list = query_list.filter(Q(name__icontains=query))
-    paginator = Paginator(query_list, 2)
+        query_list = query_list.filter(Q())
+    paginator = Paginator(query_list, 20)
     page = request.GET.get('page')
     try:
         courses = paginator.page(page)
@@ -81,14 +81,16 @@ class CourseFormView(LoginRequiredMixin, FormView):
     def get_context_data(self, *args, **kwargs):
         data = super(CourseFormView, self).get_context_data(**kwargs)
         user = self.request.user
-        student_data = StudentData.objects.get(student_ID=self.request.user.student.student_ID)
+        if user.is_student:
+            student_data = user.get_student_data()
+            data['students'] = student_data
         data['object'] = self.get_object()
         data['show_form'] = self.can_update(user) and data['object'].allow_upload
         data['lectures'] = data['object'].lectures.order_by('lecture_category')
         data['course'] = data['object']
         data['teachers'] = TeacherData.objects.all()
         data['teachers2'] = Teacher.objects.all()
-        data['students'] = student_data
+
         return data
 
 
@@ -99,7 +101,7 @@ def faculty_filter(request, slug):
     query = request.GET.get('q')
     if query:
         query_list = query_list.filter(Q(name__icontains=query))
-    paginator = Paginator(query_list, 1)
+    paginator = Paginator(query_list, 20)
     page = request.GET.get('page')
     try:
         courses = paginator.page(page)
@@ -124,7 +126,7 @@ def study_programme_filter(request, slug):
     query = request.GET.get('q')
     if query:
         query_list = query_list.filter(Q(name__icontains=query))
-    paginator = Paginator(query_list, 1)
+    paginator = Paginator(query_list, 20)
     page = request.GET.get('page')
     try:
         courses = paginator.page(page)
@@ -191,11 +193,12 @@ def classroom(request):
         formset = FileFormset(prefix='files')
         form2 = NotificationForm(user=request.user.teacher, prefix='form2')
     form3 = NotificationForm(user=request.user.teacher, prefix='form3')
-    teacher_data = TeacherData.objects.get(teacher_ID=request.user.teacher.teacher_ID)
+
+    teacher_data = request.user.get_teacher_data()
 
     context = {
         'teacher_data': teacher_data,
-        'courses': Course.objects.filter(Q(teacher1=teacher_data) | Q(teacher2=teacher_data)),
+        'courses': request.user.get_courses(),
         'lectures': Lecture.objects.all(),
         'form1': form1,
         'form2': form2,
@@ -229,7 +232,7 @@ class StudentFileUploadUpdate(generic.RedirectView):
         try:
             return getattr(self, action)()
         except AttributeError:
-            raise 404
+            raise PermissionDenied()
 
     def get_object(self):
         return get_object_or_404(StudentFileUpload, pk=self.kwargs['pk'])
@@ -284,7 +287,7 @@ def my_courses(request):
     if not request.user.is_student:
         raise PermissionDenied()
     context = {
-        'courses': Course.objects.all().order_by('name'),
+        'courses': request.user.get_courses(),
         'faculties': Faculty.objects.all(),
         'departments': Department.objects.all(),
         'studies': StudyProgramme.objects.all(),

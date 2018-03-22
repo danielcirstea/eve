@@ -51,35 +51,35 @@
                     <h4>Lectures</h4>
                     <hr>
                     {% with crs_stud=course.student.all %}
-                        {% if students in crs_stud %}
-
+                        {% if students in crs_stud or user.is_teacher or user.is_superuser %}
                             <!-- the upload form -->
-                            {% if show_form %}
-                                <form method="POST" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <h3>Attend the file submission.</h3>
-                                    <label id="file" for="file-upload" class="custom-file-upload">
-                                        <i class="fas fa-cloud-upload-alt"></i> File Upload
-                                    </label><br>
-                                    <span class="selected" id="file-selected"></span>
-                                    <input id="file-upload" name='files' type="file" style="display:none"/>
-                                    {% if form.files.errors %}
-                                        {% for error in form.files.errors %}
-                                            <div style="border:none; background: transparent; padding:0; margin:0;"
-                                                 class="alert alert-danger">
-                                                <strong>{{ error|escape }}</strong>
-                                            </div>
-                                        {% endfor %}
-                                    {% endif %}
-                                    <p class="field"> {{ form.comment }} </p>
-                                    <button class="btn btn-default" type="submit">Submit</button>
-                                </form>
+                            {% if user.is_student %}
+                                {% if show_form %}
+                                    <form method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <h3>Attend the file submission.</h3>
+                                        <label id="file" for="file-upload" class="custom-file-upload">
+                                            <i class="fas fa-cloud-upload-alt"></i> File Upload
+                                        </label><br>
+                                        <span class="selected" id="file-selected"></span>
+                                        <input id="file-upload" name='files' type="file" style="display:none"/>
+                                        {% if form.files.errors %}
+                                            {% for error in form.files.errors %}
+                                                <div style="border:none; background: transparent; padding:0; margin:0;"
+                                                     class="alert alert-danger">
+                                                    <strong>{{ error|escape }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <p class="field"> {{ form.comment }} </p>
+                                        <button class="btn btn-default" type="submit">Submit</button>
+                                    </form>
+                                {% endif %}
                             {% endif %}
 
                             <!-- the upload form end -->
 
                             <!-- lectures and content -->
-
                             <ul>
                                 {% for category in category_list %}
                                     <strong id="grouper">

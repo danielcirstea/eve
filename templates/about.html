@@ -1,10 +1,47 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    {% block style %}
+        <link href="{% static "sass/guide.css" %}" rel="stylesheet">
+    {% endblock %}
+    <title>{% block title %}About{% endblock %}</title>
 </head>
 <body>
-
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h2>
+                        About
+                    </h2>
+                    <hr>
+                    <h4>1. General information</h4>
+                    <p>
+                        The E-learning Virtual Environment was made by Daniel Cirstea using the latest
+                        and most efficient web technologies. It was built on the Python Programming Language
+                        and the Django framework. This way, was ensured that the app is a highly secure one and
+                        does its job in a fast and simple way.
+                        It was also made from a student perspective and provides an attractive design.
+                    </p>
+                    <h4>2. Facts about EVE</h4>
+                    <p>
+                        1. The development process took approximately 11 weeks. <br>
+                        2. It rivals Moodle and as well as other learning platforms because of its
+                        security.<br>
+                        3. It is the first e-learning platform developed with Python.<br>
+                        4. The idea of building something like this I had it since the summer of 2017. <br>
+                        5. EVE is actually the first web application I ever made from scratch.<br>
+                        <br>
+                        <span style="color: #06AD7F">Special thanks to my teacher, Conf. Univ. Dr. Doru Popescu Anastasiu,
+                            University of Pite&#x219;ti, Romania. <span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 </body>
 </html>

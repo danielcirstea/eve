@@ -33,7 +33,7 @@ def student_register(request):
             surname = cd2["surname"]
             email = cd2["email"]
             new_user = User.objects.create_user(username, password=password, first_name=name,
-                                                last_name=surname, email=email, is_student=True)
+                                                last_name=surname, email=email, user_type=User.USER_TYPE_STUDENT)
             Student.objects.create(user=new_user, name=name, surname=surname,
                                    student_ID=student_id, email=email, phone=phone, photo=photo)
             new_user.save()
@@ -69,7 +69,7 @@ def teacher_register(request):
             name = cd2['name']
             surname = cd2['surname']
             new_user = User.objects.create_user(username, password=password, first_name=name,
-                                                last_name=surname, email=email, is_teacher=True)
+                                                last_name=surname, email=email, user_type=User.USER_TYPE_TEACHER)
             Teacher.objects.create(user=new_user, name=name, surname=surname, academic_title=academic_title,
                                    email=email, teacher_ID=teacher_id, phone=phone,
                                    photo=photo)

@@ -68,7 +68,8 @@
                                 {% for lecture in lectures %}
                                     {% if lecture.course == course %}
                                         <li>
-                                            <p>Lecture: {{ lecture.lecture_title }}</p>
+                                            <p>Lecture: {{ lecture.lecture_title }}
+                                               </p>
                                             <form action="{% url 'courses:lecture_delete' lecture.pk %}"
                                                   method="post">
                                                 {% csrf_token %}
@@ -196,7 +197,6 @@
         </div>
         <script>
             $('[id^="id_files-"]').bind('change', function () {
-
                 var fileName = '';
                 fileName = $(this).val();
                 $('#'+this.id).prev().html('File selected.');
