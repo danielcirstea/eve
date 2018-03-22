@@ -258,7 +258,7 @@ def enroll(request, slug):
     query = request.GET.get('q')
     if query:
         query_list = query_list.filter(Q(name__icontains=query))
-    paginator = Paginator(query_list, 2)
+    paginator = Paginator(query_list, 20)
     page = request.GET.get('page')
     try:
         students = paginator.page(page)
