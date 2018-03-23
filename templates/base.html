@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    {% block style %}
+        <link href="{% static 'sass/base.css' %}" rel="stylesheet">
+    {% endblock %}
+    <link rel="icon" href="{% static "images/favicon.png" %}" type="image">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %} E-learning Virtual Environment{% endblock %}</title>
+</head>
+<body>
+{% block navigation %}
+
+    <!-- Navigation header open -->
+
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            {% if user.is_authenticated %}
+                {% if user.is_student %}
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                        <a href="{% url "my_courses" %}">My Courses</a>
+                        <a href="{% url "guide" %}">Guide</a>
+                        <a href="{% url "about" %}">About</a>
+                    </div>
+                    <span style="font-size:30px;cursor:pointer" onclick="openNav()"><i class="fas fa-bars"></i> </span>
+                {% elif user.is_teacher %}
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                        <a href="{% url "classroom" %}">Classroom</a>
+                        <a href="{% url "guide" %}">Guide</a>
+                        <a href="{% url "about" %}">About</a>
+                    </div>
+                    <span style="font-size:30px;cursor:pointer" onclick="openNav()"><i class="fas fa-bars"></i> </span>
+                {% else %}
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                        <a href="{% url "guide" %}">Guide</a>
+                        <a href="{% url "about" %}">About</a>
+                    </div>
+                    <span style="font-size:30px;cursor:pointer" onclick="openNav()"><i class="fas fa-bars"></i> </span>
+                {% endif %}
+            {% else %}
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    <a href="{% url "guide" %}">Guide</a>
+                    <a href="{% url "about" %}">About</a>
+                </div>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()"><i class="fas fa-bars"></i> </span>
+            {% endif %}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fas fa-angle-double-down"></span>
+            </button>
+            <a class="navbar-brand text-center center-block" href="{% url "index" %}"><img
+                    src="{% static "images/logo.png" %}"></a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated and user.is_student %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle user-action" data-toggle="dropdown" href="#"><i
+                                    class="fas fa-bell"></i>
+                                {% for note in notifications %}
+                                    {% if forloop.first %}
+                                        <span class="badge">{{ forloop.revcounter }} </span>
+                                    {% endif %}
+                                {% empty %}
+                                    <span></span>
+                                {% endfor %}
+                                <p id="bell" style="display: none;" class="show-detail">Notifications
+                                    {% for note in notifications %}
+                                        {% if forloop.first %}
+                                            <span style="color:red"> &nbsp;{{ forloop.revcounter }} </span>
+                                            <i class="fas fa-caret-down"></i> {% endif %}
+                                    {% endfor %}</p></a>
+                            {% for note in notifications %}
+                                {% if note %}
+                                    {% if forloop.first %}
+                                        <ul class="dropdown-menu dropdown2">
+                                            {% for note in notifications %}
+                                                <li>
+                                                    <a href="{% url "my_courses" %}" class="dropdown-item">
+                                                 <span style="color:#d00000;">
+                                                   <i class="fas fa-exclamation-circle"></i> {{ note.notification }}
+                                                 </span>
+                                                        <br>
+                                                        <span style="color:white; margin-left:10px;">
+                                                            {{ note.course.teacher1.name }}
+                                                            {{ note.course.teacher1.surname }}</span>
+                                                    </a>
+                                                </li>
+                                                {% if not forloop.last %}
+                                                    <li style="margin-top: 30px;" class="divider dropdown-divider"></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </li>
+                    {% endif %}
+                    <li class="nav-item dropdown">
+                        {% if user.is_authenticated %}
+                            {% if user.is_student %}
+                                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img
+                                        src="{{ user.student.photo.url }}" class="avatar"
+                                        alt="Avatar">
+                                    <p class="show-detail"
+                                       style="display: none;">{{ user.student.name }} {{ user.student.surname }}
+                                    </p><i style="margin-left:5px;" class="fas fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url "courses:index" %}" class="dropdown-item"><i
+                                            class="fas fa-graduation-cap"></i>Courses</a>
+                                    </li>
+                                    <li><a href="{% url "profile_edit" %}" class="dropdown-item"><i
+                                            class="fas fa-user"></i>Edit
+                                        Profile</a>
+                                    </li>
+                                    <li><a href="{% url "password_reset" %}" class="dropdown-item">
+                                        <i style="margin-left:0 !important;" class="fas fa-key"></i>New Password
+                                    </a>
+                                    </li>
+                                    <li class="divider dropdown-divider"></li>
+                                    <li><a href="{% url "logout" %}" class="dropdown-item"><i
+                                            class="fas fa-sign-out-alt"></i>Log
+                                        Out</a>
+                                    </li>
+                                </ul>
+                            {% elif user.is_teacher %}
+                                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img
+                                        src="{{ user.teacher.photo.url }}" class="avatar"
+                                        alt="Avatar">
+                                    <p class="show-detail"
+                                       style="display: none;">{{ user.teacher.name }} {{ user.teacher.surname }}
+                                    </p><i style="margin-left:5px;" class="fas fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url "courses:index" %}" class="dropdown-item"><i
+                                            class="fas fa-graduation-cap"></i>Courses</a>
+                                    </li>
+                                    <li><a href="{% url "profile_edit" %}" class="dropdown-item"><i
+                                            class="fas fa-user"></i>Edit
+                                        Profile</a>
+                                    </li>
+                                    <li><a href="{% url "password_reset" %}" class="dropdown-item">
+                                        <i style="margin-left:0 !important;" class="fas fa-key"></i>New Password
+                                    </a>
+                                    </li>
+                                    <li class="divider dropdown-divider"></li>
+                                    <li><a href="{% url "logout" %}" class="dropdown-item"><i
+                                            class="fas fa-sign-out-alt"></i>Log
+                                        Out</a>
+                                    </li>
+                                </ul>
+                            {% else %}
+                                <a style="cursor: pointer;" data-toggle="dropdown"
+                                   class="nav-link dropdown-toggle user-action"><img
+                                        src="{% static "images/profile.png" %}" class="avatar"
+                                        alt="Avatar">
+                                    <p class="show-detail"
+                                       style="display: none;">{{ user.username }}
+                                    </p><i style="margin-left:5px;" class="fas fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url "courses:index" %}" class="dropdown-item"><i
+                                            class="fas fa-graduation-cap"></i>Courses</a>
+                                    </li>
+                                    <li class="divider dropdown-divider"></li>
+                                    <li><a href="{% url "logout" %}" class="dropdown-item"><i
+                                            class="fas fa-sign-out-alt"></i>Log
+                                        Out</a>
+                                    </li>
+                                </ul>
+                            {% endif %}
+                        {% else %}
+                            <a style="cursor: pointer;" data-toggle="dropdown"
+                               class="nav-link dropdown-toggle user-action"><img
+                                    src="{% static "images/profile.png" %}" class="avatar"
+                                    alt="Avatar">
+                                <p class="show-detail"
+                                   style="display: none;">Guest
+                                </p><i style="margin-left:5px;" class="fas fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url "login" %}" class="dropdown-item"><i
+                                        class="fas fa-user"></i>Log In</a>
+                                </li>
+                                <li><a href="{% url "student_signup" %}" class="dropdown-item"><i
+                                        class="fas fa-user-plus"></i>Sign Up</a>
+                                </li>
+                                <li class="divider dropdown-divider"></li>
+                                <li><a href="{% url "password_reset" %}" class="dropdown-item">
+                                    <i class="fas fa-key"></i>Can't log in ?
+                                </a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Navigation header end -->
+{% endblock %}
+{% block content %}
+
+    <!-- main content start -->
+
+    <main>
+        {% if user.is_authenticated %}
+            <div class="container-fluid">
+                <div class="row centered-div">
+                    {% if user.is_student %}
+                        <h1 class="text-center"><span>WELCOME, {{ user.student.name }}!</span> <br>
+                            "A student of life considers the world a classroom."
+                        </h1>
+                    {% elif user.is_teacher %}
+                        <h1 class="text-center"><span>WELCOME, {{ user.teacher.name }}!</span> <br>
+                            “Teaching is the greatest act of optimism.”
+
+                        </h1>
+                    {% else %}
+                        <h1 class="text-center"><span>WELCOME,</span> ADMIN !</h1>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="container-fluid">
+                <div class="row centered-div">
+                    <h1 class="text-center"><span>WELCOME TO EVE</span><br>
+                        E-learning Virtual Environment</h1><br>
+                    <a href="{% url "login" %}">
+                        <button class="btn-default login">Log In</button>
+                    </a>
+                    <a class="cd-signup" href="{% url "student_signup" %}">
+                        <button class="btn-default login">Sign Up</button>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </main>
+      <!-- main content end -->
+{% endblock %}
+</body>
+</html>

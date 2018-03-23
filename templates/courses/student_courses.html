@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    {% block style %}
+        <link href="{% static 'sass/index.css' %}" rel="stylesheet">
+    {% endblock %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Courses{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="jumbotron" style="">
+                    {% if user.is_student %}
+                        <h4>My courses</h4>
+                        <br>
+
+                        <!-- individual student courses-->
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">ECTS</th>
+                                <th scope="col">Studies</th>
+                                <th scope="col">Teacher</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for course in courses %}
+                                {% with crs_stud=course.student.all %}
+                                    {% for student in students %}
+                                        {% if student in crs_stud %}
+                                            <tr>
+                                                <td>
+                                                    <a href="{% url 'courses:courses' slug=course.slug %}">
+                                                        <i class="fas fa-arrow-circle-right"></i>{{ course.name }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'courses:courses' slug=course.slug %}">
+                                                        {{ course.ects }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'courses:courses' slug=course.slug %}">
+                                                        {{ course.study_programme }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'courses:courses' slug=course.slug %}">
+                                                        {% for tch in teachers %}
+                                                            {% if course.teacher1.teacher_ID == tch.teacher_ID %}
+                                                                {{ tch.academic_title }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        {{ course.teacher1.name }}<br>
+                                                        {{ course.teacher1.surname }}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endwith %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="text-xs-center">
+                            <div class="pagination text-center">
+                            <span class="step-links">
+                             {% if courses.has_previous %}
+                                 <a href="?page=1"><< FIRST</a>
+                                 <a href="?page={{ courses.previous_page_number }}">PREVIOUS</a>
+                             {% endif %}
+                                <span class="current">
+                              {{ courses.number }}
+                               </span>
+                                {% if courses.has_next %}
+                                    <a href="?page={{ courses.next_page_number }}">NEXT</a>
+                                    <a href="?page={{ courses.paginator.num_pages }}">LAST >></a>
+                                {% endif %}
+                          </span>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.btnClick').on('click', function () {
+                var faculty_id = $(this).attr('id');
+                $('#' + faculty_id + '_tab').show().siblings('div').hide();
+            });
+        });
+    </script>
+{% endblock %}
+</body>
+</html>

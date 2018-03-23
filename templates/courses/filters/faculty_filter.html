@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% extends 'courses/index.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Courses{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+
+    <!-- the courses sorted by faculty -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3">
+                <div class="jumbotron">
+                    <form method="GET" action="">
+                        <input name="q" value="{{ request.GET.q }}" placeholder="Search course...">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <hr>
+                    <br>
+                    <ul>
+                        <li style="margin-bottom:10px; font-weight:bold;"><a href="{% url "courses:index" %}">All
+                            Courses</a></li>
+                        {% for faculty in faculties2 %}
+                            {% for department in faculty.department_set.all %}
+                                <li>
+                                    <a href="{% url 'courses:faculty_filter' slug=faculty.slug %}">
+                                        {% for fac in faculties %}
+                                            {% if faculty.slug == fac.slug %}
+                                                <i class="fas fa-caret-down"></i>
+                                            {% else %}
+                                                <i class="fas fa-caret-right"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{ faculty.name }}
+                                    </a>
+                                </li>
+                                {% for study in department.studyprogramme_set.all %}
+                                    {% for fac in faculties %}
+                                        {% if faculty == fac %}
+                                            <ul>
+                                                <li>
+                                                    <a href="{% url 'courses:study_programme_filter' slug=study.slug %}">
+                                                        <i class="fas fa-caret-right"></i>{{ study.name }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                                <br>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-9">
+                <div class="jumbotron">
+                    {% for faculty in faculties %}
+                        <h4> {{ faculty.name }} courses</h4>
+                        <br>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">ECTS</th>
+                                <th scope="col">Studies</th>
+                                <th scope="col">Teacher</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for course in courses %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'courses:courses' slug=course.slug %}">
+                                            <i class="fas fa-arrow-circle-right"></i>{{ course.name }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'courses:courses' slug=course.slug %}">
+                                            {{ course.ects }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'courses:courses' slug=course.slug %}">
+                                            {{ course.study_programme }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'courses:courses' slug=course.slug %}">
+                                            {{ course.teacher1 }}
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td>
+                                        <h5 style="color: #06AD7F;"> No courses yet.</h5>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="text-xs-center">
+                            <div class="pagination text-center">
+                            <span class="step-links">
+                             {% if courses.has_previous %}
+                                 <a href="?page=1"><< FIRST</a>
+                                 <a href="?page={{ courses.previous_page_number }}">PREVIOUS</a>
+                             {% endif %}
+                                <span class="current">
+                              {{ courses.number }}
+                               </span>
+                                {% if courses.has_next %}
+                                    <a href="?page={{ courses.next_page_number }}">NEXT</a>
+                                    <a href="?page={{ courses.paginator.num_pages }}">LAST >></a>
+                                {% endif %}
+                             </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.btnClick').on('click', function () {
+                var faculty_id = $(this).attr('id');
+                $('#' + faculty_id + '_tab').show().siblings('div').hide();
+            });
+        });
+    </script>
+{% endblock %}
+</body>
+</html>

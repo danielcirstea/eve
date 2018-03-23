@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+    <link href="{% static "sass/courses.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}{{ course.name }}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="jumbotron">
+                    <h4>About this course</h4>
+                    <hr>
+
+                    <!-- course information -->
+
+                    <ul class="left-menu">
+                        <li><span>Name:</span> {{ course.name }}</li>
+                        <li><span>Study Programme:</span> {{ course.study_programme }}</li>
+                        <li><span>ECTS:</span> {{ course.ects }}</li>
+                        <li><span>Year:</span> {{ course.year }}</li>
+                        <li><span>Semester:</span> {{ course.semester }}</li>
+                        {% for teacher in teachers %}
+                            {% if course.teacher1 == teacher %}
+                                <li><span>Course Teacher:</span>
+                                    {% for tch in teachers2 %}
+                                        {% if tch.teacher_ID == teacher.teacher_ID %}
+                                            {{ tch.academic_title }}
+                                        {% endif %}
+                                    {% endfor %}{{ teacher.name }} {{ teacher.surname }}</li>
+                            {% endif %}
+                            {% if course.teacher2 == teacher %}
+                                <li><span>Seminar Teacher:</span>  {% for tch in teachers2 %}
+                                    {% if tch.teacher_ID == teacher.teacher_ID %}
+                                        {{ tch.academic_title }}
+                                    {% endif %}
+                                {% endfor %}{{ teacher.name }} {{ teacher.surname }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <!-- course information end -->
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="jumbotron">
+                    {% regroup lectures by get_lecture_category_display as category_list %}
+                    <h4>Lectures</h4>
+                    <hr>
+                    {% with crs_stud=course.student.all %}
+                        {% if students in crs_stud or user.is_teacher or user.is_superuser %}
+                            <!-- the upload form -->
+                            {% if user.is_student %}
+                                {% if show_form %}
+                                    <form method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <h3>Attend the file submission.</h3>
+                                        <label id="file" for="file-upload" class="custom-file-upload">
+                                            <i class="fas fa-cloud-upload-alt"></i> File Upload
+                                        </label><br>
+                                        <span class="selected" id="file-selected"></span>
+                                        <input id="file-upload" name='files' type="file" style="display:none"/>
+                                        {% if form.files.errors %}
+                                            {% for error in form.files.errors %}
+                                                <div style="border:none; background: transparent; padding:0; margin:0;"
+                                                     class="alert alert-danger">
+                                                    <strong>{{ error|escape }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <p class="field"> {{ form.comment }} </p>
+                                        <button class="btn btn-default" type="submit">Submit</button>
+                                    </form>
+                                {% endif %}
+                            {% endif %}
+
+                            <!-- the upload form end -->
+
+                            <!-- lectures and content -->
+                            <ul>
+                                {% for category in category_list %}
+                                    <strong id="grouper">
+                                        <i class="fas fa-angle-right"></i> {{ category.grouper }}
+                                    </strong>
+                                    <ul>
+                                        {% for c in category.list %}
+                                            <div class="title">
+                                                <p>Lecture {{ forloop.counter }}: <span>{{ c.lecture_title }}</span>
+                                                </p>
+                                                <br>
+                                            </div>
+                                            <div id="lecture-hide" style="display: none;">
+                                                <br>
+                                                <li><h5>{{ c.lecture_title }}</h5></li>
+                                                <li><p>{{ c.content }}</p></li>
+                                                {% for file in c.files.all %}
+                                                    {% if file.files %}
+                                                        {% if forloop.first %}
+                                                            <p id="files">Lecture files:</p>
+                                                        {% endif %}
+                                                        <li><a class="media" download
+                                                               href='{{ MEDIA_URL }}{{ file.files.url }}'><i
+                                                                class="fas fa-download"></i>{{ file.files.name }}
+                                                        </a>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                <br>
+                                            </div>
+                                        {% endfor %}
+                                    </ul>
+                                {% endfor %}
+                            </ul>
+
+                            <!-- lectures and content end-->
+
+                        {% else %}
+                            You are not enrolled in this course.
+                        {% endif %}
+
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('div.title').click(function () {
+            $(this).next().toggle();
+        });
+        $('#file-upload').bind('change', function () {
+            var fileName = '';
+            fileName = $(this).val();
+            $('#file-selected').html(fileName.split(/(\\|\/)/g).pop());
+        });
+    </script>
+{% endblock %}
+</body>
+</html>

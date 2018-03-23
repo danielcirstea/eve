@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block style %}
+        <link href="{% static "sass/classroom.css" %}" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="{% static "js/main.js" %}"></script>
+    {% endblock %}
+    <title>{% block title %}Classroom{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+    {% if user.is_teacher %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-2">
+
+                    <!--teacher options -->
+
+                    <div class="jumbotron">
+                        <h4>Options</h4>
+                        <hr style="margin-bottom:20px;">
+                        <button class="btn btn-default menu1 center-block">My Courses</button>
+                        <button class="btn menu2 btn-default">Add Lecture</button>
+                        <button class="btn menu3 btn-default">Delete Lecture</button>
+                        <button id="btn2" class="btn menu6 btn-default">Create Upload</button>
+                        <button id="btn2" class="btn menu4 btn-default">Files Submitted</button>
+                        <button id="btn2" class="btn menu5 btn-default">Notifications</button>
+
+                        <!--teacher options end-->
+
+                    </div>
+                </div>
+                <div class="col-xl-10">
+                    <div class="jumbotron">
+                        <h4>Classroom</h4>
+                        <hr>
+                        <!-- teacher courses -->
+                        <ul class="enroll">
+                            <p style="margin-bottom: 20px; margin-left:-30px;" class="messages">
+                                {% for message in messages %}
+                                    <span {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                {{ message }}
+                                </span>
+                                {% endfor %}
+                            </p>
+                            {% for course in courses %}
+                                <div class="title">
+                                    <p>
+                                        <a href="{% url 'enroll' slug=course.slug %}">
+                                            {{ course.name }}:<span> Enroll/Disenroll Students </span>
+                                        </a>
+                                    </p>
+                                </div>
+                            {% endfor %}
+                        </ul>
+
+                        <!-- teacher courses end -->
+
+                        <!-- lectures delete -->
+
+                        <ul class="lectures" style="display: none;">
+                            {% for course in courses %}
+                                <h5><i class="fas fa-angle-right"></i>{{ course.name }}</h5>
+                                {% for lecture in lectures %}
+                                    {% if lecture.course == course %}
+                                        <li>
+                                            <p>Lecture: {{ lecture.lecture_title }}
+                                               </p>
+                                            <form action="{% url 'courses:lecture_delete' lecture.pk %}"
+                                                  method="post">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+
+                        <!-- lectures delete end -->
+
+                        <!-- adding lectures -->
+
+                        <form style="display: none" method="post" class="form2" action="{% url "classroom" %}"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h5 style="text-align: center; margin-bottom:20px;">ADD LECTURE</h5>
+                            {{ form1.course }}<br>
+                            {{ form1.lecture_category }}<br>
+                            {{ form1.lecture_title }}<br>
+                            {{ form1.content }}<br>
+                            {{ formset.management_form }}
+                            {% for form in formset %}
+                                <label id="file" for="{{ form.files.id_for_label }}" class="custom-file-upload">
+                                    <i class="fas fa-cloud-upload-alt"></i> File Upload
+                                </label><br>
+                                <span class="selected" data-selected=""></span>
+                                {{  form.files }} <br>
+                            {% endfor %}
+                            <br>
+                            <button class="btn btn-default btn2" type="submit">Add</button>
+                        </form>
+
+                        <!-- adding lectures end -->
+
+                        <!-- student uploads -->
+
+                        <div class="all-uploads" style="display: none;">
+                            {% for course in courses %}
+                                <h5><i class="fas fa-angle-right"></i>{{ course.name }}</h5>
+                                <br>
+                                {% for upload in uploads %}
+                                    {% if upload.course == course %}
+                                        <div class="uploads">
+                                            <p class="message">
+                                                <a href='{{ MEDIA_URL }}{{ upload.files.url }}'>
+                                                    <i class="fas fa-download"></i> {{ upload.files }}</a></p>
+                                            <br>
+                                            <p class="message">Message: {{ upload.comment }}
+                                            <p class="message"> Uploaded
+                                                By: {{ upload.user.student.name }} {{ upload.user.student.surname }}
+                                            <form class="form3" method="POST"
+                                                  action="{% url "courses:upload_update" upload.pk %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger" name="action"
+                                                        value="delete">DELETE
+                                                </button>
+                                                <button type="submit" class="btn btn-warning" name="action"
+                                                        value="show_again">SHOW AGAIN
+                                                </button>
+                                            </form>
+                                            <br>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+
+                        <!-- student uploads end -->
+
+                        <!-- active notifications and notifications delete -->
+
+                        <div class="not1">
+                            <form class="notifications not1" style="display: none;" action="{% url "classroom" %}"
+                                  method="POST">
+                                {% csrf_token %}
+                                <h5 style="text-align: center">Create Notification</h5>
+                                <p class="field">{{ form2.course }}</p>
+                                <p class="field">{{ form2.notification }}</p>
+                                <button class="btn btn-default" type="submit">Post</button>
+                            </form>
+                            <div class="delete-notes not1" style="display: none;">
+                                <h5><i class="fas fa-angle-right"></i>Active Notifications</h5>
+                                {% for note in notifications %}
+                                    <form method="POST" action="{% url "courses:not_delete" note.pk %}">
+                                        {% csrf_token %}
+                                        <b> {{ forloop.counter }}. {{ note.notification }} </b>
+                                        <button type="submit" class="btn btn-danger" value="DELETE">Delete</button>
+                                    </form>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- active notifications and notifications delete end -->
+
+                        <!-- submission opening -->
+
+                        <form class="notifications not2" style="display: none;" action="{% url "classroom" %}"
+                              method="POST">
+                            {% csrf_token %}
+                            <p class="messages">
+                                {% for message in messages %}
+                                    <span{% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+                                {% endfor %}
+                            </p>
+                            <h5 style="text-align: center">Open File Submission</h5>
+                            <p class="field">{{ form3.course }}</p>
+                            <button style="width:200px;" class="btn btn-default" type="submit" name="action"
+                                    value="activate_upload">Activate
+                                upload
+                            </button>
+                            <button style="width:200px;" class="btn btn-default" type="submit" name="action"
+                                    value="deactivate_upload">Deactivate
+                                upload
+                            </button>
+                        </form>
+
+                        <!-- submission opening end-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('[id^="id_files-"]').bind('change', function () {
+                var fileName = '';
+                fileName = $(this).val();
+                $('#'+this.id).prev().html('File selected.');
+            });
+        </script>
+    {% else %}
+        eee
+    {% endif %}
+{% endblock %}
+</body>
+</html>

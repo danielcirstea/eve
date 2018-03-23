@@ -1,0 +1,74 @@
+@import "header";
+
+/* Main website styling. */
+
+main {
+  .container-fluid {
+    .row {
+      @include center;
+      h1 {
+        margin-top: 3%;
+        color: $color2;
+        font-size: 3em;
+        font-family: $font1;
+        font-weight: bold;
+        line-height: 1.6;
+        span {
+          color: #fff;
+          font-weight: bold;
+        }
+      }
+      a {
+        margin: 4% auto !important;
+        .login {
+          &:hover {
+            cursor: pointer;
+            border: 1.5px solid $color1 !important;
+            color: $color1;
+            background-color: $color2 !important;
+          }
+          background-color: $color1 !important;
+          border-color: $color2 !important;
+          box-shadow: none;
+          padding: 10px;
+          width: 250px;
+          border: 1.3px solid;
+          color: $color2;
+          font-family: $font2;
+          font-size: 20px;
+          margin: 4% auto;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .container-fluid {
+    .row {
+      @include center;
+      h1 {
+        font-size: 30px !important;
+      }
+      a {
+        .login {
+          padding:5px !important;
+          width: 150px !important;
+          font-size:18px !important;
+          margin-top:10px !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px ) and (min-width: 576px) {
+  .container-fluid {
+    .row {
+      @include center;
+      h1 {
+        margin-top:150px !important;
+      }
+    }
+  }
+}

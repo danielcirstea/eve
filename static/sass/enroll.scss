@@ -1,0 +1,103 @@
+@import 'header';
+
+body {
+  background: transparent;
+}
+
+/* Students enroll. */
+
+.container {
+  .jumbotron {
+    background-color: #fff;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    h4 {
+      text-transform: uppercase;
+      color: $color1;
+      text-align: center;
+      font-family: $font1;
+      font-weight: bold;
+      margin-top: -3%;
+      margin-bottom: 3%;
+    }
+    hr {
+      border-color: $color1;
+    }
+    #classroom {
+      /* Back to classroom.*/
+      text-transform: uppercase;
+      font-family: $font2;
+      font-weight: bold;
+      color: $color2;
+    }
+    #student-form {
+      margin-top: 30px;
+      text-align: left;
+      margin-bottom: 30px;
+      button {
+        @include button;
+        height: 30px;
+        padding: 0;
+        width: 50px;
+        vertical-align: top;
+        border-color: $color1;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        margin-right: -5px;
+      }
+      input {
+        border: 1.2px solid $color1;
+        height: 30px;
+        border-radius: 5px 0 0 5px;
+        vertical-align: middle;
+        margin-right: -5px;
+        padding-left: 5px;
+      }
+    }
+    .enroll {
+      /*  Student already enrolled.*/
+      text-align: center;
+      border: 1.5px solid $color1;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      padding-top: 10px;
+      padding-left: 5px;
+      height: 60px;
+      @media(max-width: 767px) {
+        height: 140px !important;
+      }
+      input {
+        margin-left: 10px;
+        @include button;
+        border-radius: 5px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    #enroll2 {
+      /*  Student not enrolled.*/
+      padding-top: 10px;
+      padding-left: 5px;
+      height: 60px !important;
+    }
+    .pagination {
+      justify-content: center;
+      margin-top: 5%;
+      margin-bottom: -2%;
+      font-size: 14px;
+      a {
+        font-family: $font2;
+        color: $color1;
+        font-weight: bold;
+        padding: 0 5px;
+      }
+      .current {
+        font-size: 16px;
+        font-family: $font1;
+        color: $color1;
+        font-weight: bold;
+      }
+    }
+  }
+}

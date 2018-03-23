@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Log In{% endblock %}</title>
+    {% block style %}
+        <link href="{% static "sass/registration.css" %}" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <a id="close" href="{% url "index" %}"><i class="fas fa-times"></i></a>
+                    <form class="login" method="POST">
+                        {% csrf_token %}
+                        <h4>Enter your credentials below</h4>
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <p class="field">{{ form.username }}</p>
+                        {% if form.username.errors %}
+                            {% for error in form.username.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <p class="field">{{ form.password }}</p>
+                        {% if form.password.errors %}
+                            {% for error in form.password.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <button class="btn btn-default" type="submit">Log In</button><br>
+                        <a id="forgot" href="{% url "password_reset" %}">Forgot your password ?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
