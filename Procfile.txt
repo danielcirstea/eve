@@ -1,1 +1,2 @@
 web: gunicorn eve.wsgi
+heroku ps:scale web=1
