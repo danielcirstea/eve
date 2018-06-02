@@ -181,6 +181,10 @@ body {
         border: 1.5px solid #212D3D;
         color: #212D3D;
         background-color: #06AD7F; }
+      @media (max-width: 1400px) {
+        .container-fluid .jumbotron .btn-default {
+          width: 120px !important;
+          font-size: 14px !important; } }
     .container-fluid .jumbotron h4 {
       color: #212D3D;
       font-family: "Montserrat", sans-serif;
@@ -240,14 +244,12 @@ body {
         margin-bottom: 20px;
         background-color: #06AD7F;
         border-radius: 5px; }
-        @media (max-width: 767px) {
+        @media (max-width: 575px) {
           .container-fluid .jumbotron .lectures li {
-            width: 40vmax;
-            margin-left: 0; } }
-        .container-fluid .jumbotron .lectures li p {
-          margin-left: 10px;
-          font-family: "Lato", sans-serif;
-          color: #fff; }
+            width: 45vmax;
+            height: 15vmax;
+            text-align: center;
+            margin-left: -10px !important; } }
         .container-fluid .jumbotron .lectures li form .btn-danger {
           vertical-align: middle;
           background-color: transparent;
@@ -261,6 +263,14 @@ body {
           margin-left: 80%; }
           .container-fluid .jumbotron .lectures li form .btn-danger:hover {
             color: red; }
+          @media (max-width: 575px) {
+            .container-fluid .jumbotron .lectures li form .btn-danger {
+              margin-left: 10px !important;
+              margin-top: -20px; } }
+        .container-fluid .jumbotron .lectures li form p {
+          margin-left: 10px;
+          font-family: "Lato", sans-serif;
+          color: #fff; }
     .container-fluid .jumbotron .form2 {
       /* Lecture adding. */
       margin: auto auto;
@@ -276,6 +286,8 @@ body {
         border-radius: 5px;
         margin-bottom: 10px;
         padding: 5px; }
+      .container-fluid .jumbotron .form2 .lec_title {
+        width: 180px; }
       .container-fluid .jumbotron .form2 .lec_cont {
         resize: none;
         border: 1.5px solid #212D3D;
@@ -311,8 +323,11 @@ body {
       margin-bottom: 20px; }
       @media (max-width: 1199px) {
         .container-fluid .jumbotron .uploads {
-          height: 20vmax; } }
+          height: 18vmax; } }
       @media (max-width: 767px) {
+        .container-fluid .jumbotron .uploads {
+          height: 25vmax; } }
+      @media (max-width: 575px) {
         .container-fluid .jumbotron .uploads {
           height: 30vmax; } }
       .container-fluid .jumbotron .uploads .form3 .btn-danger, .container-fluid .jumbotron .uploads .form3 .btn-warning {
@@ -335,6 +350,22 @@ body {
           color: #06AD7F;
           font-size: 18px;
           width: 200px; }
+        @media (max-width: 767px) {
+          .container-fluid .jumbotron .uploads .message {
+            display: none !important; } }
+    .container-fluid .jumbotron .message2 {
+      text-align: left;
+      margin-top: -10px; }
+      .container-fluid .jumbotron .message2 .fa-download {
+        font-size: 20px;
+        margin-right: 10px; }
+      .container-fluid .jumbotron .message2 a {
+        color: #06AD7F;
+        font-size: 18px;
+        width: 200px; }
+      @media (max-width: 767px) {
+        .container-fluid .jumbotron .message2 {
+          display: inline-block !important; } }
     .container-fluid .jumbotron .notifications {
       /* Main website styling. */
       border: 1.5px solid #212D3D;
@@ -344,7 +375,13 @@ body {
       margin: auto; }
       @media (max-width: 767px) {
         .container-fluid .jumbotron .notifications {
-          width: 30vmax; } }
+          width: 40vmax; }
+          .container-fluid .jumbotron .notifications .btn {
+            width: 150px !important; }
+          .container-fluid .jumbotron .notifications .not_crs {
+            width: 180px !important; }
+          .container-fluid .jumbotron .notifications .not_not {
+            width: 180px !important; } }
       .container-fluid .jumbotron .notifications h5 {
         margin-bottom: 30px; }
       .container-fluid .jumbotron .notifications .btn-default {

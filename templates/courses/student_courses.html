@@ -26,7 +26,7 @@
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">ECTS</th>
-                                <th scope="col">Studies</th>
+                                <th class="study-hide" scope="col">Studies</th>
                                 <th scope="col">Teacher</th>
                             </tr>
                             </thead>
@@ -46,7 +46,7 @@
                                                         {{ course.ects }}
                                                     </a>
                                                 </td>
-                                                <td>
+                                                <td class="study-hide">
                                                     <a href="{% url 'courses:courses' slug=course.slug %}">
                                                         {{ course.study_programme }}
                                                     </a>

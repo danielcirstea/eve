@@ -64,7 +64,7 @@ body {
         border-bottom-left-radius: 5px;
         border-top-left-radius: 5px;
         height: 30px;
-        width: 150px;
+        width: 60%;
         font-family: $font2;
         font-size: 16px;
         color: $color1;
@@ -131,5 +131,8 @@ body {
     ul li a {
       font-size: 15px !important;
     }
+  }
+  .study-hide{
+    display: none !important;
   }
 }

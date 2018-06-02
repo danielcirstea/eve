@@ -76,7 +76,7 @@
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">ECTS</th>
-                            <th scope="col">Studies</th>
+                            <th class="study-hide" scope="col">Studies</th>
                             <th scope="col">Teacher</th>
                         </tr>
                         </thead>
@@ -93,14 +93,20 @@
                                         {{ course.ects }}
                                     </a>
                                 </td>
-                                <td>
+                                <td class="study-hide">
                                     <a href="{% url 'courses:courses' slug=course.slug %}">
                                         {{ course.study_programme }}
                                     </a>
                                 </td>
                                 <td>
                                     <a href="{% url 'courses:courses' slug=course.slug %}">
-                                        {{ course.teacher1 }}
+                                        {% for tch in teachers %}
+                                            {% if course.teacher1.teacher_ID == tch.teacher_ID %}
+                                                {{ tch.academic_title }}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{ course.teacher1.name }}<br>
+                                        {{ course.teacher1.surname }}
                                     </a>
                                 </td>
                             </tr>

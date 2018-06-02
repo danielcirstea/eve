@@ -1,6 +1,7 @@
 from courses.models import *
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+
 admin.site.register(Department)
 admin.site.register(Notification)
 
@@ -74,7 +75,7 @@ admin.site.register(Faculty, FacultyAdmin)
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('name', 'ects', 'year', 'semester')
     prepopulated_fields = {'slug': ('name',)}
-    exclude = ('student',)
+    exclude = ('student', 'allow_upload')
 
 
 class StudentAdmin(admin.ModelAdmin):

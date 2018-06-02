@@ -21,6 +21,7 @@ urlpatterns = [
                   path('courses/', include('courses.urls')),
                   path('teacher/classroom/', courses_views.classroom, name='classroom'),
                   path('teacher/classroom/<slug:slug>/enroll/', courses_views.enroll, name='enroll'),
+                  path('teacher/classroom/<slug:slug>/disenroll/', courses_views.disenroll, name='disenroll'),
                   path('signup/student/', views.student_register, name='student_signup'),
                   path('signup/teacher/', views.teacher_register, name='teacher_signup'),
                   path('login/', auth_views.LoginView.as_view(template_name='registration/login.html',

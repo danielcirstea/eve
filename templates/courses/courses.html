@@ -24,6 +24,7 @@
                         <li><span>ECTS:</span> {{ course.ects }}</li>
                         <li><span>Year:</span> {{ course.year }}</li>
                         <li><span>Semester:</span> {{ course.semester }}</li>
+                        <li><span>Description:</span> {{ course.description }}</li>
                         {% for teacher in teachers %}
                             {% if course.teacher1 == teacher %}
                                 <li><span>Course Teacher:</span>
@@ -105,6 +106,10 @@
                                                                href='{{ MEDIA_URL }}{{ file.files.url }}'><i
                                                                 class="fas fa-download"></i>{{ file.files.name }}
                                                         </a>
+                                                        <a class="media" id="media2" style="display: none" download
+                                                               href='{{ MEDIA_URL }}{{ file.files.url }}'><i
+                                                                class="fas fa-download"></i>Download File
+                                                        </a>
                                                         </li>
                                                     {% endif %}
                                                 {% endfor %}
@@ -133,7 +138,7 @@
         $('#file-upload').bind('change', function () {
             var fileName = '';
             fileName = $(this).val();
-            $('#file-selected').html(fileName.split(/(\\|\/)/g).pop());
+            $('#file-selected').html('File selected.').pop();
         });
     </script>
 {% endblock %}

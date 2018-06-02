@@ -95,8 +95,14 @@
                                                  </span>
                                                         <br>
                                                         <span style="color:white; margin-left:10px;">
-                                                            {{ note.course.teacher1.name }}
-                                                            {{ note.course.teacher1.surname }}</span>
+                                                            {% for teacher in teachers %}
+                                                                {% if note.course.teacher1.teacher_ID == teacher.teacher_ID %}
+                                                                    {{ teacher.academic_title }}
+                                                                    {{ teacher.name }}
+                                                                    {{ teacher.surname }}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </span>
                                                     </a>
                                                 </li>
                                                 {% if not forloop.last %}
@@ -251,7 +257,7 @@
             </div>
         {% endif %}
     </main>
-      <!-- main content end -->
+    <!-- main content end -->
 {% endblock %}
 </body>
 </html>

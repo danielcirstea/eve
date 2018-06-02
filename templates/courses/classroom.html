@@ -16,7 +16,7 @@
     {% if user.is_teacher %}
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-2">
+                <div class="col-md-3 col-lg-2">
 
                     <!--teacher options -->
 
@@ -34,7 +34,7 @@
 
                     </div>
                 </div>
-                <div class="col-xl-10">
+                <div class="col-md-9 col-lg-10">
                     <div class="jumbotron">
                         <h4>Classroom</h4>
                         <hr>
@@ -68,11 +68,10 @@
                                 {% for lecture in lectures %}
                                     {% if lecture.course == course %}
                                         <li>
-                                            <p>Lecture: {{ lecture.lecture_title }}
-                                               </p>
                                             <form action="{% url 'courses:lecture_delete' lecture.pk %}"
                                                   method="post">
                                                 {% csrf_token %}
+                                                <p>Lecture: {{ lecture.lecture_title }}</p>
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                         </li>
@@ -99,7 +98,7 @@
                                     <i class="fas fa-cloud-upload-alt"></i> File Upload
                                 </label><br>
                                 <span class="selected" data-selected=""></span>
-                                {{  form.files }} <br>
+                                {{ form.files }} <br>
                             {% endfor %}
                             <br>
                             <button class="btn btn-default btn2" type="submit">Add</button>
@@ -118,11 +117,18 @@
                                         <div class="uploads">
                                             <p class="message">
                                                 <a href='{{ MEDIA_URL }}{{ upload.files.url }}'>
-                                                    <i class="fas fa-download"></i> {{ upload.files }}</a></p>
+                                                    <i class="fas fa-download"></i> {{ upload.files }} </a></p>
+                                            <p class="message2" style="display: none;">
+                                                <a href='{{ MEDIA_URL }}{{ upload.files.url }}'>
+                                                    <i class="fas fa-download"></i> Download File </a></p>
                                             <br>
-                                            <p class="message">Message: {{ upload.comment }}
+                                            <p class="message">Message: {{ upload.comment }}</p>
                                             <p class="message"> Uploaded
-                                                By: {{ upload.user.student.name }} {{ upload.user.student.surname }}
+                                                By: {{ upload.user.student.name }} {{ upload.user.student.surname }}</p>
+                                            <p style="display: none" class="message2">Message: {{ upload.comment }}</p>
+                                            <br>
+                                            <p style="display: none" class="message2"> Uploaded
+                                                By: {{ upload.user.student.name }} {{ upload.user.student.surname }}</p>
                                             <form class="form3" method="POST"
                                                   action="{% url "courses:upload_update" upload.pk %}">
                                                 {% csrf_token %}
@@ -199,7 +205,7 @@
             $('[id^="id_files-"]').bind('change', function () {
                 var fileName = '';
                 fileName = $(this).val();
-                $('#'+this.id).prev().html('File selected.');
+                $('#' + this.id).prev().html('File selected.');
             });
         </script>
     {% else %}

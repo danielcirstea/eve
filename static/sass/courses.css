@@ -217,6 +217,11 @@ body {
         .container-fluid .jumbotron ul .title:hover {
           cursor: pointer;
           background-color: #212D3D; }
+        @media (max-width: 575px) {
+          .container-fluid .jumbotron ul .title {
+            height: 60px !important;
+            width: 100%;
+            margin-left: -30px; } }
         .container-fluid .jumbotron ul .title p {
           font-size: 16px;
           text-align: left;
@@ -250,6 +255,12 @@ body {
           margin-left: 5%;
           color: #06AD7F;
           margin-bottom: 10px; }
+        @media (max-width: 1191px) {
+          .container-fluid .jumbotron ul #lecture-hide .media {
+            display: none !important; }
+          .container-fluid .jumbotron ul #lecture-hide #media2 {
+            display: inline-block !important;
+            width: 200px !important; } }
         .container-fluid .jumbotron ul #lecture-hide #files {
           margin-left: 5%;
           font-weight: bold; }

@@ -123,7 +123,7 @@ class User(AbstractUser):
         (USER_TYPE_TEACHER, 'teacher'),
         (USER_TYPE_ADMIN, 'admin'),
     )
-    user_type = models.IntegerField(choices=USER_TYPE_CHOICES, default=USER_TYPE_STUDENT)
+    user_type = models.IntegerField(choices=USER_TYPE_CHOICES, default=USER_TYPE_ADMIN)
 
     @property
     def is_admin(self):
@@ -156,8 +156,9 @@ class User(AbstractUser):
             qs = Course.objects.filter(student=self.get_student_data())
         if self.is_teacher:
             teacher = self.get_teacher_data()
-            qs = Course.objects.filter(Q(teacher1=teacher)|Q(teacher2=teacher))
+            qs = Course.objects.filter(Q(teacher1=teacher) | Q(teacher2=teacher))
         return qs.order_by('name')
+
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

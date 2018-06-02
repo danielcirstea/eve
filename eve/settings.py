@@ -73,7 +73,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'courses',
-        'USER': 'daniel',
+        'USER': 'root',
         'PASSWORD': 'Ilikepizza24',
         'HOST': 'localhost',
         'PORT': '',
@@ -135,23 +135,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 JET_THEMES = [
     {
         'theme': 'default',  # theme folder name
-        'color': '#47bac1',  # color of the theme's button in user menu
+        'color': '#06AD7F',  # color of the theme's button in user menu
         'title': 'Default'  # theme title
-    },
-    {
-        'theme': 'green',
-        'color': '#44b78b',
-        'title': 'Green'
     },
     {
         'theme': 'light-green',
         'color': '#2faa60',
         'title': 'Light Green'
-    },
-    {
-        'theme': 'light-violet',
-        'color': '#a464c4',
-        'title': 'Light Violet'
     },
     {
         'theme': 'light-blue',

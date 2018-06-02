@@ -114,6 +114,7 @@ def faculty_filter(request, slug):
         'faculties2': Faculty.objects.all(),
         'departments': Department.objects.all(),
         'studies': StudyProgramme.objects.all(),
+        'teachers': Teacher.objects.all(),
     }
     return render(request, 'courses/filters/faculty_filter.html', context)
 
@@ -139,6 +140,7 @@ def study_programme_filter(request, slug):
         'departments': Department.objects.all(),
         'studies': StudyProgramme.objects.filter(slug=slug),
         'studies2': StudyProgramme.objects.all(),
+        'teachers': Teacher.objects.all(),
     }
     return render(request, 'courses/filters/study_programme_filter.html', context)
 
@@ -267,18 +269,46 @@ def enroll(request, slug):
         students = paginator.page(paginator.num_pages)
     course = Course.objects.get(slug=slug)
     if request.method == 'POST':
-        course.student.add(*request.POST.getlist('student_ids'))
-        course.student.remove(*request.POST.getlist('student_ids2'))
-        redirect('/')
+        if 'student_ids' in request.POST:
+            for item in request.POST.getlist('student_ids'):
+                course.student.add(item)
+    redirect('/')
     context = {
         'course': course,
-        'faculties': Faculty.objects.all(),
-        'departments': Department.objects.all(),
-        'studies': StudyProgramme.objects.all(),
         'students': students,
         'students2': Student.objects.all()
     }
     return render(request, 'courses/enroll.html', context)
+
+
+@login_required
+def disenroll(request, slug):
+    if not request.user.is_teacher:
+        raise PermissionDenied()
+    query_list = StudentData.objects.all()
+    query = request.GET.get('q')
+    if query:
+        query_list = query_list.filter(Q(name__icontains=query))
+    paginator = Paginator(query_list, 20)
+    page = request.GET.get('page')
+    try:
+        students = paginator.page(page)
+    except PageNotAnInteger:
+        students = paginator.page(1)
+    except EmptyPage:
+        students = paginator.page(paginator.num_pages)
+    course = Course.objects.get(slug=slug)
+    if request.method == 'POST':
+        if 'student_ids2' in request.POST:
+            for item in request.POST.getlist('student_ids2'):
+                course.student.remove(item)
+    redirect('/')
+    context = {
+        'course': course,
+        'students': students,
+        'students2': Student.objects.all()
+    }
+    return render(request, 'courses/disenroll.html', context)
 
 
 # the course page for the students, which shows only the courses he is enrolled into

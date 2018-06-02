@@ -13,7 +13,7 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-3">
+            <div class="col-md-4 col-lg-3">
                 <div class="jumbotron">
 
                     <!-- courses filters -->
@@ -42,7 +42,7 @@
 
                 </div>
             </div>
-            <div class="col-xl-9">
+            <div class="col-md-8 col-lg-9">
                 <div class="jumbotron" style="">
                     <h4>All courses</h4>
                     <br>
@@ -54,7 +54,7 @@
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">ECTS</th>
-                            <th scope="col">Studies</th>
+                            <th class="study-hide" scope="col">Studies</th>
                             <th scope="col">Teacher</th>
                         </tr>
                         </thead>
@@ -71,7 +71,7 @@
                                         {{ course.ects }}
                                     </a>
                                 </td>
-                                <td>
+                                <td class="study-hide">
                                     <a href="{% url 'courses:courses' slug=course.slug %}">
                                         {{ course.study_programme }}
                                     </a>
