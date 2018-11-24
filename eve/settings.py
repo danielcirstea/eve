@@ -13,7 +13,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'u-fpb=iq@9l29vd%5l5y8(83rslx7ja&21z3-wh*%m)f-&ay)%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
