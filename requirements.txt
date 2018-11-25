@@ -34,7 +34,6 @@ plotly==3.3.0
 prompt-toolkit==1.0.15
 psycopg2==2.7.4
 ptyprocess==0.6.0
-py-etherscan-api==0.7.0
 Pygments==2.2.0
 pyproj==1.9.5.1
 python-decouple==3.1
