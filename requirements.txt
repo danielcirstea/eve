@@ -13,7 +13,6 @@ django-jet==1.0.7
 django-pagination==1.0.7
 django-readonly-field==1.0.2
 django-simple-pagination==1.1.8
-GDAL==2.3.2
 gunicorn==19.7.1
 idna==2.7
 ipdb==0.11
