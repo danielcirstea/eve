@@ -12,7 +12,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['eve2018.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
